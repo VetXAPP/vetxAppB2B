@@ -1,0 +1,71 @@
+{
+  "name": "vetx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/TwilioDevEd/video-quickstart-node"
+  },
+  "keywords": [
+    "twilio",
+    "video",
+    "ip",
+    "video",
+    "chat",
+    "real",
+    "time",
+    "diggity"
+  ],
+  "dependencies": {
+    "async": "^2.1.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "csv-parse": "^1.1.7",
+    "csvtojson": "^1.0.3",
+    "dotenv": "^1.2.0",
+    "ejs": "^2.5.2",
+    "express": "^4.13.3",
+    "express-session": "^1.14.2",
+    "file-system": "^2.2.2",
+    "flash": "^1.1.0",
+    "fs": "0.0.1-security",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-notify": "^2.2.0",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.2",
+    "mailer": "^0.6.7",
+    "mongoose": "^4.6.6",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.7.0",
+    "mplayer": "^2.1.0",
+    "multer": "^1.2.0",
+    "node-uuid": "^1.4.7",
+    "nodemailer": "^2.6.4",
+    "nodemailer-express-handlebars": "^2.0.0",
+    "nodemailer-smtp-transport": "^2.7.2",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "play-sound": "^1.1.1",
+    "promise": "^7.1.1",
+    "session": "^0.1.0",
+    "socket.io": "^1.6.0",
+    "twilio": "^2.9.2",
+    "uuid": "^2.0.3"
+  },
+  "devDependencies": {
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "twilio": "^2.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Arun",
+  "license": "ISC"
+}

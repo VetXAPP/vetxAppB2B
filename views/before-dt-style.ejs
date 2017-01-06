@@ -1,0 +1,1672 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>VetX</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="public/Favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <!--<link rel="stylesheet" href="public/css/materialize.css">-->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="public/css/animations.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="public/css/main-dashboard.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
+    <!-- Compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="public/css/materialize.css">-->
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="10" id="opensansclass">
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<nav id="custom-nav" class="navbar navbar-default navbar-static-top navbarorder headergradiant">
+    <div class="container headercont">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand" style="margin-right: 90px;"><span class="font18 colorwhite bold-text"> Vetx clinic chat</span></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav navbar-left1">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><i class="fa fa-bell-o"></i></a></li>
+                <li>
+                    <!-- <a href="dashboard-table.html" style="padding: 0px;"> <img class="media-object img-circle dropdown-toggle" type="button" data-toggle="dropdown" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="public/img/userprofile.png"><span class="caret"></span></a> -->
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="public/img/userprofile.png" class="pro-img">
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Profile</a></li>
+                                <li><a href="/clinic/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="conv-navigation-wrap col-lg-3">
+                    <div class="media conversation bgwhite">
+                        <div class="media-body">
+                            <h4 class="media-heading bold-text colororange">Dashboard</h4>
+                        </div>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="vetButton" class="actives classorangenavbar colorblack font16 "><i class="fa fa-stethoscope iconnavbar colorgray "></i> Vets &nbsp <span class="label colorwhite bggreen">5</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="userButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-users iconnavbar colorgray"></i> Users  &nbsp <span class="colorlitegray">(14)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="petsButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-paw iconnavbar colorgray"></i> Pets &nbsp <span class="colorlitegray">(100)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="historyButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-history iconnavbar colorgray"></i> History &nbsp <span class="colorlitegray">(12)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="billingButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Billing &nbsp <span class="colorlitegray">(22)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="petButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-tag iconnavbar colorgray"></i> Pet Records &nbsp <span class="colorlitegray">(54)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="contactButton" class="colorblack classorangenavbar font16 "><i class="fa fa-home iconnavbar colorgray "></i> Contact &nbsp </a>
+                    </div>
+                    <div class="media conversation bgwhite">
+                        <div class="media-body col-lg-8 margin-boc-navbar">
+                            <h4 class="media-heading bold-text colororange" style="padding-top: 5px;
+                            ">Website</h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="bgorange colorwhite btn">Live</button>
+                        </div>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="cmsbutton" class="colorblack classorangenavbar font16 "><i class="fa fa-file-text iconnavbar colorgray "></i> CMS Content &nbsp </a>
+                    </div>
+                </div>
+                <div class="message-wrap col-lg-9 vetsView minheightdash">
+                    <div class="col-md-12 col-sm-12">
+                        <h1 class="head-text">Vets</h1>
+                        <div class="table-div">
+                            <table id="vets" class="hover" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Veterinar Name</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                 <% user.myDoctors.forEach(function(doc) {  %>
+                                 <tr>
+                                    <td><%=doc.email%></td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">
+                                        <%= doc.name %>
+                                    </td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-vets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <% })%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-9 userView minheightdash">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="head-text">Users</h1>
+                    <div class="table-div">
+                        <table id="pets" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User Name</th>
+                                    <th>Status</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>Active/Deactive</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgblack tableButtonInside">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgblack tableButtonInside">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgblack tableButtonInside">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgblack tableButtonInside">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgblack tableButtonInside">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/userprofile.png">Edinburgh</td>
+                                    <td><i class="fa fa-circle colorgreen tablefontawesome"></i></td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    <td>
+                                        <button class="btn colorwhite bgorange activatbuttonpad tableButtonInside">Activate</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-9 petsView minheightdash">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="head-text">Pets</h1>
+                    <div class="table-div">
+                        <table id="users" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Pet Name</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-6 historyView minheightdash">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="head-text">History</h1>
+                    <div class="table-div">
+                        <table id="history" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>User ID</th>
+                                    <th>Consulting ID</th>
+                                    <th>Pet ID</th>
+                                    <th>Date/Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>VXP23234</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="conversation-wrap historyView col-lg-3">
+                <div class="media conversation bgwhite">
+                    <div class="media-body">
+                        <h6 class="media-heading bold-text">DOCTOR'S</h6>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colorgreen chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Rachel Chandter</h5>
+                        <small>Director of veterinary Affairs</small>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colorgreen chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+                        <small>Veterinary Doctor</small>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colororange chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+                        <small>Veterinary Doctor</small>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-6 billingView minheightdash">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="head-text">Billing</h1>
+                    <div class="table-div">
+                        <table id="billing" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>User ID</th>
+                                    <th>Consulting ID</th>
+                                    <th>Consultant Fee</th>
+                                    <th>Date/Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Timothy</td>
+                                    <td>VEX12343</td>
+                                    <td>VID2343</td>
+                                    <td>$ 2500</td>
+                                    <td>19/04/2016 / 09.00AM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="conversation-wrap billingView col-lg-3">
+                <div class="media conversation bgwhite">
+                    <div class="media-body">
+                        <h6 class="media-heading bold-text">DOCTOR'S</h6>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colorgreen chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Rachel Chandter</h5>
+                        <small>Director of veterinary Affairs</small>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colorgreen chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+                        <small>Veterinary Doctor</small>
+                    </div>
+                </div>
+                <div class="media conversation bgwhite">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-circle colororange chat-check online"></i>
+                        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+                        <small>Veterinary Doctor</small>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-9 petRecords minheightdash">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="head-text">Pet Records</h1>
+                    <div class="table-div">
+                        <table id="pet-records" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Pet Name</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="message-wrap col-lg-9 contact minheightdash">
+                <div class="col-md-6 col-sm-12 mar-top">
+                    <h2 class="uplod-txt">Upload the svg file</h2>
+                    <div class="form-group">
+                        <input type="file" name="img[]" class="file" onchange="csv_file_upload()">
+                        <div class="input-group col-xs-12">
+                            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                            <span class="input-group-btn">
+                                <button class="browse btn browse-button" type="button">Upload</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="table-div">
+                        <table id="example" class="hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Garrett Winters</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>63</td>
+                                    <td>2011/07/25</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Ashton Cox</td>
+                                    <td>Junior Technical Author</td>
+                                    <td>San Francisco</td>
+                                    <td>66</td>
+                                    <td>2009/01/12</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Cedric Kelly</td>
+                                    <td>Senior Javascript Developer</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                    <td>2012/03/29</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Airi Satou</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>33</td>
+                                    <td>2008/11/28</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Brielle Williamson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>New York</td>
+                                    <td>61</td>
+                                    <td>2012/12/02</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Herrod Chandler</td>
+                                    <td>Sales Assistant</td>
+                                    <td>San Francisco</td>
+                                    <td>59</td>
+                                    <td>2012/08/06</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Rhona Davidson</td>
+                                    <td>Integration Specialist</td>
+                                    <td>Tokyo</td>
+                                    <td>55</td>
+                                    <td>2010/10/14</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Colleen Hurst</td>
+                                    <td>Javascript Developer</td>
+                                    <td>San Francisco</td>
+                                    <td>39</td>
+                                    <td>2009/09/15</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Sonya Frost</td>
+                                    <td>Software Engineer</td>
+                                    <td>Edinburgh</td>
+                                    <td>23</td>
+                                    <td>2008/12/13</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Jena Gaines</td>
+                                    <td>Office Manager</td>
+                                    <td>London</td>
+                                    <td>30</td>
+                                    <td>2008/12/19</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>scdffsdafsdfsdfdadsfs</td>
+                                    <td>Support Lead</td>
+                                    <td>Edinburgh</td>
+                                    <td>22</td>
+                                    <td>2013/03/03</td>
+                                    <td class="edit" data-toggle="modal" data-target="#edit"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- **********************Cms div start*************************** -->
+
+            <div class="message-wrap col-lg-9 cms-content minheightdash">
+                <h1 class="head-text">CMS Content</h1>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Banner Section</h1>
+                    <div class="col-md-6 cust-padding">
+                        <!--logo image -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Logo Image</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/logo2.png" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <!--banner image -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Banner Image</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img-banner">
+                                <img src="img/main_01.png" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-md-6 cust-padding">
+                        <!--banner header -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Banner Main Text</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <!--banner sub text -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Banner Sub text</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Middle section 1</h1>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 01 - Title</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <!--box 1 icon -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 01 - Icon</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/i1.png" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 01 - Content</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <!-- **********************CMS div end *************************** -->
+                </div>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Middle section 2</h1>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 02 - Title</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <!--box 1 icon -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 02 - Icon</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/i2.png" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 02 - Content</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <!-- **********************CMS div end *************************** -->
+                </div>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Middle section 3</h1>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 03 - Title</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <!--box 1 icon -->
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 03 - Icon</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/i3.png" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Box 03 - Content</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <!-- **********************CMS div end *************************** -->
+                </div>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Testimosnials - Box 01</h1>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Name</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5 class="cms-head">Logo Image</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/profile_user.jpg" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Title</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Text</h5>
+                            <textarea class="form-control" rows="9" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <!-- **********************CMS div end *************************** -->
+                </div>
+                <div class="row row-space">
+                    <h1 class="head-text-sub">Testimosnials - Box 02</h1>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Name</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5 class="cms-head">Logo Image</h5>
+                            <input type="file" name="img[]" class="file">
+                            <div class="input-group col-xs-12">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+                                <span class="input-group-btn">
+                                    <button class="browse btn browse-button" type="button">Upload</button>
+                                </span>
+                            </div>
+                            <div class="cms-img">
+                                <img src="img/profile_user.jpg" class="img-responsive">
+                                <!-- <img src="img/placeholder.png" class="img-responsive"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 cust-padding">
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Title</h5>
+                            <textarea class="form-control" rows="2" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5 class="cms-head">Testimosnials-Text</h5>
+                            <textarea class="form-control" rows="9" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <!-- **********************CMS div end *************************** -->
+                </div>
+            </div>
+            <div id="fixedbutton">
+                <button data-toggle="modal" data-target="#addButton" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+            </div>
+        </div>
+
+        <!--************ vets edit popup ******************* -->
+        <div class="modal fade my-popup" id="edit-vets" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Vets</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login" style="display: block;">
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Veterinar Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label class="upload-div">Upload Image</label>
+                                    <div class="upload-div" style="position:relative;">
+                                        <a class='upload-button' href='javascript:;'>
+                                            Choose File...
+                                            <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a> &nbsp;
+                                        <span class='label label-info' id="upload-file-info"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ vets popup end  ******************* -->
+        <!--************ users edit popup ******************* -->
+        <div class="modal fade my-popup" id="edit-users" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Users</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login">
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Pet Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label class="upload-div">Upload Image</label>
+                                    <div class="upload-div" style="position:relative;">
+                                        <a class='upload-button' href='javascript:;'>
+                                            Choose File...
+                                            <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a> &nbsp;
+                                        <span class='label label-info' id="upload-file-info"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ users popup end  ******************* -->
+        <!--************ pets edit popup ******************* -->
+        <div class="modal fade my-popup" id="edit-pets" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Pets</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login" style="display: block;">
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Pet Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label class="upload-div">Upload Image</label>
+                                    <div class="upload-div" style="position:relative;">
+                                        <a class='upload-button' href='javascript:;'>
+                                            Choose File...
+                                            <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a> &nbsp;
+                                        <span class='label label-info' id="upload-file-info"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ pets popup end  ******************* -->
+        <!--************ edit-pets-records edit popup ******************* -->
+        <div class="modal fade my-popup" id="edit-pets-records" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Pets Records</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login" style="display: block;">
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Pet Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label class="upload-div">Upload Image</label>
+                                    <div class="upload-div" style="position:relative;">
+                                        <a class='upload-button' href='javascript:;'>
+                                            Choose File...
+                                            <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a> &nbsp;
+                                        <span class='label label-info' id="upload-file-info"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ edit-pets-records popup end  ******************* -->
+        <!--************ contact edit popup ******************* -->
+        <div class="modal fade my-popup" id="edit" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login" style="display: block;">
+                            <form>
+                                <div class="form-group">
+                                    <label for="usr">Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Position:</label>
+                                    <input type="text" class="form-control" id="pwd">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Office:</label>
+                                    <input type="text" class="form-control" id="pwd">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Age:</label>
+                                    <input type="text" class="form-control" id="pwd">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ contact popup end  ******************* -->
+        <!--************ delete popup ******************* -->
+        <div class="modal fade" id="delete" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Confirm to Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+                        <button type="button" class="whiteHomeButton" style="padding: 10px 35px;">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ delete popup end  ******************* -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="public/js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script>
+        <script src="public/js/vendor/bootstrap.min.js"></script>
+        <script src="public/js/vendor/css3-animate-it.js"></script>
+        <script src="public/js/main.js"></script>
+        <script src="public/js/materialize.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <!--<script>-->
+        <!--$('#endButton').modal('hide');-->
+        <!--$('body').removeClass('modal-open');-->
+        <!--$('.modal-backdrop').remove();-->
+        <!---->
+        <!--</script>-->
+        <!--upload -->
+        <script type="text/javascript">
+            function csv_file_upload()
+            {
+
+                alert();
+
+            }
+
+
+
+            $(document).on('click', '.browse', function() {
+                var file = $(this).parent().parent().parent().find('.file');
+                file.trigger('click');
+            });
+            $(document).on('change', '.file', function() {
+                $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#example').DataTable();
+                $('#vets').DataTable();
+                $('#users').DataTable();
+                $('#pets').DataTable();
+                $('#history').DataTable();
+                $('#billing').DataTable();
+                $('#pet-records').DataTable();
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#report tr:odd").addClass("odd");
+                $("#report tr:not(.odd)").hide();
+                $("#report tr:first-child").show();
+
+                $("#report tr.odd").click(function() {
+                    $(this).next("tr").toggle();
+                    $(this).find(".arrow").toggleClass("up");
+                });
+        //$("#report").jExpand();
+    });
+            $(document).ready(function() {
+                $("#userRecordTable tr:odd").addClass("odd");
+                $("#userRecordTable tr:not(.odd)").hide();
+                $("#userRecordTable tr:first-child").show();
+
+                $("#userRecordTable tr.odd").click(function() {
+                    $(this).next("tr").toggle();
+                    $(this).find(".arrow").toggleClass("up");
+                });
+        //$("#report").jExpand();
+    });
+            $(document).ready(function() {
+                $("#petRecordTable tr:odd").addClass("odd");
+                $("#petRecordTable tr:not(.odd)").hide();
+                $("#petRecordTable tr:first-child").show();
+
+                $("#petRecordTable tr.odd").click(function() {
+                    $(this).next("tr").toggle();
+                    $(this).find(".arrow").toggleClass("up");
+                });
+        //$("#report").jExpand();
+    });
+            $(document).ready(function() {
+                $("#petsPageTAble tr:odd").addClass("odd");
+                $("#petsPageTAble tr:not(.odd)").hide();
+                $("#petsPageTAble tr:first-child").show();
+
+                $("#petsPageTAble tr.odd").click(function() {
+                    $(this).next("tr").toggle();
+                    $(this).find(".arrow").toggleClass("up");
+                });
+        //$("#report").jExpand();
+    });
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                $(".vetsView").show();
+                $(".petRecords").hide();
+                $(".userView ").hide();
+                $(".petsView ").hide();
+                $(".historyView ").hide();
+                $(".billingView ").hide();
+                $(".contact").hide();
+                $(".cms-content").hide();
+
+
+            });
+            $(document).ready(function() {
+                $("#vetButton").click(function() {
+                    $(".vetsView").fadeIn(1000);
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").hide();
+                });
+                $("#petButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").fadeIn(1000);
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").hide();
+                });
+                $("#userButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").fadeIn(1000);
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").hide();
+                });
+                $("#petsButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").fadeIn(1000);
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").hide();
+                });
+                $("#historyButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").fadeIn(1000);
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").hide();
+                });
+                $("#billingButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".contact").hide();
+                    $(".billingView ").fadeIn(1000);
+                    $(".cms-content").hide();
+                });
+
+
+                $("#contactButton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").fadeIn(1000);
+                    $(".cms-content").hide();
+                });
+                $("#cmsbutton").click(function() {
+                    $(".vetsView").hide();
+                    $(".petRecords").hide();
+                    $(".userView ").hide();
+                    $(".petsView ").hide();
+                    $(".historyView ").hide();
+                    $(".billingView ").hide();
+                    $(".contact").hide();
+                    $(".cms-content").fadeIn(1000);
+                });
+
+            });
+        </script>
+        <script>
+            $('.titlenavbar  a').on('click', function() {
+                $('a').removeClass('actives');
+
+                $(this).addClass('actives');
+            });
+
+    //    $('.titlenavbar  i ').on('click',function(){
+    //        $('i').removeClass('actives');
+    //        $(this).addClass('actives');
+    //    });
+    //    $('.titlenavbar  span ').on('click',function(){
+    //        $('span').removeClass('actives');
+    //        $(this).addClass('actives');
+    //    });
+</script>
+<script>
+    $('.conv-navigation-wrap a .classorangenavbar').click(function() {
+        $('.conv-navigation-wrap').removeClass('actives');
+        $(this).parents('.conv-navigation-wrap').addClass('actives');
+        $('.titlenavbar').removeClass('actives'); //just to make a visual sense
+        $(this).parent().addClass('actives'); //just to make a visual sense
+
+    });
+</script>
+<script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'http://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+</script>
+<script>
+    $(window).scroll(function() {
+        if ($(".navbar").offset().top > 50) {
+            $('#custom-nav').addClass('affix');
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
+        } else {
+            $('#custom-nav').removeClass('affix');
+            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        }
+    });
+</script>
+<script>
+    $('.panel-heading a').click(function() {
+        $('.panel-heading').removeClass('actives');
+        $(this).parents('.panel-heading').addClass('actives');
+
+        $('.panel-title').removeClass('actives'); //just to make a visual sense
+        $(this).parent().addClass('actives'); //just to make a visual sense
+
+    });
+</script>
+<!-- site loading -->
+<div id="addButton" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+
+        <form method="post" id="addVet" name="addVet"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="button" style="float: right;" class="" data-dismiss="modal"><span class="fa fa-times fa-1_5x colorwhite"></span></a>
+                    <button style="float: right; margin-right: 27px;" class="btn colororange bgwhite " type="button">SAVE</button>
+                    <h4 style="text-align:left" class="modal-title">New Doctor</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="slimfont colorgray">Doctor ID</label>
+                        <input type="text" class="form-control-modal">
+                    </div>
+                    <div class="form-group">
+                        <label class="slimfont colorgray">Name</label>
+                        <input type="text" class="form-control-modal">
+                    </div>
+                    <div class="form-group">
+                        <label class="slimfont colorgray">Title</label>
+                        <input type="text" class="form-control-modal">
+                    </div>
+                    <div class="form-group">
+                        <label class="slimfont colorgray">Mail ID</label>
+                        <input type="text" class="form-control-modal">
+                    </div>
+                    <div class="form-group">
+                        <label class="slimfont colorgray">Phone Number</label>
+                        <input type="text" class="form-control-modal">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+</body>
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+//PET VALIDATION 
+
+$(function() {
+// Initialize form validation on the registration form.
+// It has the name attribute "registration"
+$("form[name='addVet']").validate({
+// Specify validation rules
+rules: {
+    petName: {
+        required: true
+    },
+    petType: {
+        required: true,
+
+    },
+    petBreed: {
+        required: true,
+
+    },
+    petSex: {
+        required: true
+    },
+    dateOfBirth: {
+        required: true
+    },
+
+},
+// Specify validation error messages
+messages: {
+
+    petName: {
+        required: "Please provide a petname *",
+    },
+    petType: "Please provide a pettype *",
+    petBreed: "Please provide a petbreed *",
+    petSex: "Please provide petsex *",
+    dateOfBirth: "Please provide date of birth *",
+
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+    addPet();
+}
+});
+});
+
+</script>
+
+</html>
+
+

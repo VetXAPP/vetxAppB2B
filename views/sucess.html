@@ -1,0 +1,331 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>VetX</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/simpleform.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="10">
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<nav id="custom-nav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container" style="padding-top: 17px; padding-bottom: 17px;">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand" style="margin-right: 90px;"><img class="logo-image" src="img/logo.png"></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav navbar-left1">
+                <li class="active"><a href="index.html#platform">About</a></li>
+                <li><a href="index.html#Features">Features</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#FAQ">FAQ</a></li>
+                <!-- <li><a href="#Contactus">Our Vets</a></li> -->
+                <li>
+                    <!-- <a href="contactus.html" target="_blank">Contacts Us</a> -->
+                    <button class="head-btn" (type="button" , onclick="window.open('contactus.html', '_blank');" )>Contacts Us </button>
+                </li>
+                <li>
+                    <button class="head-btn" (type="button" , onclick="window.open('http://www.vetxapp.com/feed', '_blank');" )>Feeds </button>
+                </li>
+                <li>
+                    <button type="button" class="head-btn" data-toggle="modal" data-target="#login">Login</button>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="sign"><a href="#" class="whiteHomeButton headerbuttonFontsize header-but signin">Sign Up Now</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row order-1-image firstsectionbuy">
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 ">
+                    <div class=" col-md-12 col-sm-12 col-xs-12 ">
+                        <span>
+                            <h1 class="heading-1" style="margin-top: 132px; color: white; ">Join the VteX community</h1>
+                        </span>
+                    </div>
+                    <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12 ">
+                        <img src="img/banner_1.png" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-offset-2 col-md-2 col-sm-12 col-xs-12 ">
+                    <p class="paragraph-white"> select products</p>
+                </div>
+                <div class="col-md-offset-1 col-md-2 col-sm-12 col-xs-12 ">
+                    <p class="paragraph-grey-buy"> Order Information</p>
+                </div>
+                <div class="col-md-offset-1 col-md-2 col-sm-12 col-xs-12 finalColumn ">
+                    <p class="paragraph-grey-buy"> Review and Pay</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 buyoption-noti" style="display: none">
+            <p class="sucess-head"><strong>Payment Succecss!</strong></p>
+            <p class="sucess-p">Thanks your your Payment and your interest with VetX. Kindly check your mail for the credentials and link to log-in to your administrator portal.</p>
+        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 buyoption-noti-failure">
+            <p class="sucess-head"><strong>Payment Failer!</strong></p>
+            <p class="sucess-p">Your payment hasn't gone through, Kindly start afresh to make the payment again, Sorry for the inconvenience caused.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3 col-sm-4 col-xs-12">
+                    <img style="margin-top: 30px;" src="img/footerlogo.png" class="logo-image">
+                    <h4 style="padding-top: 9px;"> Connecting pet owners to Veterianarians anytime, any-<br>where 24/7 </h4>
+                </div>
+                <div class="col-lg-6  col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="font-gray"> Site map </h3>
+                    <ul class="site map">
+                        <li> <a class="text-black" href="#"> About </a> </li>
+                        <li> <a class="text-black" href="#"> Features </a> </li>
+                        <li> <a class="text-black" href="#"> Pricing </a> </li>
+                        <li> <a class="text-black" href="#"> FAQ </a> </li>
+                        <li> <a class="text-black" href="#"> Contact Us </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3  col-md-3 col-sm-4 col-xs-12">
+                    <h3 class="font-gray">Contacts </h3>
+                    <ul class="site map">
+                        <li>
+                            <a href="#"><img class="" src="img/footerloc.png">&nbsp; 75 Arlington St. Suite 500 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Boston. MA 02116 </a>
+                        </li>
+                        <li>
+                            <a href="#"><img class="" src="img/footerem.png">&nbsp; contact-email@vetx.com </a>
+                        </li>
+                        <li>
+                            <a style="margin-top: 18px;" href="#"><img class="" src="img/footermob.png">&nbsp; +(123) 456 789 45 </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.footer-->
+    <!--/.footer-bottom-->
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/css3-animate-it.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+<script src="js/simpleform.min.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+    $(".testform").simpleform({
+        speed: 500,
+        transition: 'fade',
+        progressBar: true,
+        showProgressText: true,
+        validate: true
+    });
+
+    $("#testform2").simpleform({
+        speed: 500,
+        transition: 'slide',
+        progressBar: true,
+        showProgressText: true,
+        validate: true
+    });
+
+    $("#testform3").simpleform({
+        speed: 500,
+        transition: 'none',
+        progressBar: true,
+        showProgressText: true,
+        validate: false
+    });
+
+    function validateForm(formID, Obj) {
+
+        switch (formID) {
+            case 'testform':
+            Obj.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    name: {
+                        required: true
+                    },
+                    street: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter an email address",
+                        email: "Not a valid email address"
+                    },
+                    name: {
+                        required: "Please enter your name"
+                    },
+                    street: {
+                        required: "Please enter street name"
+                    }
+                }
+            });
+            return Obj.valid();
+            break;
+
+            case 'testform2':
+            Obj.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    name: {
+                        required: true
+                    },
+                    spouse_email: {
+                        required: true,
+                        email: true
+                    },
+                    spouse_name: {
+                        required: true
+                    },
+                    street: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter an email address",
+                        email: "Not a valid email address"
+                    },
+                    name: {
+                        required: "Please enter your name"
+                    },
+                    spouse_email: {
+                        required: "Please enter an email address",
+                        email: "Not a valid email address"
+                    },
+                    spouse_name: {
+                        required: "Please enter your spouses name"
+                    },
+                    street: {
+                        required: "Please enter street name"
+                    }
+                }
+            });
+            return Obj.valid();
+            break;
+        }
+    }
+</script>
+<script>
+    document.getElementById("uploadBtn").onchange = function() {
+        document.getElementById("uploadFile").value = this.value;
+    };
+</script>
+<script>
+    $(document).ready(function() {
+
+        $(".firstsectionbuy").show();
+        $(".sectionsectionbuy").hide();
+        $(".thirdsectionbuy").hide();
+        $(".fourthsectionbuy").hide();
+        $(".fifthsectionbuy").hide();
+
+
+    });
+    $(document).ready(function() {
+        $("#next1").click(function() {
+            $(".firstsectionbuy").hide();
+            $(".sectionsectionbuy").show();
+        });
+        $("#back2").click(function() {
+            $(".firstsectionbuy").show();
+            $(".sectionsectionbuy").hide();
+        });
+        $("#back3").click(function() {
+            $(".sectionsectionbuy").show();
+            $(".thirdsectionbuy").hide();
+        });
+        $("#next2").click(function() {
+            $(".sectionsectionbuy").hide();
+            $(".thirdsectionbuy").show();
+        });
+        $("#next3").click(function() {
+            $(".thirdsectionbuy").hide();
+            $(".fifthsectionbuy").show();
+        });
+        // $("#next4").click(function() {
+        //     $(".fourthsectionbuy").hide();
+        //     $(".fifthsectionbuy").show();
+        // });
+
+    });
+</script>
+<script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'http://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+</script>
+<script>
+    $(window).scroll(function() {
+        if ($(".navbar").offset().top > 50) {
+            $('#custom-nav').addClass('affix');
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
+        } else {
+            $('#custom-nav').removeClass('affix');
+            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        }
+    });
+</script>
+<!-- site loading -->
+</body>
+
+</html>

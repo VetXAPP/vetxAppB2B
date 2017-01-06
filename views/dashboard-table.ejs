@@ -1,0 +1,2866 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>VetX</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="Favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <!--<link rel="stylesheet" href="public/css/materialize.css">-->
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="public/css/main-dashboard.css">
+  <link rel="stylesheet" href="public/css/dashboard.css">
+  <!-- Compiled and minified CSS -->
+  <!--<link rel="stylesheet" href="css/materialize.css">-->
+  <!-- Compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".navbar" data-offset="10" id="opensansclass">
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<nav id="custom-nav" class="navbar navbar-default navbar-static-top navbarorder headergradiant">
+  <div class="headercont">
+    <div class="navbar-header">
+      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/clinic/dashboard" class="navbar-brand" style="margin-right: 90px;"><span class="font18 colorwhite bold-text"> <%
+        var str =  user.clinicName;
+        str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+      });
+      %>
+      <%= str%> : Administrator portal</span></a>
+
+    </div>
+    <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+      <ul class="nav navbar-nav pull-right">
+        <!--  <li><a><i class="fa fa-bell-o"></i></a></li> -->
+        <li>
+          <!-- <a href="dashboard-table.html" style="padding: 0px;"> <img class="media-object img-circle dropdown-toggle" type="button" data-toggle="dropdown" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="public/img/userprofile.png"><span class="caret"></span></a> -->
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="public/img/userprofile.png" class="pro-img">
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-toggle="modal" data-target="#edit-profile"><i class="fa fa-sign-out" aria-hidden="true"></i> Edit Profile</a></li>
+                <li><a href="/clinic/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="conv-navigation-wrap col-lg-2">
+          <div class="media conversation bgwhite">
+            <div class="media-body">
+              <div class="place-div">
+                <img src="<%= user.clinicImage %>" class="place-dash">
+                <span class="arrow-cls-profile" id="helpPoinnter10" style="display: none;"> <img src="public/img/arrow.png"> </span>
+              </div>
+              <h4 class="media-heading bold-text colororange">Dashboard</h4>
+            </div>
+          </div>
+          <div class="media conversation titlenavbar bgwhite">
+            <a id="vetButton" class="actives classorangenavbar colorblack font16 "><i class="fa fa-stethoscope iconnavbar colorgray "></i> Vets &nbsp <span class="label colorwhite bggreen"><%= user.myDoctors.length;%></span>
+              <span id="helpPoinnter1" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span>
+            </a>
+          </div>
+          <div class="media conversation titlenavbar bgwhite">
+            <a id="userButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-users iconnavbar colorgray"></i> Users  &nbsp <span class="colorlitegray">(<%= user.users.length;%>)</span><span id="helpPoinnter2" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+          </div>
+          <div class="media conversation titlenavbar bgwhite">
+            <a id="petsButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-paw iconnavbar colorgray"></i> Pets &nbsp <span class="colorlitegray">(<%= user.pet.length;%>)</span><span id="helpPoinnter3" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+          </div>
+          <div class="media conversation titlenavbar bgwhite">
+            <a id="historyButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-history iconnavbar colorgray"></i> History &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter4" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+          </div>
+          <div class="media conversation titlenavbar bgwhite">
+            <a id="billingButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Billing &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter5" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+          </div>
+<!--  <div class="media conversation titlenavbar bgwhite">
+<a id="petButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-tag iconnavbar colorgray"></i> Pet Records &nbsp <span class="colorlitegray">(54)</span></a>
+</div> -->
+<div class="media conversation titlenavbar bgwhite">
+  <a id="contactButton" class="colorblack classorangenavbar font16 "><i class="fa fa-home iconnavbar colorgray "></i> Contact &nbsp <span id="helpPoinnter6" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+</div>
+<div class="media conversation titlenavbar bgwhite">
+  <a id="appoint" class="colorblack classorangenavbar font16 "><i class="fa fa-home iconnavbar colorgray "></i> Appointment &nbsp<span class="colorlitegray">(<%= appointment.length;%>)</span> <span id="helpPoinnter7" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+</div>
+<div class="media conversation bgwhite">
+  <div class="media-body col-lg-8 margin-boc-navbar">
+    <h4 class="media-heading bold-text colororange" style="padding-top: 5px;
+    ">Website</h4>
+  </div>
+<!--        <div class="col-lg-4">
+<button class="bgorange colorwhite btn">Live</button>
+</div> -->
+</div>
+<div class="media conversation titlenavbar bgwhite">
+  <a id="cmsbutton" class="colorblack classorangenavbar font16 "><i class="fa fa-file-text iconnavbar colorgray "></i> CMS Content &nbsp <span id="helpPoinnter8" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span> </a>
+</div>
+<div class="media conversation bgwhite">
+  <div class="media-body col-lg-8 margin-boc-navbar">
+    <h4 class="media-heading bold-text colororange" style="padding-top: 5px;
+    ">Help</h4>
+  </div>
+<!--        <div class="col-lg-4">
+<button class="bgorange colorwhite btn">Live</button>
+</div> -->
+</div>
+<div class="media conversation titlenavbar bgwhite">
+  <a id="help" class="colorblack classorangenavbar font16 "><i class="fa fa-question-circle iconnavbar colorgray "></i> FAQ &nbsp <span id="helpPoinnter9" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+</div>
+</div>
+<div class="message-wrap col-lg-10 vetsView minheightdash">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="head-text">Vets</h1>
+    <% if(user.myDoctors.length ==0)
+    {
+    %>
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box-empty">
+        <img src="public/img/empty-cat.png" class="img-responsive center-block">
+        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+        <label class="box-header center">Phasellus commodo, metusnon</label>
+      </div>
+    </div>
+    <% } else {%>
+
+    <div class="table-div">
+      <table id="vets" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Email</th>
+            <th>Veterinarian Name</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 
+          var i=0;
+          user.myDoctors.forEach(function(doc) {  %>
+          <tr>
+            <td><%= i+1 %> .</td>
+            <td><%= doc.email %></td>
+            <td><img class="img-circle table-img-size" src="<%= doc.profileImage%>"> <%= doc.name %></td>
+            <td>
+              <% if(doc.loggedIn==true)
+              {
+              %>
+              <i class="fa fa-circle colorgreen tablefontawesome">
+              </i>
+              <% } else { %>
+              <i class="fa fa-circle colororange tablefontawesome">
+              </i>
+              <% }%>
+
+            </td>
+
+            <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>')">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            </td>
+            <td class="delete" data-toggle="modal" data-target="#deleteVetPopup"><a onclick="deleteVet('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <% i++;
+
+        })%>
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+
+
+</div>
+<div id="fixedbutton">
+  <button data-toggle="modal" data-target="#add-vets" onclick="addVetStart();" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+</div>
+</div>
+<div class="message-wrap col-lg-10 userView minheightdash">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="head-text">Users</h1>
+    <% if(user.users.length ==0)
+    {
+    %>
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box-empty">
+        <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
+        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+        <label class="box-header center">Phasellus commodo, metusnon</label>
+      </div>
+    </div>
+    <% } else {%>
+
+    <div class="table-div">
+      <table id="pets" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>User Name</th>
+            <th>Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Active/Deactive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 
+          var i=0;
+          user.users.forEach(function(doc) {  %>
+          <tr>
+            <td><%= i+1 %> .</td>
+            <td><img class="img-circle table-img-size" src="<%= doc.profilePic%>"><%= doc.firstName %> <%= doc.lastName %> </td>
+            <td>
+
+              <% if(doc.loggedIn==true)
+              {
+              %>
+              <i class="fa fa-circle colorgreen tablefontawesome">
+              </i>
+              <% } else { %>
+              <i class="fa fa-circle colororange tablefontawesome">
+              </i>
+              <% }%>
+
+            </td>
+            <td class="edit" data-toggle="modal" data-target="#edit">
+             <a onclick="editUser('<%= doc._id %>','<%= doc.firstName %>','<%= doc.lastName %>','<%= doc.password %>')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+             <td class="delete" data-toggle="modal" data-target="#delete">
+               <a onclick="deleteUser('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+               <td>
+                 <% if(doc.active==true)
+                 {  %>
+                 <button class="btn colorwhite bgblack tableButtonInside" onclick="setStatus('<%= doc._id %>','<%= doc.active %>')">Deactivate</button>
+
+                 <% } 
+                 else { %>
+                 <button class="btn colorwhite bgorange tableButtonInside" onclick="setStatus('<%= doc._id %>','<%= doc.active %>')">Activate</button>
+                 <% } %>
+
+
+               </td>
+             </tr>
+             <% i++;
+
+           })%>
+
+         </tbody>
+       </table>
+     </div>
+
+     <% } %>
+   </div>
+ </div>
+ <div class="message-wrap col-lg-10 petsView minheightdash">
+   <div class="col-md-12 col-sm-12">
+     <h1 class="head-text">Pets</h1>
+     <% if(user.pet.length ==0)
+     {
+     %>
+     <div class="col-md-10 col-md-offset-1">
+      <div class="box-empty">
+        <img src="public/img/empty-cat.png" class="img-responsive center-block">
+        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+        <label class="box-header center">Phasellus commodo, metusnon</label>
+      </div>
+    </div>
+    <% } else {%>
+    <div class="table-div">
+      <table id="users" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Pet Name</th>
+            <th>PetType</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 
+          var i=0;
+          user.pet.forEach(function(doc) {  %>
+          <tr>
+            <td><%= i+1 %> .</td>
+            <td><img class="img-circle table-img-size" src="<%= doc.petPhoto%>"><%= doc.petName%></td>
+            <td ><%= doc.petType%></td>
+
+          </tr>
+          <% i++;
+
+        })%>
+
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+
+
+</div>
+<div id="fixedbutton">
+  <button data-toggle="modal" data-target="#add-pets" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+</div>
+</div>
+<div class="message-wrap col-lg-10 historyView minheightdash">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="head-text">History</h1>
+    <% if(callHistory.length ==0)
+    {
+    %>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box-empty">
+        <img src="public/img/empty-cat.png" class="img-responsive center-block">
+        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+        <label class="box-header center">Phasellus commodo, metusnon</label>
+      </div>
+    </div>
+    <% } else {%>
+    <div class="table-div">
+      <table id="history" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>UserId</th>
+            <th>DoctorId</th>
+            <th>Consulting ID</th>
+            <th>Pet Name</th>
+            <th>Date/Time</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0;i<callHistory.length;i++) {
+          if(callHistory[i].paymentStatus==false)
+          {
+          %>
+          <tr>
+           <td>USER-<%= callHistory[i].userId._id.toString().slice(-5); %></td>
+           <td>DOC-<%= callHistory[i].DoctorId._id.toString().slice(-5); %></td>
+           <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+           <td><%= callHistory[i].petId.petName; %></td>
+           <td><%= callHistory[i].callAccepted %></td>
+         </tr>
+         <% } } %>
+       </tbody>
+     </table>
+   </div>
+   <% } %>
+ </div>
+</div>
+
+<div class="message-wrap col-lg-10 billingView minheightdash">
+ <div class="col-md-12 col-sm-12">
+   <h1 class="head-text">Billing</h1>
+
+
+   <% if(callHistory.length ==0)
+   {
+   %>
+   <div class="col-md-10 col-md-offset-1">
+    <div class="box-empty">
+      <img src="public/img/empty-cat.png" class="img-responsive center-block">
+      <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+      <label class="box-header center">Phasellus commodo, metusnon</label>
+    </div>
+  </div>
+  <% } else {%>
+  <div class="table-div">
+    <table id="billing" class="hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>UserID</th>
+          <th>Doctor ID</th>
+          <th>Consulting ID</th>
+          <th>Pet Name</th>
+          <th>Consultant Fee</th>
+          <th>Date/Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0;i<callHistory.length;i++) { 
+
+        if(callHistory[i].paymentStatus==true)
+        {
+
+        %>
+
+        <tr>
+
+          <td>USER-<%= callHistory[i].userId._id.toString().slice(-5); %></td>
+          <td>DOC-<%= callHistory[i].DoctorId._id.toString().slice(-5); %></td>
+          <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+          <td><%= callHistory[i].petId.petName; %></td>
+          <td>$ <%= callHistory[i].amt; %></td>
+          <td><%= callHistory[i].callAccepted %></td>
+        </tr>
+
+        <%  }} %>
+
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+
+</div>
+</div>
+<div class="conversation-wrap billingView col-lg-3">
+  <div class="media conversation bgwhite">
+    <div class="media-body">
+      <h6 class="media-heading bold-text">DOCTOR'S</h6>
+    </div>
+  </div>
+  <div class="media conversation bgwhite">
+    <a class="pull-left" href="#">
+      <i class="fa fa-circle colorgreen chat-check online"></i>
+      <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading bold-text">Rachel Chandter</h5>
+      <small>Director of veterinary Affairs</small>
+    </div>
+  </div>
+  <div class="media conversation bgwhite">
+    <a class="pull-left" href="#">
+      <i class="fa fa-circle colorgreen chat-check online"></i>
+      <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+      <small>Veterinary Doctor</small>
+    </div>
+  </div>
+  <div class="media conversation bgwhite">
+    <a class="pull-left" href="#">
+      <i class="fa fa-circle colororange chat-check online"></i>
+      <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 50px; height: 50px;" src="public/img/userprofile.png">
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading bold-text">Hannah Parkinson</h5>
+      <small>Veterinary Doctor</small>
+    </div>
+  </div>
+</div>
+<div class="message-wrap col-lg-10 petRecords minheightdash">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="head-text">Pet Records</h1>
+    <div class="table-div">
+      <table id="pet-records" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pet Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><img class="img-circle table-img-size" src="public/img/cat.jpg">Cat</td>
+            <td class="edit" data-toggle="modal" data-target="#edit-pets-records"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+            <td class="delete" data-toggle="modal" data-target="#delete"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="fixedbutton">
+    <button data-toggle="modal" data-target="#add-records" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+  </div>
+</div>
+<div class="message-wrap col-lg-10 contact minheightdash">
+  <div class="col-md-6 col-sm-12 mar-top">
+    <h2 class="uplod-txt">Upload the svg file</h2>
+    <div class="form-group">
+      <form method="POST" id="csvFileUpload"  enctype="multipart/form-data">
+        <input type="file" name="csvFile" class="file" onchange="csv_file_upload()">
+        <div class="input-group col-xs-12">
+          <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+          <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+          <span class="input-group-btn">
+            <button class="browse btn browse-button" type="button">Upload</button>
+          </span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="col-md-12 col-sm-12">
+
+
+    <div class="table-div">
+      <table id="example" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% 
+          var i=0;
+          user.contactList.forEach(function(doc) {  %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= doc.firstName %> <%= doc.lastName %></td>
+            <td><%= doc.email %> </td>
+            <td><%= doc.phoneNumber %> </td>
+            <td class="edit" data-toggle="modal" data-target="#contactEdit">
+              <a onclick="editContact('<%= doc._id %>','<%= doc.firstName %>','<%= doc.lastName %>','<%= doc.email %>','<%= doc.phoneNumber %>')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+              <td class="delete" data-toggle="modal" data-target="#contactDelete">
+                <a onclick="deleteContact('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+              </tr>
+              <% i++;
+            })%>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="message-wrap col-lg-10 appointment minheightdash">
+    <div class="col-md-12 col-sm-12">
+      <h1 class="head-text">Appointment</h1>
+
+
+      <% if(appointment.length ==0)
+      {
+      %>
+      <div class="col-md-10 col-md-offset-1">
+        <div class="box-empty">
+          <img src="public/img/empty-cat.png" class="img-responsive center-block">
+          <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+          <label class="box-header center">Phasellus commodo, metusnon</label>
+        </div>
+      </div>
+      <% } else {%>
+      <div class="table-div">
+        <table id="appointment" class="hover" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>S.no</th>
+              <th>Username</th>
+              <th>Pet Name</th>
+              <th>Date/Time</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var l=0;l<appointment.length;l++) { %>
+            <tr>
+              <td><%= l+1 %>.</td>
+              <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.user.profilePic %>"><%= appointment[l].pet.user.firstName %></td>
+              <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
+              <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
+
+            </tr>
+            <% } %>
+
+          </tbody>
+        </table>
+      </div>
+      <% } %>
+
+    </div>
+  </div>
+
+  <!-- **********************Cms div start*************************** -->
+
+  <div class="message-wrap col-lg-10 cms-content minheightdash">
+    <h1 class="head-text">CMS Content</h1>
+    <div class="row row-space">
+
+      <h1 class="head-text-sub">Banner Section</h1>
+      <div class="col-md-6 cust-padding">
+        <!--logo image -->
+
+        <form name="createCMS" enctype="multipart/form-data" id="createCMS">
+          <div class="form-group">
+            <h5 class="cms-head">Logo Image</h5>
+            <input type="file" name="logoImage" id="logoImage" class="file" >
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button" 
+                onchange="imagPreview('disLogoImage')">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="disLogoImage" src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <!--banner image -->
+          <div class="form-group">
+            <h5 class="cms-head">Banner Image</h5>
+            <input type="file" name="bannerImage" id="bannerImage" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img-banner">
+              <img id="disBannerImage" src="" class="img-responsive">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-space">
+        <div class="col-md-6 cust-padding">
+          <!--banner header -->
+          <div class="form-group">
+            <h5 class="cms-head">Banner Main Text</h5>
+            <textarea class="form-control" name="bannerMainText" value="" id="bannerMainText" rows="2" id="comment"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <!--banner sub text -->
+          <div class="form-group">
+            <h5 class="cms-head">Banner Sub text</h5>
+            <textarea class="form-control" value="" name="bannerSubText" id="bannerSubText" rows="2" id="comment"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row row-space">
+        <h1 class="head-text-sub">Middle section 1</h1>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 01 - Title</h5>
+            <textarea class="form-control" name="boxTitle01" id="boxTitle01" rows="2" id="comment"></textarea>
+          </div>
+          <!--box 1 icon -->
+          <div class="form-group">
+            <h5 class="cms-head">Box 01 - Icon</h5>
+            <input type="file" name="boxIcon1" id="bOneIcon" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="disboxIcon1" src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 01 - Content</h5>
+            <textarea class="form-control" name="boxContent01" id="boxContent01" rows="2" id="comment"></textarea>
+          </div>
+        </div>
+        <!-- **********************CMS div end *************************** -->
+      </div>
+      <div class="row row-space">
+        <h1 class="head-text-sub">Middle section 2</h1>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 02 - Title</h5>
+            <textarea class="form-control" name="boxTitle02" id="boxTitle02" rows="2" id="comment"></textarea>
+          </div>
+          <!--box 1 icon -->
+          <div class="form-group">
+            <h5 class="cms-head">Box 02 - Icon</h5>
+            <input type="file" name="boxIcon2" id="bTwoIcon" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="disboxIcon2"src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 02 - Content</h5>
+            <textarea class="form-control" name="boxContent02" id="boxContent02" rows="2" id="comment"></textarea>
+          </div>
+        </div>
+        <!-- **********************CMS div end *************************** -->
+      </div>
+      <div class="row row-space">
+        <h1 class="head-text-sub">Middle section 3</h1>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 03 - Title</h5>
+            <textarea class="form-control" name="boxTitle03" id="boxTitle03" rows="2" id="comment"></textarea>
+          </div>
+          <!--box 1 icon -->
+          <div class="form-group">
+            <h5 class="cms-head">Box 03 - Icon</h5>
+            <input type="file" name="boxIcon3" id="boxIcon3" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="disboxIcon3"src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Box 03 - Content</h5>
+            <textarea class="form-control" name="boxContent03" id="boxContent03" rows="2" id="comment"></textarea>
+          </div>
+        </div>
+        <!-- **********************CMS div end *************************** -->
+      </div>
+      <div class="row row-space">
+        <h1 class="head-text-sub">Testimonial - Box 01</h1>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Name</h5>
+            <textarea class="form-control" name="testimosnialsName01" rows="2" id="testimosnialsName01"></textarea>
+          </div>
+          <div class="form-group">
+            <h5 class="cms-head">Logo Image</h5>
+            <input type="file" name="tLogo1" id="tLogo1" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="distLogo1"src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Title</h5>
+            <textarea class="form-control" name="testimosnialsTitle01" id="testimosnialsTitle01" rows="2" id="comment"></textarea>
+          </div>
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Text</h5>
+            <textarea class="form-control" name="testimosnialsText01" id="testimosnialsText01" rows="9" id="comment"></textarea>
+          </div>
+        </div>
+        <!-- **********************CMS div end *************************** -->
+      </div>
+      <div class="row row-space">
+        <h1 class="head-text-sub">Testimonial - Box 02</h1>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Name</h5>
+            <textarea class="form-control" name="testimosnialsName02" id="testimosnialsName02"rows="2" name="tOneName" id="comment"></textarea>
+          </div>
+          <div class="form-group">
+            <h5 class="cms-head">Logo Image</h5>
+            <input type="file" name="tLogo2" class="file">
+            <div class="input-group col-xs-12">
+              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+              <span class="input-group-btn">
+                <button class="browse btn browse-button" type="button">Upload</button>
+              </span>
+            </div>
+            <div class="cms-img">
+              <img id="distLogo2" src="" class="img-responsive">
+              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 cust-padding">
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Title</h5>
+            <textarea class="form-control" name="testimosnialsTitle02" id="testimosnialsTitle02"rows="2" id="comment"></textarea>
+          </div>
+          <div class="form-group">
+            <h5 class="cms-head">Testimonial-Text</h5>
+            <textarea class="form-control" name="testimosnialsText02" id="testimosnialsText02" rows="9" id="comment"></textarea>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- **********************CMS div end *************************** -->
+      </div>
+
+    </form>
+
+    <div class="col-md-12 cust-padding center last-div">
+      <button type="submit" id="cmsUpdate" class="whiteHomeButton">Update</button>
+    </div>
+
+  </div>
+
+
+  <!-- **********************help div start*************************** -->
+  <div class="message-wrap col-lg-10 helpview minheightdash">
+    <div class="row row-space">
+      <div class="div-space center marg-btm animatedParent" id="div1" style="display: block;">
+        <div class="div-space-div animated fadeInUp go">
+          <h1 class="head-text left col-md-offset-3">Welcome to VetX!</h1>
+          <div class="col-md-3">
+            <img src="public/img/empty-dog.png" class="img-responsive center-block">
+          </div>
+          <div class="col-md-9 left">
+            <label class="left help-p padding-top15">Thank you for joining – we are thrilled to have you join the VetX community!
+              <br>
+              <br>We want to walk you through a few key points to make sure you get the most out of your experience.
+              <br>
+              <br>Please click through this quick demo to learn how to have the best experience</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('2','0')">Ready to go</button>
+            </div>
+          </div>
+        </div>
+        <div class="div-space center marg-btm animatedParent" id="div2" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">How VetX Works</h1>
+            <label class=" center help-p">3 part system:</label>
+            <img src="public/img/pic1.png" class="img-responsive center-block help-img">
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('1','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('3','0')">Admin Panel</button>
+          </div>
+        </div>
+        <div class="div-space center marg-btm animatedParent" id="div3" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">Admin Panel</h1>
+            <label class=" center help-p help-p-width">The Admin Panel is the heart of the VetX experience and where you as an admin take control of your virtual clinic.</label>
+            <img src="public/img/pic2.png" class="img-responsive center-block help-img2">
+            <button class="bgorange colorwhite btn-help mar-top1"onclick="helpView('2','0')" >Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','10')">Got it. Tell me more.</button>
+          </div>
+        </div>
+
+        <div class="div-space center marg-btm animatedParent" id="div4" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Add your photo</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top45">Your first step is easy. Just add in your personal photo, the photo of your clinic, or anything you’d like to see.</label>
+              <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('3','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('5','0')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="div-space marg-btm animatedParent" id="div5" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Connect your phone</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top15">We need to make sure that your phone lines are integrated into our platform.</label>
+              <ul class="help-ui">
+                <label class="help-p">There are two parts to this:</label>
+                <li>Set up your answering machine </li>
+                <li>Specify the hours you would like to forward calls to us</li>
+              </ul>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','10')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','0')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div6" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up answering machine</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top15">Our platform will generate a unique number that your calls will be re-directed to during after-hours/weekends.</label>
+              <br>
+              <label class="left help-p">Simply click on “My Phone No.” to see your unique number, go into your existing answering machine and decide how you would like your clients to re-direct (e.g. “Press 1 to speak to a triage specialist now”</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('5','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">What if I don’t know how to do this?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div7" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up answering machine</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top20">If you need any help setting up your answering machine, please revert to our FAQ section or contact us directly anytime, 24/7 to immediately speak with one of our on-boarding specialists!</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('8','1')">Got it. What’s next?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div8" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Add your veterinarians</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p">Now make sure that your veterinarians have the opportunity to answer incoming calls in the event that they would like to answer calls themselves.</label>
+              <br>
+              <label class=" left help-p">This is only relevant if you would like to take video calls during normal business hours! Otherwise no need to worry, one of our specialists will be there for your clinic during after-hours.</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('9','5')">How do I set my hours?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div9" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up billing</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="padding-top30 img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top15">The billing feature allows your clinic to charge your patients directly for consultations. Just specify if you’d like to charge and how much per consultation!</label>
+              <br>
+              <label class=" left help-p">Your clients will be notified of the fee and billed after their consultation.</label>
+              <br>
+              <label class=" left help-p">If you do not enable this feature, the consultations will be entirely free!</label>
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('8','1')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('10','8')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="div-space center marg-btm animatedParent" id="div10" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Customize your website</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top20">Our platform generates a unique URL for your clinic. This is the portal whereby your clients can access video-on-demand. </label>
+              <br>
+              <label class=" left help-p">From here you can customize the website for your logo, your pictures and your text. What you decide to post is entirely up to you!</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('9','5')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('11','6')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div11" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Tell your patients!</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block padding-top15">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top15">Providing around-the-clock support for your patients is a BIG deal and they will love you for it!</label>
+              <br>
+              <label class="left help-p">Make sure to upload your contacts here to send them a message telling them that you are available around the clock! If you’d prefer not to email and instead tell them in person, no worries! We will send you a care package with marketing materials to pass out to them!</label>
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('10','8')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('12','0')">OK! Lets get started.</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-space center marg-btm animatedParent" id="div12" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">One last thing!</h1>
+            <label class="center help-p help-p-width">Only YOU have access to the admin panel! Your patients and veterinarians will login through the User Panel!</label>
+            <img src="public/img/pic3.png" class="img-responsive center-block help-img2">
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('11','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="finalView()">OK! Lets get started!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--************ help end ******************* -->
+
+    <!--************ vets Add popup ******************* -->
+    <div id="add-vets" class="modal fade my-popup" role="dialog" data-keyboard="false" data-backdrop="static" >
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add Vets</h4>
+          </div>
+          <div class="modal-body">
+            <div class="login" style="display: block;">
+              <form method="post" id="addVet" name="addVet" enctype="multipart/form-data">
+                                                                            <!--   <div class="form-group" >
+                                                                            <label for="usr">DoctorId:</label>
+                                                                            <input type="text" class="form-control" id="docId" name="docId">
+                                                                          </div> -->
+
+                                                                          <div class="form-group">
+                                                                            <label for="usr">Veterinarian Name:</label>
+                                                                            <input type="text" class="form-control" id="name" name="name">
+                                                                          </div>
+
+                                                                          <input type="hidden" name="actionStatus" id="actionStatus" value="1">
+                                                                          <input type="hidden" name="vetId" value="1" id="vetId">
+                                                                          <div class="form-group">
+                                                                            <label for="usr">Title:</label>
+                                                                            <input type="text" class="form-control" id="title" name="title">
+                                                                          </div>  <div class="form-group">
+                                                                          <label for="usr">Email:</label>
+                                                                          <input type="text" class="form-control" id="email" name="email">
+                                                                        </div>  <div class="form-group">
+                                                                        <label for="usr">Password:</label>
+                                                                        <input type="password" class="form-control" id="docPassword" name="docPassword">
+                                                                      </div>  <div class="form-group">
+                                                                      <label for="usr">Phone number:</label>
+                                                                      <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+                                                                    </div>  
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="profileImage" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                      <button  class="whiteHomeButton" type="submit">Submit</button>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ vets Add end ******************* -->
+                                                        <!--************ vets edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="edit-vets" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit Vets</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+
+
+
+                                                                <div class="login" style="display: block;">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Veterinarian Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+
+
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ vets popup end  ******************* -->
+                                                        <!--************ users edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="edit-users" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit Users</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Pet Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ users popup end  ******************* -->
+                                                        <!--************ pets Add popup ******************* -->
+                                                        <div id="add-pets" class="modal fade my-popup" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Add Pets</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Veterinarian Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ pets Add end ******************* -->
+                                                        <!--************ pets edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="edit-pets" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit Pets</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Pet Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ pets popup end  ******************* -->
+                                                        <!--************ vets Add popup ******************* -->
+                                                        <div id="add-records" class="modal fade my-popup" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Add Records</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Veterinarian Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ vets Add end ******************* -->
+                                                        <!--************ edit-pets-records edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="edit-pets-records" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit Pets Records</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form>
+                                                                    <div class="form-group">
+                                                                      <label for="usr">Pet Name:</label>
+                                                                      <input type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label class="upload-div">Upload Image</label>
+                                                                      <div class="upload-div" style="position:relative;">
+                                                                        <a class='upload-button' href='javascript:;'>
+                                                                          Choose File...
+                                                                          <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                                                                        </a> &nbsp;
+                                                                        <span class='label label-info' id="upload-file-info"></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton">Submit</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ edit-pets-records popup end  ******************* -->
+                                                        <!--************ contact edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="edit" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit User</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form id="userEdit" method="post" name="userEdit" enctype="multipart/form-data" >
+                                                                    <div class="form-group">
+                                                                      <label for="usr">FirstName:</label>
+                                                                      <input type="text" class="form-control" id="userFirstName" name="userFirstName">
+                                                                      <input type="hidden" name="editUserId" value="" id="editUserId"> 
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="pwd">LastName:</label>
+                                                                      <input type="text" class="form-control" id="userLastName" name="userLastName">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="pwd">Password:</label>
+                                                                      <input type="password" class="form-control" id="userPassword" name="userPassword">
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                      <button type="submit" class="whiteHomeButton">Submit</button>
+                                                                    </div>
+
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ contact popup end  ******************* -->
+
+                                                        <!--************ contact edit popup ******************* -->
+                                                        <div class="modal fade my-popup" id="contactEdit" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Edit User</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <div class="login" style="display: block;">
+                                                                  <form id="contactEditForm" method="post" name="contactEditForm" enctype="multipart/form-data" >
+                                                                    <div class="form-group">
+                                                                      <label for="usr">FirstName:</label>
+                                                                      <input type="text" class="form-control" id="contactFirstName" name="contactFirstName">
+                                                                      <input type="hidden" name="contactUserId" value="" id="contactUserId"> 
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="pwd">LastName:</label>
+                                                                      <input type="text" class="form-control" id="contactLastName" name="contactLastName">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="pwd">Email:</label>
+                                                                      <input type="text" class="form-control" id="contactEmail" name="contactEmail">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                      <label for="pwd">PhoneNumber:</label>
+                                                                      <input type="text" class="form-control" id="contactPhoneNumber" name="contactPhoneNumber">
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                      <button type="submit" class="whiteHomeButton">Submit</button>
+                                                                    </div>
+
+                                                                  </form>
+                                                                </div>
+                                                              </div>
+
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ contact popup end  ******************* -->
+
+                                                        <!--************ delete popup ******************* -->
+                                                        <div class="modal fade" id="delete" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Confirm to Delete</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+                                                                <button type="button" class="whiteHomeButton" id="deleteUser" style="padding: 10px 35px;">Ok</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="modal fade" id="deleteVetPopup" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Confirm to Delete</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+                                                                <button type="button" class="whiteHomeButton" id="deleteVet" style="padding: 10px 35px;">Ok</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ delete popup end  ******************* -->
+
+                                                        <!--************ delete popup ******************* -->
+                                                        <div class="modal fade" id="contactDelete" role="dialog">
+                                                          <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Confirm to Delete</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                                <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+                                                              </div>
+                                                              <div class="modal-footer">
+                                                                <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+                                                                <button type="button" class="whiteHomeButton" id="deleteContact" style="padding: 10px 35px;">Ok</button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <!--************ delete popup end  ******************* -->
+
+
+
+                                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                                                        <script>
+                                                          window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+                                                        </script>
+                                                        <script src="js/vendor/bootstrap.min.js"></script>
+                                                        <script src="js/vendor/css3-animate-it.js"></script>
+                                                        <script src="js/main.js"></script>
+                                                        <script src="js/materialize.js"></script>
+                                                        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+                                                        <!--<script>-->
+                                                        <!--$('#endButton').modal('hide');-->
+                                                        <!--$('body').removeClass('modal-open');-->
+                                                        <!--$('.modal-backdrop').remove();-->
+                                                        <!---->
+                                                        <!--</script>-->
+                                                        <!--upload -->
+                                                        <script type="text/javascript">
+
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
+
+    //         reader.onload = function(e) {
+    //             $('#blah').attr('src', e.target.result);
+    //         }
+
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+
+    // $("#imgInp").change(function() { 
+    //     readURL(this);
+    // });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').DataTable();
+      $('#vets').DataTable();
+      $('#users').DataTable();
+      $('#pets').DataTable();
+      $('#history').DataTable();
+      $('#billing').DataTable();
+      $('#pet-records').DataTable();
+      $('#appointment').DataTable();
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#report tr:odd").addClass("odd");
+      $("#report tr:not(.odd)").hide();
+      $("#report tr:first-child").show();
+
+      $("#report tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+      });
+                //$("#report").jExpand();
+              });
+    $(document).ready(function() {
+      $("#userRecordTable tr:odd").addClass("odd");
+      $("#userRecordTable tr:not(.odd)").hide();
+      $("#userRecordTable tr:first-child").show();
+
+      $("#userRecordTable tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+      });
+                //$("#report").jExpand();
+              });
+    $(document).ready(function() {
+      $("#petRecordTable tr:odd").addClass("odd");
+      $("#petRecordTable tr:not(.odd)").hide();
+      $("#petRecordTable tr:first-child").show();
+
+      $("#petRecordTable tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+      });
+                //$("#report").jExpand();
+              });
+    $(document).ready(function() {
+      $("#petsPageTAble tr:odd").addClass("odd");
+      $("#petsPageTAble tr:not(.odd)").hide();
+      $("#petsPageTAble tr:first-child").show();
+
+      $("#petsPageTAble tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+      });
+                //$("#report").jExpand();
+              });
+  </script>
+  <script>
+    $(document).ready(function() {
+
+      $(".vetsView").show();
+      $(".petRecords").hide();
+      $(".userView ").hide();
+      $(".petsView ").hide();
+      $(".historyView ").hide();
+      $(".billingView ").hide();
+      $(".contact").hide();
+      $(".cms-content").hide();
+      $(".appointment").hide();
+      $(".helpview").hide();
+
+
+    });
+    $(document).ready(function() {
+      $("#vetButton").click(function() {
+        $(".vetsView").fadeIn(1000);
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#petButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").fadeIn(1000);
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#userButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").fadeIn(1000);
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#petsButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").fadeIn(1000);
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#historyButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").fadeIn(1000);
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#billingButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".contact").hide();
+        $(".billingView ").fadeIn(1000);
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+
+
+      $("#contactButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").fadeIn(1000);
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#cmsbutton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").fadeIn(1000);
+        $(".appointment").hide();
+        $(".helpview").hide();
+      });
+      $("#appoint").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").fadeIn(1000);
+        $(".helpview").hide();
+      });
+      $("#help").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".contact").hide();
+        $(".cms-content").hide();
+        $(".appointment").hide();
+        $(".helpview").fadeIn(1000);
+      });
+
+
+    });
+  </script>
+  <script>
+    $('.titlenavbar  a').on('click', function() {
+      $('a').removeClass('actives');
+
+      $(this).addClass('actives');
+    });
+
+            //    $('.titlenavbar  i ').on('click',function(){
+            //        $('i').removeClass('actives');
+            //        $(this).addClass('actives');
+            //    });
+            //    $('.titlenavbar  span ').on('click',function(){
+            //        $('span').removeClass('actives');
+            //        $(this).addClass('actives');
+            //    });
+          </script>
+          <script>
+            $('.conv-navigation-wrap a .classorangenavbar').click(function() {
+              $('.conv-navigation-wrap').removeClass('actives');
+              $(this).parents('.conv-navigation-wrap').addClass('actives');
+
+                $('.titlenavbar').removeClass('actives'); //just to make a visual sense
+                $(this).parent().addClass('actives'); //just to make a visual sense
+
+              });
+          </script>
+          <script>
+            (function(b, o, i, l, e, r) {
+              b.GoogleAnalyticsObject = l;
+              b[l] || (b[l] =
+                function() {
+                  (b[l].q = b[l].q || []).push(arguments)
+                });
+              b[l].l = +new Date;
+              e = o.createElement(i);
+              r = o.getElementsByTagName(i)[0];
+              e.src = 'http://www.google-analytics.com/analytics.js';
+              r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+            ga('create', 'UA-XXXXX-X', 'auto');
+            ga('send', 'pageview');
+          </script>
+          <script>
+            $(window).scroll(function() {
+              if ($(".navbar").offset().top > 50) {
+                $('#custom-nav').addClass('affix');
+                $(".navbar-fixed-top").addClass("top-nav-collapse");
+              } else {
+                $('#custom-nav').removeClass('affix');
+                $(".navbar-fixed-top").removeClass("top-nav-collapse");
+              }
+            });
+          </script>
+          <script>
+            $('.panel-heading a').click(function() {
+              $('.panel-heading').removeClass('actives');
+              $(this).parents('.panel-heading').addClass('actives');
+
+                $('.panel-title').removeClass('actives'); //just to make a visual sense
+                $(this).parent().addClass('actives'); //just to make a visual sense
+
+              });
+          </script>
+        </body>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+
+        <script type="text/javascript">
+
+
+
+
+          function csv_file_upload()
+          {
+
+            var new_form = new FormData($('#csvFileUpload')[0])
+            $.ajax({
+              url: "/clinic/csvUpload",
+              type: 'PUT',
+              data: new_form,
+              async: true,
+              statusCode: {
+                200: function (response) {
+                 alert('success');
+                 location.reload();
+               },500: function (response) {
+                 alert('failure');
+
+               }},
+               cache: false,
+               contentType: false,
+               mimeType: "multipart/form-data",
+               processData: false
+             });
+
+
+          }
+
+//PET VALIDATION 
+
+$(function() {
+  jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+    return this.optional(element) || phone_number.length > 9 &&
+    phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+  }, "Please specify a valid phone number");
+// Initialize form validation on the registration form.
+// It has the name attribute "registration"
+$("form[name='addVet']").validate({
+// Specify validation rules
+rules: {
+    // docId: {
+    //     required: true
+    // },
+    title: {
+      required: true,
+
+    },
+    email: {
+      required: true,
+      email: true
+
+    },
+    docPassword: {
+      required: true
+
+    },
+    phoneNumber: {
+      required: true,
+      phoneUS: true
+    },
+    name: {
+      required: true
+    },
+
+  },
+// Specify validation error messages
+messages: {
+
+    // docId: {
+    //     required: "Please provide doctor id *",
+    // },
+    title: "Please provide title *",
+    email: "Please provide emailid *",
+    password: "Please provide password *",
+    name: "Please provide name *",
+    docPassword:"Please provide password *",
+    phoneNumber:"Please provide phone number *"
+
+  },
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+  addVet();
+}
+});
+});
+
+//EDIT USER INFORMATION  VALIDATION  
+$(function() {
+
+// It has the name attribute "registration"
+$("form[name='userEdit']").validate({
+// Specify validation rules
+rules: {
+  userFirstName: {
+    required: true
+  },
+  userLastName: {
+    required: true,
+  },
+  userPassword: {
+    required: true
+  }
+},
+// Specify validation error messages
+messages: {
+  userFirstName: {
+    required: "Please provide firstname *",
+  },
+  userLastName: "Please provide lastname *",
+  userPassword: "Please provide password *"
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+  editUserInfo();
+}
+});
+});
+
+//EDIT CONTACT  INFORMATION  VALIDATION  
+$(function() {
+
+// It has the name attribute "registration"
+$("form[name='contactEditForm']").validate({
+// Specify validation rules
+rules: {
+  contactFirstName: {
+    required: true
+  },
+  contactLastName: {
+    required: true,
+  },
+  contactEmail: {
+    required: true
+  },
+  contactPhoneNumber: {
+    required: true
+  }
+},
+// Specify validation error messages
+messages: {
+  contactFirstName: {
+    required: "Please provide firstname *",
+  },
+  contactLastName: "Please provide lastname *",
+  contactEmail: "Please provide email *",
+  contactPhoneNumber: "Please provide phoneNumber *",
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+  editContactInfo();
+}
+});
+});
+
+//EDIT USER
+function editUser(editUserId,userFirstName,userLastName,userPassword)
+{
+  $("#editUserId").val(editUserId);
+  $("#userFirstName").val(userFirstName);
+  $("#userLastName").val(userLastName);
+  $("#userPassword").val(userPassword);
+}
+
+//UPDATE USER INFORMATION 
+function editUserInfo()
+{
+
+ var editUserId= $("#editUserId").val();
+ var new_form = new FormData($('#userEdit')[0]);
+
+ $.ajax({
+  type: 'PUT',
+  url:  "/clinic/editUser/"+editUserId,
+  data: $('#userEdit').serialize(),
+  statusCode: {
+    200: function (response) {
+     alert('success');
+     location.reload();
+   },500: function (response) {
+     alert('failure');
+
+   }},
+   mimeType: "multipart/form-data"
+ });
+
+}
+
+//EDIT CONTACT LIST
+function editContact(contactUserId,contactFirstName,contactLastName,
+  contactEmail,contactPhoneNumber)
+{
+  alert(contactUserId);
+  $("#contactUserId").val(contactUserId);
+  $("#contactFirstName").val(contactFirstName);
+  $("#contactLastName").val(contactLastName);
+  $("#contactEmail").val(contactEmail);
+  $("#contactPhoneNumber").val(contactPhoneNumber);
+}
+
+//UPDATE USER INFORMATION 
+function editContactInfo()
+{
+  var editUserId= $("#contactUserId").val();
+  var new_form = new FormData($('#contactEditForm')[0]);
+  $.ajax({
+    type: 'PUT',
+    url:  "/clinic/editContact/"+editUserId,
+    data: $('#contactEditForm').serialize(),
+    statusCode: {
+      200: function (response) {
+       alert('success');
+       location.reload();
+     },500: function (response) {
+       alert('failure');
+
+     }},
+     mimeType: "multipart/form-data"
+   });
+
+}
+
+//REMOVE VET 
+function deleteUser(userId)
+{
+  $("#deleteUser").attr("onClick","removeUser('"+userId+"')");
+}
+
+//REMOVE USER 
+
+function removeUser(userId)
+{
+  $.ajax({
+    type: 'DELETE',
+    dataType : "json",
+    contentType: "application/json; charset=utf-8",
+    data: "",
+    url:'/clinic/deleteUser/'+userId,
+    statusCode: {
+      200: function (response) {
+       $("#deleteModal").trigger("click");
+       alert('success');
+
+       location.reload();
+     },500: function (response) {
+       alert('failure');
+
+     }},
+   });
+
+}
+
+
+//DELETE CONTACT INFORMATION 
+
+
+//REMOVE VET 
+function deleteContact(userId)
+{
+  $("#deleteContact").attr("onClick","removeContact('"+userId+"')");
+}
+
+//REMOVE USER 
+
+function removeContact(userId)
+{
+  $.ajax({
+    type: 'DELETE',
+    dataType : "json",
+    contentType: "application/json; charset=utf-8",
+    data: "",
+    url:'/clinic/deleteContact/'+userId,
+    statusCode: {
+      200: function (response) {
+       $("#deleteModal").trigger("click");
+       alert('success');
+
+       location.reload();
+     },500: function (response) {
+       alert('failure');
+
+     }},
+   });
+
+}
+
+
+//ADD VET INFORMATION 
+function addVet()
+{
+
+  var baseStatus=$("#actionStatus").val();
+
+  if(baseStatus==1)
+  {
+   var urlValue="/clinic/doctor";
+ }
+ else
+ {
+  var vetId=$("#vetId").val();
+  var urlValue="/clinic/editVet/"+vetId;
+}
+var new_form = new FormData($('#addVet')[0]);
+    // var formData = $('#petEdit').serializeArray();
+    $.ajax({
+      url: urlValue,
+      type: 'PUT',
+      data: new_form,
+      async: true,
+      statusCode: {
+        200: function (response) {
+         alert('success');
+         location.reload();
+       },500: function (response) {
+         alert('failure');
+
+       }},
+       cache: false,
+       contentType: false,
+       mimeType: "multipart/form-data",
+       processData: false
+     });
+
+  }
+//ADD VET
+function addVetStart()
+{
+
+  $("#addVet").closest('form').find("input[type=text], textarea").val("");
+}
+
+//EDIT VET 
+
+function editVet(vetId,docId,title,email,docPassword,phoneNumber,name,path)
+{  
+
+  $("#actionStatus").val(0);
+  $("#vetId").val(vetId);
+  $("#docId").val(docId);
+  $("#title").val(title);
+  $("#email").val(email);
+  $("#docPassword").val(docPassword);
+  $("#phoneNumber").val(phoneNumber);
+  $("#name").val(name);
+  $('#docId').attr('readonly', true);
+  $('#email').attr('readonly', true);
+
+
+}
+
+//REMOVE VET 
+function deleteVet(vetId)
+{
+
+ $("#deleteVet").attr("onClick","removeVet('"+vetId+"')");
+
+}
+
+function removeVet(vetId)
+{
+  $.ajax({
+    type: 'DELETE',
+    dataType : "json",
+    contentType: "application/json; charset=utf-8",
+    data: "",
+    url:'/clinic/remove/'+vetId,
+    statusCode: {
+      200: function (response) {
+       $("#deleteModal").trigger("click");
+       alert('success');
+       location.reload();
+     },500: function (response) {
+       alert('failure');
+
+     }},
+
+
+   });
+
+}
+
+// cms validation and creating cms ajax call
+
+
+$("form[name='createCMS']").validate({
+// Specify validation rules
+rules: {
+  logoImage: {
+    required: true
+  },
+  bannerImage: {
+    required: true,
+
+  },
+  bannerMainText: {
+    required: true
+  },
+  bannerSubText: {
+    required: true
+
+  },
+  boxIcon1: {
+    required: true
+  },
+  boxContent01: {
+    required: true
+  },
+  boxTitle01:{
+    required:true
+  },
+  boxIcon2: {
+    required: true
+  },
+  boxContent02: {
+    required: true
+  },
+  boxTitle02:{
+    required:true
+  },
+  boxIcon3: {
+    required: true
+  },
+  boxContent03: {
+    required: true
+  },
+  boxTitle03:{
+    required:true
+  },
+  testimosnialsTitle01:{
+    required:true
+  },
+  testimosnialsText01:{
+    required:true
+  },
+  testimosnialsName01:{
+    required:true
+  },
+  tLogo1:{
+    required:true
+  },
+  testimosnialsTitle02:{
+    required:true
+  },
+  testimosnialsText02:{
+    required:true
+  },
+  testimosnialsName02:{
+    required:true
+  },
+  tLogo2:{
+    required:true
+  }
+},
+// Specify validation error messages
+messages: {
+  logoImage:"please provide logo image *",
+  bannerImage: "Please provide banner image *",
+  bannerMainText: "Please provide banner main text *",
+  bannerSubText: "Please provide banner sub text *",
+  boxIcon1: "Please provide banner one icon *",
+  boxContent01:"Please provide banner one Content *",
+  boxTitle01:"Please provide banner one title *",
+  boxIcon2: "Please provide banner two icon *",
+  boxContent02:"Please provide banner two Content *",
+  boxTitle02:"Please provide banner two title *",
+  boxIcon3: "Please provide banner two icon *",
+  boxContent03:"Please provide banner two Content *",
+  boxTitle03:"Please provide banner two title *",
+  testimosnialsTitle01:"please provide title for testimonial *",
+  testimosnialsText01:"please provide text for testimonial *",
+  testimosnialsName01:"please provide name for testimonial *",
+  tLogo1:"please provide logo for testimonial *",
+  testimosnialsTitle02:"please provide title for testimonial *",
+  testimosnialsText02:"please provide text for testimonial *",
+  testimosnialsName02:"please provide name for testimonial *",
+  tLogo2:"please provide logo for testimonial *"
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+  addCms();
+}
+});
+function addCms(){
+  var logoImage=$("input[name=logoImage]").val();
+  var bannerImage =$("input[name=bannerImage]").val();
+  var bannerMainText = $("input[name=bannerMainText]").val();
+  var bannerSubText = $("input[name=bannerSubText]").val();
+  var boxIcon1 = $("input[name=boxIcon1]").val();
+  var boxContent01 = $("input[name=boxContent01]").val();
+  var boxTitle01 = $("input[name=boxTitle01]").val();
+  var boxIcon2 = $("input[name=boxIcon2]").val();
+  var boxContent02 = $("input[name=boxContent02]").val();
+  var boxTitle02 = $("input[name=boxTitle02]").val();
+  var boxIcon3 = $("input[name=boxIcon3]").val();
+  var boxContent03 = $("input[name=boxContent03]").val();
+  var boxTitle03 = $("input[name=boxTitle03]").val();
+  var testimosnialsTitle01 = $("input[name=testimosnialsTitle01]").val();
+  var testimosnialsText01 = $("input[name=testimosnialsText01]").val();
+  var testimosnialsName01 = $("input[name=testimosnialsName01]").val();
+  var tLogo1 = $("input[name=tLogo1]").val();
+  var testimosnialsTitle02 = $("input[name=testimosnialsTitle02]").val();
+  var testimosnialsText02 = $("input[name=testimosnialsText02]").val();
+  var testimosnialsName02 = $("input[name=testimosnialsName02]").val();
+  var tLogo2 = $("input[name=tLogo1]").val();
+  var data = {};
+//data.logoImage = logoImage;
+//data.bannerImage = bannerImage;
+//data.bMainText = bMainText;
+var clinicName = <%- JSON.stringify(user.clinicName) %>;
+console.log(clinicName);
+
+var new_form = new FormData($('#createCMS')[0]);
+$.ajax({
+  type: 'POST',
+  data: new_form,
+  url:'/clinic/cmsContent/'+clinicName,
+  cache: false,
+  contentType: false,
+  mimeType: "multipart/form-data",
+  processData: false,
+  statusCode: {
+    200: function (response) {
+     alert(response);
+     location.reload();
+   },500: function (response) {
+     alert(response);
+   },422:function(response){
+     alert('clinic cms file already uploaded please update the cms details');
+   }},
+ });
+
+}
+
+//fetch cms content
+
+$(document).ready(function(){
+  $('#cmsbutton').click(function(){
+    var clinicName = <%- JSON.stringify(user.clinicName) %>;
+    var data = {};
+    $.ajax({
+      url:'/clinic/retrieveCMS/'+clinicName,
+      success: function(data){
+        if(data){
+          for(var i = 0; i < data.length; i++){
+           $("textarea#bannerMainText").val(data[0].bannerMainText);
+           $("textarea#bannerSubText").val(data[0].bannerSubText);
+           $("textarea#boxTitle01").val(data[0].boxTitle01);
+           $("textarea#boxContent01").val(data[0].boxContent01);
+           $("textarea#boxTitle02").val(data[0].boxTitle02);
+           $("textarea#boxContent02").val(data[0].boxContent02);
+           $("textarea#boxTitle03").val(data[0].boxTitle03);
+           $("textarea#boxContent03").val(data[0].boxContent03);
+           $("textarea#testimosnialsName01").val(data[0].testimosnialsName01);
+           $("textarea#testimosnialsTitle01").val(data[0].testimosnialsTitle01);
+           $("textarea#testimosnialsText01").val(data[0].testimosnialsText01);
+           $("textarea#testimosnialsName02").val(data[0].testimosnialsName02);
+           $("textarea#testimosnialsTitle02").val(data[0].testimosnialsTitle02);
+           $("textarea#testimosnialsText02").val(data[0].testimosnialsText02);
+           $("#disLogoImage").attr("src",data[0].logoImage);
+           $("#disBannerImage").attr("src",data[0].bannerImage);
+           $("#disboxIcon1").attr("src",data[0].boxIcon01);
+           $("#disboxIcon2").attr("src",data[0].boxIcon02);
+           $("#disboxIcon3").attr("src",data[0].boxIcon03);
+           $("#distLogo1").attr("src",data[0].testimonialsLogo01);
+           $("#distLogo2").attr("src",data[0].testimonialsLogo02);
+         }
+       }
+     },
+
+   },"json");
+  });
+});
+
+//update cms data
+
+//update cms content
+$(document).ready(function(){
+  $('#cmsUpdate').click(function(event){
+    event.preventDefault();
+    var clinicName = <%- JSON.stringify(user.clinicName) %>;
+
+    var new_form = new FormData($('#createCMS')[0]);
+    $.ajax({
+      type: 'PUT',
+      url: '/clinic/updateCMS/'+clinicName,
+      data: new_form,
+      mimeTypes:"multipart/form-data",
+      cache    : false,
+      contentType : false,
+      processData : false,
+      statusCode: {
+        200: function (response) {
+          alert('success');
+          location.reload();
+                // alert('success');
+              //   location.reload();
+            },500: function (response) {
+             alert('failure');
+           }}
+         });
+  });
+});
+
+
+//HELP INFORMATION VIEW 
+
+function helpView(pageVal,viewVal)
+{
+
+  for(var i=1;i<13;i++)
+  {
+
+    if(pageVal==i)
+    {
+      $("#div"+i).fadeIn(500);
+
+    }  else{
+
+      $("#div"+i).hide();
+    }
+
+  }
+
+  for(var j=1;j<11;j++)
+  {
+
+    if(viewVal==j)
+    {
+      $("#helpPoinnter"+j).show();
+
+    }  else{
+
+      $("#helpPoinnter"+j).hide();
+    }
+
+  }
+
+
+
+
+
+}
+
+function finalView()
+{
+  location.reload();
+
+}
+
+
+//FOR FIRDT TIME USER IDENTIFICATION 
+$(document).ready(function(){
+
+  var  newUser= <%= user.newUser %>
+
+  if(newUser==true)
+  {
+
+   $("#help").trigger("click");
+
+ }
+
+
+});
+
+//USER ACTIVATE AND DEACTIVATE 
+
+function setStatus(userId,status)
+{
+
+  if(status=='true')
+  {
+    var urlValue='/clinic/deactivate/'+userId;
+  }else{
+   var urlValue='/clinic/activate/'+userId;
+ }
+
+
+
+ $.ajax({
+  type: 'PUT',
+  dataType : "json",
+  contentType: "application/json; charset=utf-8",
+  data: "",
+  url:urlValue,
+  statusCode: {
+    200: function (response) {
+     $("#deleteModal").trigger("click");
+     alert('success');
+
+     location.reload();
+   },500: function (response) {
+     alert('failure');
+
+   }},
+ });
+
+
+}
+
+$(document).ready(function(){
+
+  $(document).ajaxStart(function(){
+    $("#wait").css("display", "block");
+  });
+  $(document).ajaxComplete(function(){
+    $("#wait").css("display", "none");
+  });
+
+
+});
+
+
+</script>
+
+<!-- Edit Profile Modal -->
+
+<!-- Modal -->
+<div id="edit-profile" class="modal fade" role="dialog" data-backdrop="static">
+
+  <form id="clinicProfileUpdate"   method="POST" name="clinicProfileUpdate" enctype="multipart/form-data">
+
+    <div class="modal-dialog edit-profile-modal">
+
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Profile</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="image-upload col-md-offset-5">
+            <label for="clinicImage">
+              <img id="clinicImageSrc" src="<%= user.clinicImage %>" alt="your image" height="100">
+            </label>
+            <input id="clinicImage" type="file" name="clinicImage">
+          </div><br><br>
+
+          <div class="col-md-6">
+            <p>Contact Information</p>
+            <div class="form-group">
+              <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="<%= user.firstName %>" />
+              <input type="hidden" id="clinicId" name="clinicId" class="buy-input" value="<%= user._id %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="<%= user.lastName %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="username" name="username" placeholder="Clinic Name" class="buy-input"  value="<%= user.clinicName %>" readonly />
+            </div>
+            <div class="form-group">
+              <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" class="buy-input"  value="<%= user.mobileNumber %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="email" name="email" placeholder="Email Address" class="buy-input" value="<%= user.email %>" readonly />
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="password" placeholder="Password" class="buy-input" value="" />
+            </div>
+            <div class="form-group">
+              <input type="Password" id="confirm_password" 
+              name="confirm_password" placeholder="Confirm password" class="buy-input" value="" />
+            </div>
+          </div>    
+
+          <div class="col-md-6">
+            <p>Billing Information</p>
+
+            <div class="form-group">
+              <input type="text" id="country" name="country" placeholder="Country" class="buy-input" value="<%= user.country %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="address" name="address" placeholder="Address" class="buy-input" value="<%= user.address %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="state" name="state" placeholder="State" class="buy-input" value="<%= user.state %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="city" name="city" placeholder="City" class="buy-input"  
+              value="<%= user.city %>"/>
+            </div>
+            <div class="form-group">
+              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="buy-input" 
+              value="<%= user.phoneNumber %>" />
+            </div>
+            <div class="form-group">
+              <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" class="buy-input"  value="<%= user.zipCode %>"/>
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="clearfix"></div>   
+
+        <div class="modal-footer">
+          <button type="submit" class="whiteHomeButton" >Submit</button>
+        </div>               
+      </div>
+
+    </div>
+  </form>
+
+</div>
+
+<div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
+
+</div>
+
+<!-- <div class="loader-bg">
+<div class="load-img">
+<img src='uploads/ajax-loader.gif' />
+</div>
+</div> -->
+
+<style type="text/css">
+  .loader-bg{
+    position: fixed;
+    display: block;
+    background: #000;
+    opacity: .5;
+    z-index:999;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+  }
+  .load-img{
+    width:100%;
+    height: 100%;
+    margin:0 auto;
+    top: 25%;
+    z-index: 9999;
+  }
+
+</style>
+
+<script>
+
+  $(function() {
+    jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+      phone_number = phone_number.replace(/\s+/g, ""); 
+      return this.optional(element) || phone_number.length > 9 &&
+      phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+    }, "Please specify a valid phone number");
+
+    jQuery.validator.addMethod("zipcode_val", function(value, element) {
+      return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
+    }, "Please provide a valid zipcode.");
+
+// It has the name attribute "registration"
+$("form[name='clinicProfileUpdate']").validate({
+    // Specify validation rules
+    rules: {
+      firstName: {
+        required: true
+      },
+      lastName: {
+        required: true
+      },
+        //     username: {
+            //         required: true,
+            //         remote:{
+                //           url: "/clinic/checkUsername",
+                //           type: "post",
+                //           data: {
+                    //              username :function(){ return $('#username').val();},
+                    //          },
+                    //          async:true ,
+                    //          dataFilter: function(data) {
+                        //             var json = JSON.parse(data);
+                        //             if(json.status == true) {
+                            //                 return true;
+                            //             }
+
+                            //             return "\"" + json.error + "\"";
+
+                            //         },
+                            //     },
+                            // },
+                            mobileNumber: {
+                              required: true,
+                              phoneUS: true
+                            },
+                            // email: {
+                                //     required: true,
+                                //     email: true,
+                                //     remote:{
+                                    //       url: "/clinic/checkEmail",
+                                    //       type: "post",
+                                    //       data: {
+                                        //          email :function(){ return $('#email').val();},
+                                        //      },
+                                        //      async:true ,
+                                        //      dataFilter: function(data) {
+                                            //         var json = JSON.parse(data);
+                                            //         if(json.status == true) {
+                                                //             return true;
+                                                //         }
+
+                                                //         return "\"" + json.error + "\"";
+
+                                                //     },
+                                                // },
+                                                // },
+                                                // password: {
+                                                    //     required: true,
+                                                    //     minlength : 5
+                                                    // },
+                                                    // confirm_password: {
+                                                        //     required: true,
+                                                        //     equalTo: "#password"
+                                                        // },
+                                                        country: {
+                                                          required: true
+                                                        },
+                                                        address: {
+                                                          required: true
+                                                        },
+                                                        state: {
+                                                          required: true
+                                                        },
+                                                        city: {
+                                                          required: true
+                                                        },
+                                                        phoneNumber: {
+                                                          required: true,
+                                                          phoneUS: true
+
+                                                        },
+                                                        zipCode: {
+                                                          required: true,
+                                                          zipcode_val:true
+                                                        }
+                                                      },
+                                                    // Specify validation error messages
+                                                    messages: {
+                                                     firstName: {
+                                                      required: "Please enter firstname *"
+                                                    },
+                                                    lastName: {
+                                                      required: "Please enter lastname *"
+                                                    },
+                                                    username: {
+                                                      required: "Please enter clinicname *"
+                                                    },
+                                                    mobileNumber: {
+                                                      required: "Please enter mobile number *"
+                                                    },
+                                                    email: {
+                                                      required: "Please enter an email address *",
+                                                      email: "Not a valid email address *"
+                                                    },
+                                                    password: {
+                                                      required: "Please enter your password *"
+                                                    },
+                                                    confirm_password: {
+                                                      required: "Please enter confirm password *"
+                                                    }, 
+                                                    country: {
+                                                      required: "Please enter country name *"
+                                                    },
+                                                    address: {
+                                                      required: "Please enter address *"
+                                                    },
+                                                    state: {
+                                                      required: "Please enter state *"
+                                                    },
+                                                    city: {
+                                                      required: "Please enter city *"
+                                                    },
+                                                    phoneNumber: {
+                                                      required: "Please enter phonenumber *"  
+                                                    },
+                                                    zipCode: {
+                                                      required: "Please enter zipcode *"
+                                                    }
+                                                  },
+                                                // Make sure the form is submitted to the destination defined
+                                                // in the "action" attribute of the form when valid
+                                                submitHandler: function(form) {
+                                                  editClinicInfo();
+                                                }
+                                              });
+
+});
+
+
+function editClinicInfo()
+{
+
+  var clinicId=$("#clinicId").val();
+  var urlValue="/clinic/clinicProfileUpdate/"+clinicId;
+  var new_form = new FormData($('#clinicProfileUpdate')[0]);
+    // var formData = $('#petEdit').serializeArray();
+    $.ajax({
+      url: urlValue,
+      type: 'PUT',
+      data: new_form,
+      async: true,
+      statusCode: {
+        200: function (response) {
+         alert('success');
+         location.reload();
+       },500: function (response) {
+         alert('failure');
+
+       }},
+       cache: false,
+       contentType: false,
+       mimeType: "multipart/form-data",
+       processData: false
+     });
+  }
+
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#clinicImageSrc').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#clinicImage").change(function() { 
+
+    readURL(this);
+  });
+
+</script>
+</html>

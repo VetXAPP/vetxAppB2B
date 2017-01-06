@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twilio Video - Video Quickstart</title>
+  <link rel="stylesheet" href="clinic/js/site.css">
+</head>
+<body>
+  <div id="remote-media"></div>
+  <div id="controls">
+    <div id="preview">
+      <p class="instructions">Hello Beautiful</p>
+      <div id="local-media"></div>
+      <button id="button-preview">Preview My Camera</button>
+  </div>
+  <div id="room-controls">
+      <p class="instructions">Room Name:</p>
+      <input id="room-name" type="text" placeholder="Enter a room name" />
+      <button id="button-join">Join Room</button>
+      <button id="button-leave">Leave Room</button>
+  </div>
+  <div id="log"></div>    
+</div>
+<script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+<script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="clinic/js/quickstart.js"></script>
+<script type="text/javascript" src="clinic/js/socket.io.js"></script>
+<script>
+
+    var socket = io.connect('http://localhost:3330');
+
+
+    socket.on("call_action", function(info) {
+
+      if(confirm(info.user_id+" wants to connect to you"))
+      {
+
+        var accept_info={"accept_status":1,"user_id":info.user_id};
+
+        socket.emit('accept_status',accept_info, function(data){
+
+
+        });
+
+        activeRoom.disconnect();
+
+        videoClient.connect({ to: info.user_id}).then(roomJoined,
+          function(error) {
+            log('Could not connect to Twilio: ' + error.message);
+        });
+
+    }
+    else
+    {
+
+     socket.emit('accept_status',0, function(data){
+
+     });
+
+ }
+
+
+});
+
+
+    // function test()
+    // {
+
+
+    //   socket.emit('test',"poda", function(data){
+
+
+    //   });
+
+
+    // }
+
+</script>
+
+</body>
+</html>

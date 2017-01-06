@@ -1,0 +1,1617 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>vet-lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="clinic/Favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <!--<link rel="stylesheet" href="clinic/css/materialize.css">-->
+    <link rel="stylesheet" href="clinic/css/bootstrap.min.css">
+    <link rel="stylesheet" href="clinic/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="clinic/css/animations.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="clinic/css/dashboard-main.css">
+    <link rel="stylesheet" href="clinic/css/dashboard.css">
+    <link rel="stylesheet" href="clinic/css/timepicki.css">
+    <!-- Compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="css/materialize.css">-->
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="10" id="opensansclass">
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<nav id="custom-nav" class="navbar navbar-default navbar-static-top navbarorder headergradiant">
+    <div class="headercont">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand" style="margin-right: 90px;"><span class="font18 colorwhite bold-text">
+                <%
+                var str = clinicName;
+                str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                return letter.toUpperCase();
+            });
+            %>
+
+            <%= str %></span></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav navbar-left1">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--  <li><a><i class="fa fa-bell-o"></i></a></li> -->
+                <li>
+                    <!-- <a href="dashboard-table.html" style="padding: 0px;"> <img class="media-object img-circle dropdown-toggle" type="button" data-toggle="dropdown" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="clinic/img/userprofile.png"><span class="caret"></span></a> -->
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="<%= userInfo.profilePic  %>" class="pro-img">
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" data-target="#edit-profile"><i class="fa fa-sign-out" aria-hidden="true"></i>Edit Profile</a></li>
+                                <li><a href="/user/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="conv-navigation-wrap col-lg-3">
+                    <div class="media conversation bgwhite">
+                        <div class="media-body">
+                            <h4 class="media-heading bold-text colororange">Dashboard</h4>
+                        </div>
+                    </div>
+                    <!--<div class="media conversation titlenavbar bgwhite">-->
+                    <!--<a id="vetButton" class="actives classorangenavbar colorblack font18 "><i class="fa fa-stethoscope iconnavbar colorgray "></i> Vets &nbsp <span class="label colorwhite bggreen">5</span></a>-->
+                    <!--</div>-->
+                    <!--<div class="media conversation titlenavbar bgwhite">-->
+                    <!--<a id="userButton" class=" classorangenavbar colorblack font18 "><i class="fa fa-users iconnavbar colorgray"></i> Users  &nbsp <span class="colorlitegray">(14)</span></a>-->
+                    <!--</div>-->
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="petsButton" class="actives  classorangenavbar colorblack font16 "><i class="fa fa-paw iconnavbar colorgray"></i> Pets &nbsp <span class="colorlitegray">(<%= petInfo.length;%>)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="historyButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-history iconnavbar colorgray"></i> History &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="billingButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Billing &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span></a>
+                    </div>
+                    <div class="media conversation titlenavbar bgwhite">
+                        <a id="appointment" class=" classorangenavbar colorblack font16 ">
+                            <i class="fa fa-calendar iconnavbar colorgray" aria-hidden="true"></i>Appointment &nbsp
+                            <span class="colorlitegray">(<%= appointment.length;%>)</span></a>
+                        </div>
+<!-- <div class="media conversation titlenavbar bgwhite">
+<a class=" classorangenavbar colorblack font18" data-toggle="modal" data-target="#call"><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Test &nbsp </a>
+</div> -->
+</div>
+
+
+
+<div class="message-wrap col-lg-6 petsView minheightdash">
+    <div class="col-md-12 col-sm-12">
+        <h1 class="head-text">Pets</h1>
+
+        <% if(petInfo.length ==0)
+        {
+        %>
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box-empty">
+                <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
+                <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+                <label class="box-header center">Phasellus commodo, metusnon</label>
+            </div>
+        </div>
+        <% } else {%>
+        <div class="table-div">
+            <table id="pets" class="hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pets Name</th>
+                        <th>Call</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<petInfo.length;i++) { %>
+                    <tr>
+                        <td><%= i+1  %>.</td>
+                        <td><img class="img-circle table-img-size" src="<%= petInfo[i].petPhoto %>"> <%= petInfo[i].petName %></td>
+                        <td><a href="#" 
+                            class="btn colorwhite bgred" 
+                            onClick="MyWindow=window.open('/user/userVideoCall?p=<%= petInfo[i]._id %>&q=<%= clinicName %>&r=<%= userInfo._id %>&l=<%= image %>&m=<%= userInfo.firstName %>','MyWindow','height=500,width=700,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'); return false;">
+                            <i class="fa fa-video-camera "></i> &nbsp CALL</a></td>
+                            <td class="edit" data-toggle="modal" data-target="#edit">
+                                <a onclick="editPetInfo('<%= petInfo[i]._id %>','<%= petInfo[i].petName %>','<%= petInfo[i].petPhoto %>','<%= petInfo[i].petType %>','<%= petInfo[i].petBreed %>','<%= petInfo[i].dateOfBirth %>','<%= petInfo[i].petSex %>')">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                                </a>
+                            </td>
+                            <td class="delete" data-toggle="modal" data-target="#delete"><a onclick="deletePet('<%= petInfo[i]._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                        </tr>
+                        <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <% } %>
+        </div>
+    </div>
+    <div class="conversation-wrap petsView minheightdash col-lg-3">
+        <div class="media conversation bgwhite">
+            <div class="media-body media-body">
+                <h6 class="media-heading bold-text">VETS'S</h6>
+            </div>
+        </div>
+        <!-- available -->
+        <% for(var i=0;i<docInfo.length;i++) { %>
+
+        <div class="media conversation conversation-avail bgwhite">
+            <a class="pull-left" href="#">
+                <!-- <i class="fa fa-circle colorgreen chat-check online"></i> -->
+                <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="<%= docInfo[i].profileImage %>">
+            </a>
+            <div class="media-body-custom top">
+                <h5 class="media-heading bold-text"><%= docInfo[i].name %>
+                    <%
+                    if(docInfo[i].callStatus == "available" && docInfo[i].loggedIn == true)
+                    {
+                    %>
+
+                    <span class="avail">Available</span>
+                    <%
+                }
+                else if(docInfo[i].callStatus == "busy")
+                {
+                %>
+                <span class="busy">Busy</span>
+                <%
+            }
+            else
+            {
+            %>
+            <span class="offline">Offline</span>
+
+            <% } %>
+
+        </h5>
+        <small>From <%= docInfo[i].name %></small>
+    </div>
+</div>
+<% } %>
+<div id="fixedbutton">
+    <button data-toggle="modal" data-target="#addButton" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+</div>
+</div>
+<div class="message-wrap col-lg-9 historyView minheightdash">
+    <div class="col-md-12 col-sm-12">
+        <h1 class="head-text">History</h1>
+
+        <% if(callHistory.length ==0)
+        {
+        %>
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box-empty">
+                <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
+                <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+                <label class="box-header center">Phasellus commodo, metusnon</label>
+            </div>
+        </div>
+        <% } else {%>
+        <div class="table-div">
+            <table id="history" class="hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Vet Name</th>
+                        <th>Vet ID</th>
+                        <th>Pet Name</th>
+                        <th>Consulting ID</th>
+                        <th>Date/Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for(var i=0;i<callHistory.length;i++) {
+                    %>
+                    <tr>
+                     <td><%= i+1 %>.</td>
+                     <td><img class="img-circle table-img-size" 
+                         src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
+                         <td>DOC-<%= callHistory[i].DoctorId._id.toString().slice(-5); %></td>
+                         <td><%= callHistory[i].petId.petName; %></td>
+                         <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+                         <td><%= callHistory[i].callAccepted %></td>
+                         <td>
+                             <% if(callHistory[i].paymentStatus==true)
+                             {
+                             %>                                            
+                             <button class="btn colorwhite bggray buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#paid" type="button" aria-expanded="false" onclick="viewReport('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>')">PAID</button>
+                             <% } else {  %>
+                             <button class="btn colorwhite bgorange  buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#unpaid" type="button" aria-expanded="false" onclick="viewPayment('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>','<%= callHistory[i]._id %>')">UNPAID</button>
+
+                             <% } %>
+
+                         </td>
+                     </tr>
+
+                     <%  } %>
+
+
+                 </tbody>
+             </table>
+         </div>
+         <% } %>
+     </div>
+ </div>
+ <div class="message-wrap col-lg-9 billingView minheightdash">
+    <div class="col-md-12 col-sm-12">
+        <h1 class="head-text">Billing</h1>
+
+
+        <% if(callHistory.length ==0)
+        {
+        %>
+
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box-empty">
+                <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
+                <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+                <label class="box-header center">Phasellus commodo, metusnon</label>
+            </div>
+        </div>
+        <% } else {%>
+        <div class="table-div">
+            <table id="billing" class="hover" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <!-- <th>#</th> -->
+                        <th>Vet Name</th>
+                        <th>Pet Name</th>
+                        <th>Consulting ID</th>
+                        <th>Date/Time</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<callHistory.length;i++) { 
+                    if(callHistory[i].paymentStatus==true)
+                    {
+                    %>
+                    <tr>
+
+                      <td><img class="img-circle table-img-size" 
+                         src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
+                         <td><%= callHistory[i].petId.petName; %></td>
+                         <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+                         <td><%= callHistory[i].callAccepted %></td>
+                         <td>
+                          <button class="btn colorwhite bgorange buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#paid" type="button" aria-expanded="false" onclick="viewReport('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>')">View report</button>
+                      </td>
+                  </tr>
+                  <% 
+              }
+
+          } %>
+      </tbody>
+  </table>
+</div>
+<% } %>
+</div>
+</div>
+<div class="message-wrap col-lg-6 appoinmentView minheightdash">
+  <div class="col-md-12 col-sm-12">
+      <h1 class="head-text">Appointment</h1>
+      <% if(appointment.length ==0)
+      {
+      %>
+
+      <div class="col-md-10 col-md-offset-1">
+        <div class="box-empty">
+            <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
+            <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
+            <label class="box-header center">Phasellus commodo, metusnon</label>
+        </div>
+    </div>
+    <% } else {%>
+    <div class="table-div">
+        <table id="appoint" class="hover" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Pet Name</th>
+                    <th>Date/Time</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% for(var l=0;l<appointment.length;l++) { %>
+                <tr>
+                 <td><%= l+1 %>.</td>
+                 <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
+                 <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
+                 <td class="edit" data-toggle="modal" data-target="#appointButton"><a onclick="editAppointment('<%= appointment[l]._id %>','<%= appointment[l].date %>','<%= appointment[l].time %>')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                 <td class="delete" data-toggle="modal" data-target="#delete"><a onclick="deleteAppointment('<%= appointment[l]._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+             </tr>
+             <% } %>
+
+         </tbody>
+     </table>
+ </div>
+ <% } %>
+</div>
+</div>
+
+<div class="conversation-wrap appoinmentView minheightdash col-lg-3">
+ <div class="media conversation bgwhite">
+     <div class="media-body media-body">
+         <h6 class="media-heading bold-text">DOCTOR'S</h6>
+     </div>
+ </div>
+ <!-- available -->
+ <% for(var i=0;i<docInfo.length;i++) { %>
+
+ <div class="media conversation conversation-avail bgwhite">
+    <a class="pull-left" href="#">
+        <!--  <i class="fa fa-circle colorgreen chat-check online"></i> -->
+        <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="<%= docInfo[i].profileImage %>">
+    </a>
+    <div class="media-body-custom top">
+        <h5 class="media-heading bold-text"><%= docInfo[i].name %>
+            <%
+            if(docInfo[i].callStatus == "available" && docInfo[i].loggedIn == true)
+            {
+            %>
+
+            <span class="avail">Available</span>
+            <%
+        }
+        else if(docInfo[i].callStatus == "busy")
+        {
+        %>
+        <span class="busy">Busy</span>
+        <%
+    }
+    else
+    {
+    %>
+    <span class="offline">Offline</span>
+
+    <% } %>
+
+</h5>
+<small>From <%= docInfo[i].name %></small>
+</div>
+</div>
+<% } %>
+<!-- busy -->
+
+<div id="fixedbutton">
+    <button data-toggle="modal" data-target="#appointButton" class="btn bgorange bottomfixedaddbutton" onclick="appointment()"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<!--****************** paid **************************-->
+<div id="paid" class="modal fade-scale" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Paid Details</h4>
+            </div>
+            <div class="modal-body">
+                <h1>Summary</h1>
+                <p><span id="reportSummary" ></span>
+                    <span class="fees">Consulting Fee $<span id="reportAmt"></span></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn colorwhite bgorange buttonpad-orange padingbuttonpaid collapsed" data-dismiss="modal" >Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="unpaid" class="modal fade-scale" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Amount Details</h4>
+                </div>
+                <div class="modal-body">
+                    <h1>Summary</h1>
+                    <p><span id="paymentreportSummary" ></span>
+                        <span class="fees">Consulting Fee $<span id="paymentreportAmt"></span></span></p>
+                    </div>
+                    <input type="hidden" name="callIdValue" id="callIdValue">
+                    <input type="hidden" name="callIdValue" id="callAmountValue">
+                    <div class="modal-footer">
+                        <!-- <button class="btn colorwhite bgorange buttonpad-orange padingbuttonpaid collapsed" onclick="pay()">Submit</button> -->
+
+                        <a href="/userPayment" id="userPayment"><button class="btn colorwhite bgorange buttonpad-orange padingbuttonpaid collapsed" >Pay</button> </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--***************** paid **********************-->
+        <!--************ delete popup ******************* -->
+        <div class="modal fade" id="delete" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="deleteModal">&times;</button>
+                        <h4 class="modal-title">Confirm to Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+                        <button type="button" class="whiteHomeButton" 
+                        style="padding: 10px 35px;" id="deletePet">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ delete popup end  ******************* -->
+        <!--************ edit popup ******************* -->
+
+        <!--************ edit popup end  ******************* -->
+
+        <!--************ appointment popup ******************* -->
+        <div id="appointButton" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a type="button" style="float: right;" class="" data-dismiss="modal"><span class="fa fa-times fa-1_5x colorwhite"></span></a>
+                        <h4 style="text-align:left" class="modal-title">Appointment</h4>
+                    </div>
+                    <div class="modal-body addModalpet" style="min-height: auto !important;padding: 15px 30px;">
+                        <form id="bookAppointment" method="post"  name="bookAppointment"> 
+
+                            <input type="hidden" name="formAction" id="formAction" value="">
+                            <input type="hidden" name="editAppointmentId" id="editAppointmentId" value="">
+                            <div class="form-group">
+                                <label class="slimfont colorgray">Pet Name</label>
+                                <select class="form-control-modal minimal" name="appPetId">
+
+                                    <% for(var k=0;k<petInfo.length;k++) { %>
+
+                                    <option value="<%= petInfo[k]._id %>"><%= petInfo[k].petName %></option>
+
+                                    <% } %>
+
+
+                                </select>
+                            </div>
+                            <div class="col-md-6 modalPadingAddPet date-pick">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input class="form-control" id="date" name="date" placeholder="Appointment date" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 modalPadingAddPet">
+                                <div class="input-group-addon time-pic">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+
+                                <input id="timepicker1" class="time-picker" type="text" name="timepicker1" placeholder="Time" />
+                                <!-- <button type="button" class="set">Set</button> -->
+                            </div>
+                            <div class="col-md-12 center mar-top">
+                                <button class="save" type="submit">SAVE</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--************ appointment popup end  ******************* -->
+
+
+        <!--************ Payment success  popup ******************* -->
+
+        <div id="paymentModel" class="modal fade-scale" role="dialog" >
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Your Payment was successful!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center">
+                            Thank you for your payment. Your transaction has been completed. </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--************ Payment success  popup ******************* -->
+
+            <!--************ Payment success  popup ******************* -->
+
+            <div id="paymentFailure" class="modal fade-scale" role="dialog" >
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Your Payment was Failure!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p align="center">
+                                We are sorry, but your current payment method could not be processed. Please contact your financial institution and [Try again] or [Try a different payment method]. </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--************ Payment success  popup ******************* -->
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                <script>
+                    window.jQuery || document.write('<script src="clinic/js/vendor/jquery-1.11.2.min.js"><\/script>')
+                </script>
+                <script src="clinic/js/vendor/bootstrap.min.js"></script>
+                <script src="clinic/js/vendor/css3-animate-it.js"></script>
+                <script src="clinic/js/main.js"></script>
+                <script type="text/javascript" src="clinic/js/socket.io.js"></script>
+
+                <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                     $('#pets').DataTable({
+                         "pageLength": 8
+                     });
+                     $('#history').DataTable({
+                         "pageLength": 8
+                     });
+                     $('#billing').DataTable({
+                         "pageLength": 8
+                     });
+                     $('#appoint').DataTable({
+                         "pageLength": 8
+                     });
+
+                 });
+                    var socket = io.connect('http://localhost:3330');
+   // var socket = io.connect('http://35.164.220.7:3330');
+  // var socket = io.connect('https://vetx.herokuapp.com');
+
+
+
+</script>
+<script type="text/javascript" src="clinic/js/timepicki.js"></script>
+<!-- <script>-->
+<!--$('#endButton').modal('hide');-->
+<!--$('body').removeClass('modal-open');-->
+<!--$('.modal-backdrop').remove();-->
+<!---->
+<!--</script>-->
+<script type="text/javascript">
+   $(document).ready(function() {
+    $("#report tr:odd").addClass("odd");
+    $("#report tr:not(.odd)").hide();
+    $("#report tr:first-child").show();
+
+    $("#report tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+    });
+        //$("#report").jExpand();
+    });
+   $(document).ready(function() {
+    $("#userRecordTable tr:odd").addClass("odd");
+    $("#userRecordTable tr:not(.odd)").hide();
+    $("#userRecordTable tr:first-child").show();
+
+    $("#userRecordTable tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+    });
+//$("#report").jExpand();
+});
+   $(document).ready(function() {
+    $("#petRecordTable tr:odd").addClass("odd");
+    $("#petRecordTable tr:not(.odd)").hide();
+    $("#petRecordTable tr:first-child").show();
+
+    $("#petRecordTable tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+    });
+//$("#report").jExpand();
+});
+   $(document).ready(function() {
+    $("#petsPageTAble tr:odd").addClass("odd");
+    $("#petsPageTAble tr:not(.odd)").hide();
+    $("#petsPageTAble tr:first-child").show();
+
+    $("#petsPageTAble tr.odd").click(function() {
+        $(this).next("tr").toggle();
+        $(this).find(".arrow").toggleClass("up");
+    });
+//$("#report").jExpand();
+});
+</script>
+<script>
+   $(document).ready(function() {
+
+    $(".vetsView").hide();
+    $(".petRecords").hide();
+
+    $(".userView ").hide();
+    $(".petsView ").show();
+    $(".historyView ").hide();
+    $(".billingView ").hide();
+    $(".petsChatView ").hide();
+    $(".appoinmentView ").hide();
+});
+   $(document).ready(function() {
+    $("#vetButton").click(function() {
+        $(".vetsView").show();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $("#petButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").show();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $("#userButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").show();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $("#petsButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").show();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $("#historyButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").show();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $("#billingButton").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").show();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").hide();
+    });
+    $(".chatWindowID").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").show();
+        $(".appoinmentView ").hide();
+    });
+    $("#appointment").click(function() {
+        $(".vetsView").hide();
+        $(".petRecords").hide();
+        $(".userView ").hide();
+        $(".petsView ").hide();
+        $(".historyView ").hide();
+        $(".billingView ").hide();
+        $(".petsChatView ").hide();
+        $(".appoinmentView ").show();
+    });
+
+});
+
+
+
+</script>
+<script>
+    $('.titlenavbar  a').on('click', function() {
+        $('a').removeClass('actives');
+
+        $(this).addClass('actives');
+    });
+
+
+
+//    $('.titlenavbar  i ').on('click',function(){
+//        $('i').removeClass('actives');
+//        $(this).addClass('actives');
+//    });
+//    $('.titlenavbar  span ').on('click',function(){
+//        $('span').removeClass('actives');
+//        $(this).addClass('actives');
+//    });
+</script>
+<script>
+    $('.conv-navigation-wrap a .classorangenavbar').click(function() {
+        $('.conv-navigation-wrap').removeClass('actives');
+        $(this).parents('.conv-navigation-wrap').addClass('actives');
+
+    $('.titlenavbar').removeClass('actives'); //just to make a visual sense
+    $(this).parent().addClass('actives'); //just to make a visual sense
+
+});
+</script>
+<script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+</script>
+<script>
+    $(window).scroll(function() {
+        if ($(".navbar").offset().top > 50) {
+            $('#custom-nav').addClass('affix');
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
+        } else {
+            $('#custom-nav').removeClass('affix');
+            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        }
+    });
+</script>
+<script>
+    $('.panel-heading a').click(function() {
+        $('.panel-heading').removeClass('actives');
+        $(this).parents('.panel-heading').addClass('actives');
+
+    $('.panel-title').removeClass('actives'); //just to make a visual sense
+    $(this).parent().addClass('actives'); //just to make a visual sense
+
+});
+</script>
+<!-- site loading -->
+
+<div id="addButton" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" style="float: right;" class="" data-dismiss="modal"><span class="fa fa-times fa-1_5x colorwhite"></span></a>
+                <h4 style="text-align:left" class="modal-title">New Pet</h4>
+            </div>
+            <div class="modal-body addModalpet">
+
+
+                <form id="addPet" method="put" enctype="multipart/form-data"
+                name="addPet">
+                <div class="image-upload col-md-offset-5">
+                    <label for="imgInp">
+                        <img id="blah" src="clinic/img/signup_image.png" alt="your image" height="100">
+                    </label>
+                    <input id="imgInp" type="file" name="image">
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Name</label>
+                    <input type="text" class="form-control-modal" name="petName">
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Type</label>
+                    <select class="form-control-modal minimal" name="petType">
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Breed</label>
+                    <select class="form-control-modal minimal" name="petBreed">
+                        <option value="Beagle">Beagle</option>
+                        <option value="Pug">Pug</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Sex</label>
+                    <select class="form-control-modal minimal" name="petSex">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <div class="col-md-6 modalPadingAddPet date-pick">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-12 center">
+                    <button class="save" type="submit">SAVE</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!----------------     Edit per record  -------------->
+
+<div id="edit" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" style="float: right;" class="" data-dismiss="modal"><span class="fa fa-times fa-1_5x colorwhite"></span></a>
+                <h4 style="text-align:left" class="modal-title">Edit Pets Records</h4>
+            </div>
+            <div class="modal-body addModalpet">
+                <form name="petEdit" enctype="multipart/form-data"  
+                id="petEdit" method="PUT" >
+                <div class="image-upload col-md-offset-5">
+                    <label for="editPetImage">
+                        <img id="editPetImageSrc" src="clinic/img/signup_image.png" alt="your image" height="100">
+                    </label>
+                    <input id="editPetImage" type="file" name="editPetImage">
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Name</label>
+
+                    <input type="text" class="form-control-modal" id="editPetName" 
+                    name="editPetName">
+                    <input type="hidden" name="" id="editpetId" value="">
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Type</label>
+                    <select class="form-control-modal minimal" name="editPetType">
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Breed</label>
+                    <select class="form-control-modal minimal" name="editPetBreed">
+                        <option value="Beagle">Beagle</option>
+                        <option value="Pug">Pug</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="slimfont colorgray">Pet Sex</label>
+                    <select class="form-control-modal minimal" name="editPetSex">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <div class="col-md-6 modalPadingAddPet date-pick">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input class="form-control" id="editDateOfBirth" name="editDateOfBirth" placeholder="Date of Birth" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-12 center">
+                    <button class="save" type="submit">SAVE</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+</div>
+<!----------------     Edit per record  -------------->
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script>
+
+
+    function readURLS(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#editPetImageSrc').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#editPetImage").change(function() { 
+        readURLS(this);
+    });
+
+
+
+
+//EDIT PET INFORMATION 
+
+function editPetInfo(petId,petName,petPhoto,petType,petBreed,dob,petSex)
+{
+
+
+    $('#editPetName').val(petName);
+    $('#editpetId').val(petId);
+    $('#editDateOfBirth').val(dob);
+    $("#editPetImageSrc").attr("src",petPhoto);
+    $('select[name^="editPetType"] option[value='+petType+']').attr("selected","selected");
+    $('select[name^="editPetBreed"] option[value='+petBreed+']').attr("selected","selected");
+    $('select[name^="editPetSex"] option[value='+petSex+']').attr("selected","selected");
+
+
+}
+
+//PET VALIDATION 
+
+$(function() {
+// Initialize form validation on the registration form.
+// It has the name attribute "registration"
+$("form[name='addPet']").validate({
+// Specify validation rules
+rules: {
+    petName: {
+        required: true
+    },
+    petType: {
+        required: true,
+
+    },
+    petBreed: {
+        required: true,
+
+    },
+    petSex: {
+        required: true
+    },
+    dateOfBirth: {
+        required: true
+    },
+
+},
+// Specify validation error messages
+messages: {
+
+    petName: {
+        required: "Please provide a petname *",
+    },
+    petType: "Please provide a pettype *",
+    petBreed: "Please provide a petbreed *",
+    petSex: "Please provide petsex *",
+    dateOfBirth: "Please provide date of birth *",
+
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+    addPet();
+}
+});
+});
+
+
+$(function() {
+// Initialize form validation on the registration form.
+// It has the name attribute "registration"
+$("form[name='bookAppointment']").validate({
+// Specify validation rules
+rules: {
+    date: {
+        required: true
+    },
+    timepicker1: {
+        required: true,
+
+    },
+    petBreed: {
+        required: true,
+
+    },
+    petSex: {
+        required: true
+    },
+    dateOfBirth: {
+        required: true
+    },
+
+},
+// Specify validation error messages
+messages: {
+
+    petName: {
+        required: "Please provide a date *",
+    },
+    petType: "Please provide time *"
+
+},
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+    bookAppointment();
+}
+});
+});
+
+
+
+//EDIT PET VALIDATION 
+
+$(function() {
+    $("form[name='petEdit']").validate({
+        rules: {
+            editPetName: {
+                required: true
+            },
+            editPetType: {
+                required: true
+            },
+            editPetBreed: {
+                required: true
+            },
+            editPetSex: {
+                required: true
+            },
+            editDateOfBirth: {
+                required: true
+            }
+
+        },
+        messages: {
+            editPetName: {
+                required: "Please provide a petname *",
+            },
+            editPetType: {
+                required: "Please provide a petype*",
+            },
+            editPetBreed: {
+                required: "Please provide a petbreed *",
+            },
+            editPetSex: {
+                required: "Please provide a petsex *",
+            },
+            editDateOfBirth: {
+                required: "Please provide a pet dob *",
+            }
+        },
+// Make sure the form is submitted to the destination defined
+// in the "action" attribute of the form when valid
+submitHandler: function(form) {
+    updatePet();
+}
+});
+});
+
+//UPDATE PET INFORMATION 
+function updatePet()
+{
+    var petId=$('#editpetId').val();
+    var new_form = new FormData($('#petEdit')[0]);
+    // var formData = $('#petEdit').serializeArray();
+    $.ajax({
+        url: "/user/update/"+petId,
+        type: 'PUT',
+        data: new_form,
+        async: true,
+        statusCode: {
+            200: function (response) {
+                alert('success');
+                location.reload();
+            },500: function (response) {
+                alert('failure');
+                AfterSavedAll();
+            }},
+            cache: false,
+            contentType: false,
+            mimeType: "multipart/form-data",
+            processData: false
+        });
+
+}
+
+
+//ADD PET INFORMATION 
+function addPet()
+{
+   var new_form = new FormData($('#addPet')[0]);
+   $.ajax({
+       url: "/user/addPet/<%= clinicName %>",
+       type: 'POST',
+       data: new_form,
+       async: true,
+       statusCode: {
+           200: function (response) {
+               alert('success');
+               location.reload();
+           },500: function (response) {
+            alert('failure');
+            AfterSavedAll();
+        }},
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+}
+
+function bookAppointment()
+{
+
+    var formAction=$("#formAction").val();
+
+    if(formAction==1)
+    {
+        var urlValue="/user/bookAppointment/<%= clinicName %>";
+        var restType="POST";
+    }
+    else
+    {
+        var  editAppointmentId= $('#editAppointmentId').val();
+        var urlValue="/user/editAppointment/"+editAppointmentId;
+        var restType="PUT";
+    }
+    $.ajax({
+       type:restType ,
+       url:  urlValue,
+       data: $('#bookAppointment').serialize(),
+       statusCode: {
+           200: function (response) {
+               alert('success');
+               window.location.href = "https://vetx.herokuapp.com/user/dashboard";
+               //window.location.href="http://localhost:3330/user/dashboard";
+
+           },500: function (response) {
+            alert('failure');
+
+        }},
+        mimeType: "multipart/form-data"
+    });
+
+
+
+
+}
+
+
+
+
+
+//DELETE USER'S PET
+
+function deletePet(petId)
+{
+
+ $("#deletePet").attr("onClick","removePet('"+petId+"')");
+
+}
+
+
+function deleteAppointment(appointmentId)
+{
+
+ $("#deletePet").attr("onClick","removeAppointment('"+appointmentId+"')");
+}
+
+//PET REMOVE
+
+function removePet(petId)
+{
+    $.ajax({
+        type: 'DELETE',
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: "",
+        url:'/user/removePet/'+petId,
+        statusCode: {
+            200: function (response) {
+                $("#deleteModal").trigger("click");
+                alert('success');
+
+                location.reload();
+            },500: function (response) {
+                alert('failure');
+                AfterSavedAll();
+            }},
+        });
+
+}
+
+
+function removeAppointment(petId)
+{
+    $.ajax({
+        type: 'DELETE',
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data: "",
+        url:'/user/removeAppointment/'+petId,
+        statusCode: {
+            200: function (response) {
+                $("#deleteModal").trigger("click");
+                alert('success');
+
+                location.reload();
+            },500: function (response) {
+                alert('failure');
+
+            }},
+        });
+
+}
+
+//view report 
+function viewReport(summary,amt)
+{
+    $("#reportAmt").text(amt);
+    $("#reportSummary").text(summary);
+}
+
+//view payment
+
+function viewPayment(summary,amt,callId)
+{
+
+    $("#paymentreportAmt").text(amt);
+    $("#paymentreportSummary").text(summary);
+    $("#callIdValue").val(callId);
+    $("#callAmountValue").val(amt);
+    $("#userPayment").attr("href", "/userPayment?q="+callId+"&r="+amt)
+
+}
+
+//payment 
+function pay()
+{
+    var callId=$('#callIdValue').val();
+    var callAmount=$('#callIdValue').val();
+    $.ajax({
+        type: 'PUT',
+        url:  "/user/paymentStatus/"+callId,
+        data: "",
+        statusCode: {
+            200: function (response) {
+                alert('success');
+                location.reload();
+            },500: function (response) {
+                alert('failure');
+            }},
+            mimeType: "multipart/form-data"
+        });
+}
+
+//OPEN APPOINTMENT 
+
+function appointment()
+{
+
+    $('#date').val();
+    $('#timepicker1').val();
+    $('#formAction').val(1);
+    
+
+}
+
+//EDIT APPOINTMENT 
+
+function editAppointment(appointmentId,date,time)
+{
+
+ $('#editAppointmentId').val(appointmentId);
+ $('#date').val(date);
+ $('#timepicker1').val(time);
+ $('#formAction').val(2);
+
+}
+
+
+$(document).ready(function() {
+var date_input = $('input[name="dateOfBirth"]'); //our date input has the name "date"
+var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+date_input.datepicker({
+    format: 'mm/dd/yyyy',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+})
+})
+
+
+$(document).ready(function() {
+var date_input = $('input[name="editDateOfBirth"]'); //our date input has the name "date"
+var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+date_input.datepicker({
+    format: 'mm/dd/yyyy',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+})
+})
+
+
+
+
+$(document).ready(function() {
+
+var date_input = $('input[name="date"]'); //our date input has the name "date"
+var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+date_input.datepicker({
+    format: 'mm/dd/yyyy',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+    minDate: 0
+})
+});
+
+$(document).ready(function() {
+    $('#timepicker1').timepicki();
+});
+
+</script>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+
+<!-- Edit Profile Modal -->
+
+<!-- Modal -->
+<div id="edit-profile" class="modal fade" role="dialog" data-backdrop="static"> 
+    <div class="modal-dialog">
+        <form method="post"  id="userEdit" name="userEdit" enctype="multipart/form-data" >
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Profile</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-md-12">
+                        <div class="image-upload col-md-offset-5">
+                            <label for="vetUserImage">
+                                <img id="vetUserImageSrc" src="<%= userInfo.profilePic  %>" alt="your image" height="100">
+                            </label>
+                            <input id="vetUserImage" type="file">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usr">First Name</label>
+                            <input type="text" class=" buy-input" name="firstName" value="<%= userInfo.firstName  %>" >
+                        </div>
+                        <div class="form-group">
+                            <label for="usr">Last Name</label>
+                            <input type="text" class="buy-input" name="lastName" value="<%= userInfo.lastName  %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="usr">Email ID</label>
+                            <input type="text" class="buy-input" name="email" value="<%=  userInfo.email %>" readonly>
+                            <input type="hidden" name="userId" id="userId" value="<%=  userInfo._id  %>" >
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password</label>
+                            <input type="password" class=" buy-input" name="password" 
+                            value="" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="whiteHomeButton" >Submit</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='userEdit']").validate({
+    // Specify validation rules
+    rules: {
+      firstName: {
+        required: true
+    },
+    lastName: {
+        required: true,
+
+    }
+    
+
+},
+    // Specify validation error messages
+    messages: {
+    //   password: {
+    //     required: "Please provide a password *",
+    //     minlength: "Your password must be at least 5 characters long *"
+    // },
+    // email: "Please enter a valid email address *",
+    firstName: "Please provide firstname *",
+    lastName: "Please provide lastname *",
+
+
+},
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+     userUpdate();
+ }
+});
+});
+
+    //USER PROFILE UPDATE
+
+    function userUpdate()
+    {
+
+        var userId=$("#userId").val();
+        var urlValue="/user/userProfileUpdate/"+userId;
+        var new_form = new FormData($('#userEdit')[0]);
+        $.ajax({
+          url: urlValue,
+          type: 'PUT',
+          data: new_form,
+          statusCode: {
+              200: function (response) {
+                 alert('success');
+                 location.reload();
+             },500: function (response) {
+               alert('failure');
+
+           }},
+           cache: false,
+           contentType: false,
+           mimeType: "multipart/form-data",
+           processData: false
+       });
+    } 
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#vetUserImageSrc').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#vetUserImage").change(function() { 
+
+        readURL(this);
+    });
+
+
+
+//THIS CONTENT SHOULD BE LAST IN THIS PAGE ==>MUST
+
+$(document).ready(function() {
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    };
+
+    if($.urlParam('a')==1)
+    {
+     $('#paymentModel').modal();
+     $('#historyButton').trigger("click");
+ }
+ if($.urlParam('a')==0)
+ {
+     $('#failureModel').modal();
+     $('#historyButton').trigger("click");
+ }
+
+});
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function() { 
+    readURL(this);
+});
+
+</script>
+
+</html>

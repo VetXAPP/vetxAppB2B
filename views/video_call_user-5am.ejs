@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twilio Video - Video Quickstart</title>
+  <link rel="stylesheet" href="clinic/js/site.css">
+</head>
+<body>
+  <div id="remote-media"></div>
+  <div id="controls">
+    <div id="preview">
+      <p class="instructions">Hello Beautiful</p>
+      <div id="local-media"></div>
+      <button id="button-preview">Preview My Camera</button>
+  </div>
+  <div id="room-controls">
+      <p class="instructions">Room Name:</p>
+      <input id="room-name" type="text" placeholder="Enter a room name" />
+      <button id="button-join">Join Room</button>
+      <button id="button-leave">Leave Room</button>
+  </div>
+  <div id="log"></div>
+
+  <input type="button" name="" value="connect the call" onclick="connect()">
+</div>
+
+<script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+<script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="clinic/js/user.js"></script>
+<script type="text/javascript" src="clinic/js/socket.io.js"></script>
+
+<script>
+
+    var socket = io.connect('http://localhost:3330');
+    function connect()
+    {
+      socket.emit('connect_call',"appu", function(data){
+      });
+  }
+  socket.on("call_accept_status", function(info) {
+      if(info.info.accept_status==1)
+      {
+       videoClient.connect({ to: info.info.user_id}).then(roomJoined,
+        function(error) {
+          log('Could not connect to Twilio: ' + error.message);
+      });
+   }
+   else
+   {
+      alert("doctor is busy");
+  }
+});
+
+</script>
+
+</body>
+</html>

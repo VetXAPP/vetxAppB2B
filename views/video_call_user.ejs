@@ -1,0 +1,283 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Vet-Lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="clinic/css/bootstrap.css">
+    <link rel="stylesheet" href="clinic/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="clinic/css/animations.css">
+    <link rel="stylesheet" href="clinic/css/dashboard-main.css">
+    <link rel="stylesheet" href="clinic/css/dashboard.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+    <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="clinic/js/socket.io.js"></script>
+    <script src="clinic/js/user.js"></script>
+    
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="video-body">
+    <div class="video-call">
+        <div align="center" class="embed-responsive embed-responsive-16by9 custom-height"id="remote-media">
+            <div class="video-image" style="display:block " id="UserCall">
+                <img src="clinic/img/profile_user.jpg" class="img-responsive center-block">
+                <h1 id="clinicName"></h1>
+                <label>Connecting...</label>
+            </div>
+        </div>
+        <div class="small-video"  >
+            <div align="center" class="embed-responsive embed-responsive-16by9" id="local-media">
+
+            </div>
+        </div>
+        <div class="call-button">
+            <ul class="call-ul">
+                <li>
+                    <!-- id="userCallCut activateCallcut "  onclick="closeWindow()"-->
+
+                    <button type="button" class="cut" id="beforeCallcut"  onclick="closeWindow()" ><i class="fa fa-phone" aria-hidden="true"></i></button>
+
+                    <button type="button" class="cut"  id="userCallCut" style="display:none"><i class="fa fa-phone" aria-hidden="true"></i></button>
+
+                </li>
+                <li>
+                    <button type="button" class="mute"><i class="fa fa-microphone-slash mute" aria-hidden="true"></i></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <input type="hidden" id="callDoctorId" value="">
+    <input type="hidden" id="quickDoctorId" value="">
+
+
+</body>
+
+
+</html>
+
+<script>
+
+    var socket = io.connect('http://localhost:3330');
+    // var socket = io.connect('http://35.164.220.7:3330');
+    //var socket = io.connect('https://vetx.herokuapp.com');
+
+
+
+ //    window.onunload = function() {
+ //        myfun();
+ //        alert('Bye.');
+ //    }
+
+ //    function myfun(){
+
+ //     alert("poda dai");
+
+ // }
+
+
+
+//  window.onbeforeunload = function () {
+
+//     // socket.emit('ebinson',"test", function(data){
+//     // });
+
+//     return true;
+
+
+
+// }
+
+
+
+// onbeforeunload = function(e){
+//     if(confirm('Are you nuts? Do you really want to leave me?')){
+//         return 'OK, Good Bye then';
+//     }
+//     else {
+//         e = e || event;
+//         if(e.preventDefault){e.preventDefault();}
+//         e.returnValue = false;
+//         return 'I said, "Are you nuts? Do you really want to leave me?"';
+//     }
+// }
+
+function closeWindow()
+{
+
+    var petId=$.urlParam('p');
+    var clinicId=$.urlParam('q');
+    var callUserId=$.urlParam('r');
+    var quickCallcutDoctor=$("#quickDoctorId").val();
+    var quickCallCutInfo={"user_id":callUserId,"petId":petId,
+    "clinicId":clinicId,"quickCallcutDoctor":quickCallcutDoctor};
+
+    socket.emit('quickCallcutDoctor',quickCallCutInfo, function(data){
+
+    });
+    window.close();
+
+}
+
+function doctorCallcut(doctorId)
+{
+    socket.on("callEndStatusInfo_"+doctorId, function(info) {
+        alert("Call ended. Thanks for your call!");
+        window.close();
+    });
+}
+
+$(document).ready(function() {
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    $("#clinicName").text($.urlParam('q'));
+    var petId=$.urlParam('p');
+    var clinicId=$.urlParam('q');
+    var callUserId=$.urlParam('r');
+    var userImage=$.urlParam('l');
+    var userName=$.urlParam('m');
+
+    var userInfo={"petId":petId,"callUserId":callUserId,"clinicId":clinicId,"userImage":userImage,"userName":userName};
+
+
+    socket.on('connect', function(){
+        socket.emit('connect_call',userInfo, function(data){
+        });
+    });
+
+
+
+});
+
+
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+}
+
+var currentCallUserId=$.urlParam('r');
+
+//CALL ACCEPT STATUS FROM DOCTOR END 
+
+socket.on("call_accept_status_"+currentCallUserId, function(info) {
+
+    if(info.info.accept_status==1)
+    {
+        $("#callDoctorId").val(info.info.doctorId);
+
+        $("#pause_<%= currentUserId %>").trigger("click");
+        doctorCallcut(info.info.doctorId);
+
+        $("#beforeCallcut").hide();
+        $("#userCallCut").show();
+
+        // $(".activateCallcut").removeAttr("onclick");
+        // $('.activateCallcut').attr('id', 'userCallCut');
+
+        videoClient.connect({ to: info.info.user_id}).then(roomJoined,
+            function(error) {
+                     // log('Could not connect to Twilio: ' + error.message);
+                 });
+
+        socket.emit('callHistory',info, function(data){
+        });
+    }
+    else
+    {
+      alert("doctor is busy");
+
+      window.close();
+  }
+});
+
+
+//QUICK CALL CUT 
+
+
+socket.on("quickCallcut_"+currentCallUserId, function(info) {
+
+    //alert(info.callActionInfo.doctorInfo[0]._id);
+
+    $("#quickDoctorId").val(info.callActionInfo.doctorInfo[0]._id);
+    
+});
+
+
+
+//***********FOR RINGING WHEN USER CALLING ***************//
+
+$(document).ready(function() {
+
+
+
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'uploads/ring.mp3');
+    
+    audioElement.addEventListener('ended', function() {
+        this.play();
+    }, false);
+    
+    audioElement.addEventListener("canplay",function(){
+        $("#length").text("Duration:" + audioElement.duration + " seconds");
+        $("#source").text("Source:" + audioElement.src);
+        $("#status").text("Status: Ready to play").css("color","green");
+    });
+    
+    audioElement.addEventListener("timeupdate",function(){
+        $("#currentTime").text("Current second:" + audioElement.currentTime);
+    });
+    
+    $('#play_<%= currentUserId %>').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
+    
+    $('#pause_<%= currentUserId %>').click(function() {
+        audioElement.pause();
+        $("#status").text("Status: Paused");
+    });
+    
+    $('#restart_<%= currentUserId %>').click(function() {
+        audioElement.currentTime = 0;
+    });
+
+    $("#play_<%= currentUserId %>").trigger("click");
+
+});
+
+ //***********FOR RINGING WHEN USER CALLING ***************//
+
+</script>
+
+<div style="display:none">     
+    <div id="length"></div>   
+    <div id="source"></div>
+    <div id="status"></div>    
+    <hr>     <h2></h2> 
+    <button id="play_<%=currentUserId %>"></button> 
+
+    <button id="pause_<%= currentUserId %>"></button> 
+
+    <button id="restart_<%= currentUserId %>"></button>   
+    <hr>
+    <div id="currentTime"></div>
+</div>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

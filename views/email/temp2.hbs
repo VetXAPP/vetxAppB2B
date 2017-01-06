@@ -1,0 +1,207 @@
+<html lang="en">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Vetx </title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        a:hover {
+            text-decoration: none !important;
+        }
+        
+        .group-form {
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul.social,
+        .store {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul.social li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 15px;
+        }
+        
+        ul.social li img {
+            width: 40px;
+        }
+        
+        .store li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 15px;
+        }
+        
+        .ul-cls li {
+            font-size: 15px;
+            margin-left: 15px;
+            padding-bottom: 8px;
+        }
+        .ul-cls-panel li {
+            font-size: 15px;
+            margin-left: 15px;
+            padding-bottom: 8px;
+            list-style-type:decimal;
+        }
+        
+        .store li img {
+            width: 140px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; background: #f2f2f2;">
+    <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+        <tr>
+            <td align="center" style="margin: 0; padding: 0; padding: 0">
+                <table cellpadding="0" cellspacing="0" border="0" align="center" width="450" style="font-family: 'Raleway', sans-serif;" class="header">
+                    <!-- <tr>
+                        <td bgcolor="#fef5ec" height="100" align="center">
+                            <h4 style="margin: 0px; color: #f99e4f; font-weight: 500;font-size: 26px;">Thank you for joining VetX!</h4>
+                        </td>
+                    </tr> -->
+                </table>
+                <!-- header-->
+                <table cellpadding="0" cellspacing="0" border="0" align="center" width="450" style="font-family: 'Raleway', sans-serif;; background: #fff;" bgcolor="#ffffff">
+                    <tr>
+                        <td width="450" valign="top" align="left" bgcolor="#ffffff" style="font-family: 'Raleway', sans-serif; background: #fff;">
+                            <table cellpadding="0" cellspacing="0" border="0" style="color: #717171; font: normal 11px Georgia, serif; margin: 0; padding: 0;" width="415" class="content">
+                                <tr>
+                                    <td><img src="https://vetx.herokuapp.com/public/mail/images/bg.png" width="450px"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 25px 0 30px; font-family: 'Raleway', sans-serif; " valign="top" align="left">
+                                        <h1 style="padding-left: 30px; padding-top: 20px;
+                                        font-size: 18px;font-weight: 500;color: #ff8504;">Dear &nbsp;{{variable4}},</h1>
+                                        <p style="padding-left: 30px; padding-right: 30px; font-size: 15px;letter-spacing: 0.6px;">Thank you for joining the VetX community!</p>
+                                        <p style="padding-left: 30px; padding-right: 30px; font-size: 15px;letter-spacing: 0.6px;"> VetX was created with the desire to improve access to veterinary care for the furry ones we love most. We firmly believe in the value of our service both for you as a clinic and for your patients! </p>
+                                        <p style="padding-left: 30px; padding-right: 30px; font-size: 15px;letter-spacing: 0.6px;">As a reminder before you get started, VetX has 2 main components, the Admin Panel and the User Panel. Here’s a brief explanation of both and how to use them</p>
+                                        <h2 style="padding-left: 30px;">Admin Panel (internal view)</h2>
+                                        <ul class="ul-cls">
+                                            <li>Add your veterinarians</li>
+                                            <li>Connect your phones</li>
+                                            <li>Manage hours, payments, see analytics and more!</li>
+                                        </ul>
+                                        <h2 style="padding-left: 30px; padding-top: 10px;">User Panel (external view)</h2>
+                                        <ul class="ul-cls">
+                                            <li>Your veterinarians log in through here after you have added them</li>
+                                            <li>Your users will log in through here to use the services</li>
+                                            <li>Fully customizable through the admin panel</li>
+                                        </ul>
+                                        <p style="padding-left: 30px; padding-right: 30px;
+                                        font-size: 15px;letter-spacing: 0.6px;">If you have any questions, please log into your Admin Panel and check out the FAQ section or Contact Us (note: this needs to link to be a <span style="color: #f99e4f;">mailto:john.dillon@vetxapp.com)</span> anytime!</p>
+                                        <p style="padding-left: 30px; padding-right: 30px;
+                                        font-size: 15px;letter-spacing: 0.6px;">These are your links:</p>
+                                      <!--   <ul class="ul-cls-panel">
+                                            <li>Admin Panel: <a style="color: #f99e4f;" href="http://www.vetxapp.com/" target="_blank"> www.vetxapp.com</a> login here Password: {{variable3}} </li>
+                                            <li>User Panel:<a style="color: #f99e4f;" href="http://www.vetxapp.com/" target="_blank"> www.vetxapp.com/</a></li>
+                                        </ul> -->
+
+                                        <ul class="ul-cls-panel">
+                                            <li>Admin Panel: <a style="color: #f99e4f;" href="https://vetx.herokuapp.com/" target="_blank">vetx.herokuapp.com</a><br> login here:<br>
+
+                                             Email Id : {{variable1}}<br>
+                                             Password: {{variable3}} </li>
+                                             <li>User Panel:<a style="color: #f99e4f;" 
+                                                href="https://vetx.herokuapp.com/{{variable4}}" target="_blank">https://vetx.herokuapp.com/{{variable4}} </a></li>
+                                            </ul>
+                                            <p style="padding-left: 30px; padding-right: 30px;
+                                            font-size: 15px;letter-spacing: 0.6px;">Please reach out to us anytime with any questions, comments or concern. We are obsessed with providing the highest quality service and will do everything possible to keep you as a happy customer! </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" style="color: #717171; font: normal 11px Georgia, serif; margin: 0; padding: 0; padding-bottom: 30px;" width="415" class="content">
+                                    <tr>
+                                        <td style="font-family: 'Raleway', sans-serif;     width: 200px; " valign="top" align="left">
+
+                                            <a href="{{variable2}}" target="_blank">
+                                                <button type="button" style="font-size: 20px;
+                                                background: #f6851f; color: #fff; border: none;outline: none; padding: 10px 20px;    border-radius: 5px; cursor: pointer;     margin-left: 30px; margin-top: 55px;">Take a Look</button>
+
+                                            </a>
+
+                                        </td>
+                                        <td style="font-family: 'Raleway', sans-serif; " valign="top" align="left">
+                                            <img src="https://vetx.herokuapp.com/public/mail/images/arrow.png" style="width: 100px;">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" border="0" style="color: #717171; font: normal 11px Georgia, serif; margin: 0; padding: 0; padding-bottom: 30px;" width="415" class="content">
+                                    <tr>
+                                        <td style="font-family: 'Raleway', sans-serif;     width: 200px; " valign="top" align="left">
+                                            <h5 style="font-size: 16px; padding-left: 30px;">Best Regards,</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'Raleway', sans-serif;     width: 200px; " valign="top" align="left">
+                                            <img src="https://vetx.herokuapp.com/public/mail/images/sign.png" style="padding-left: 20px;width: 190px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-family: 'Raleway', sans-serif;     width: 200px; " valign="top" align="left">
+                                            <p style="padding-left: 30px;font-size: 12px;font-weight: 600;color: #666666;">Co-Founder/CEO of Vetx</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- body -->
+                    <!-- footer 1-->
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="450" style="font-family: 'Raleway', sans-serif; line-height: 10px;" bgcolor="#394e57" class="footer">
+                        <tr>
+                            <td bgcolor="#f99e4f" align="center" style="padding: 20px 0 20px; font-size: 11px; color:#fff; margin: 0; line-height: 1.2;font-family: 'Raleway', sans-serif;" valign="top">
+                                <ul class="social">
+                                    <li>
+                                        <a href=""><img src="https://vetx.herokuapp.com/public/mail/images/twitter.png"></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="https://vetx.herokuapp.com/public/mail/images/fb.png"></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="https://vetx.herokuapp.com/public/mail/images/instragram.png"></a>
+                                    </li>
+                                </ul>
+                                <ul class="store">
+                                    <li>
+                                        <a href=""><img src="https://vetx.herokuapp.com/public/mail/images/apple.png"></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><img src="https://vetx.herokuapp.com/public/mail/images/android.png"></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- footer 1-->
+                    <!-- footer 2-->
+                    <table cellpadding="0" cellspacing="0" border="0" align="center" width="450" style="font-family: 'Raleway', sans-serif; line-height: 10px;" bgcolor="#394e57" class="footer">
+                        <tr>
+                            <td bgcolor="#f6851f" align="center" style="padding: 20px 0 20px; font-size: 11px; color:#fff; margin: 0; line-height: 1.2;font-family: 'Raleway', sans-serif;" valign="top">
+                                <img src="https://vetx.herokuapp.com/public/mail/images/foot.png">
+                                <p style="font-size: 13px;">copyright © "2015" "VetX",All rights reserved
+                                    <br>
+                                    <br> Our mailing address is:
+                                    <br> 715 Boylston Street
+                                    <br> Suite 120
+                                    <br> Boston MA 02116
+                                    <br>
+                                    <br> Update your preferences or unsubscribe</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- footer 2-->
+                    </td>
+                </tr>
+            </table>
+        </body>
+
+        </html>
