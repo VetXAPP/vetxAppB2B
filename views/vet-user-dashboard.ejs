@@ -249,36 +249,36 @@
                     <% for(var i=0;i<callHistory.length;i++) {
                     %>
                     <tr>
-                     <td><%= i+1 %>.</td>
-                     <td><img class="img-circle table-img-size" 
-                         src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
-                         <td>DOC-<%= callHistory[i].DoctorId._id.toString().slice(-5); %></td>
-                         <td><%= callHistory[i].petId.petName; %></td>
-                         <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
-                         <td><%= callHistory[i].callAccepted %></td>
-                         <td>
-                             <% if(callHistory[i].paymentStatus==true)
-                             {
-                             %>                                            
-                             <button class="btn colorwhite bggray buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#paid" type="button" aria-expanded="false" onclick="viewReport('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>')">PAID</button>
-                             <% } else {  %>
-                             <button class="btn colorwhite bgorange  buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#unpaid" type="button" aria-expanded="false" onclick="viewPayment('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>','<%= callHistory[i]._id %>')">UNPAID</button>
+                       <td><%= i+1 %>.</td>
+                       <td><img class="img-circle table-img-size" 
+                           src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
+                           <td>DOC-<%= callHistory[i].DoctorId._id.toString().slice(-5); %></td>
+                           <td><%= callHistory[i].petId.petName; %></td>
+                           <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+                           <td><%= callHistory[i].callAccepted %></td>
+                           <td>
+                               <% if(callHistory[i].paymentStatus==true)
+                               {
+                               %>                                            
+                               <button class="btn colorwhite bggray buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#paid" type="button" aria-expanded="false" onclick="viewReport('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>')">PAID</button>
+                               <% } else {  %>
+                               <button class="btn colorwhite bgorange  buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#unpaid" type="button" aria-expanded="false" onclick="viewPayment('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>','<%= callHistory[i]._id %>')">UNPAID</button>
 
-                             <% } %>
+                               <% } %>
 
-                         </td>
-                     </tr>
+                           </td>
+                       </tr>
 
-                     <%  } %>
+                       <%  } %>
 
 
-                 </tbody>
-             </table>
-         </div>
-         <% } %>
-     </div>
- </div>
- <div class="message-wrap col-lg-9 billingView minheightdash">
+                   </tbody>
+               </table>
+           </div>
+           <% } %>
+       </div>
+   </div>
+   <div class="message-wrap col-lg-9 billingView minheightdash">
     <div class="col-md-12 col-sm-12">
         <h1 class="head-text">Billing</h1>
 
@@ -315,11 +315,11 @@
                     <tr>
 
                       <td><img class="img-circle table-img-size" 
-                         src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
-                         <td><%= callHistory[i].petId.petName; %></td>
-                         <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
-                         <td><%= callHistory[i].callAccepted %></td>
-                         <td>
+                       src="<%= callHistory[i].DoctorId.profileImage %>"> <%= callHistory[i].DoctorId.name %></td>
+                       <td><%= callHistory[i].petId.petName; %></td>
+                       <td>CON-<%= callHistory[i]._id.toString().slice(-5); %></td>
+                       <td><%= callHistory[i].callAccepted %></td>
+                       <td>
                           <button class="btn colorwhite bgorange buttonpad-orange padingbuttonpaid " data-toggle="modal" data-target="#paid" type="button" aria-expanded="false" onclick="viewReport('<%= callHistory[i].summary %>','<%= callHistory[i].amt %>')">View report</button>
                       </td>
                   </tr>
@@ -363,31 +363,31 @@
 
                 <% for(var l=0;l<appointment.length;l++) { %>
                 <tr>
-                 <td><%= l+1 %>.</td>
-                 <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
-                 <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
-                 <td class="edit" data-toggle="modal" data-target="#appointButton"><a onclick="editAppointment('<%= appointment[l]._id %>','<%= appointment[l].date %>','<%= appointment[l].time %>')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                 <td class="delete" data-toggle="modal" data-target="#delete"><a onclick="deleteAppointment('<%= appointment[l]._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-             </tr>
-             <% } %>
+                   <td><%= l+1 %>.</td>
+                   <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
+                   <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
+                   <td class="edit" data-toggle="modal" data-target="#appointButton"><a onclick="editAppointment('<%= appointment[l]._id %>','<%= appointment[l].date %>','<%= appointment[l].time %>')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                   <td class="delete" data-toggle="modal" data-target="#delete"><a onclick="deleteAppointment('<%= appointment[l]._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+               </tr>
+               <% } %>
 
-         </tbody>
-     </table>
- </div>
- <% } %>
+           </tbody>
+       </table>
+   </div>
+   <% } %>
 </div>
 </div>
 
 <div class="conversation-wrap appoinmentView minheightdash col-lg-3">
- <div class="media conversation bgwhite">
-     <div class="media-body media-body">
-         <h6 class="media-heading bold-text">DOCTOR'S</h6>
-     </div>
- </div>
- <!-- available -->
- <% for(var i=0;i<docInfo.length;i++) { %>
+   <div class="media conversation bgwhite">
+       <div class="media-body media-body">
+           <h6 class="media-heading bold-text">DOCTOR'S</h6>
+       </div>
+   </div>
+   <!-- available -->
+   <% for(var i=0;i<docInfo.length;i++) { %>
 
- <div class="media conversation conversation-avail bgwhite">
+   <div class="media conversation conversation-avail bgwhite">
     <a class="pull-left" href="#">
         <!--  <i class="fa fa-circle colorgreen chat-check online"></i> -->
         <img class="media-object img-circle" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="<%= docInfo[i].profileImage %>">
@@ -611,29 +611,28 @@
                 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
                 <script type="text/javascript">
                     $(document).ready(function() {
-                     $('#pets').DataTable({
-                         "pageLength": 8
-                     });
-                     $('#history').DataTable({
-                         "pageLength": 8
-                     });
-                     $('#billing').DataTable({
-                         "pageLength": 8
-                     });
-                     $('#appoint').DataTable({
-                         "pageLength": 8
-                     });
+                       $('#pets').DataTable({
+                           "pageLength": 8
+                       });
+                       $('#history').DataTable({
+                           "pageLength": 8
+                       });
+                       $('#billing').DataTable({
+                           "pageLength": 8
+                       });
+                       $('#appoint').DataTable({
+                           "pageLength": 8
+                       });
 
-                 });
+                   });
                     //var socket = io.connect('http://localhost:3330');
    // var socket = io.connect('http://35.164.220.7:3330');
   // var socket = io.connect('https://vetx.herokuapp.com');
   //var socket = io.connect('https://vetxb2c.herokuapp.com'); 
 
-  var socket = io.connect('http://vetx-website-production.herokuapp.com'); 
+  var socket = io.connect('https://www.vetxapp.com');
 
 //NEW WINDOW OPEN
-
 
 function userCallConnect(a,b,c,d,e)
 {
@@ -660,7 +659,7 @@ function userCallConnect(a,b,c,d,e)
 <!---->
 <!--</script>-->
 <script type="text/javascript">
-   $(document).ready(function() {
+ $(document).ready(function() {
     $("#report tr:odd").addClass("odd");
     $("#report tr:not(.odd)").hide();
     $("#report tr:first-child").show();
@@ -671,7 +670,7 @@ function userCallConnect(a,b,c,d,e)
     });
         //$("#report").jExpand();
     });
-   $(document).ready(function() {
+ $(document).ready(function() {
     $("#userRecordTable tr:odd").addClass("odd");
     $("#userRecordTable tr:not(.odd)").hide();
     $("#userRecordTable tr:first-child").show();
@@ -682,7 +681,7 @@ function userCallConnect(a,b,c,d,e)
     });
 //$("#report").jExpand();
 });
-   $(document).ready(function() {
+ $(document).ready(function() {
     $("#petRecordTable tr:odd").addClass("odd");
     $("#petRecordTable tr:not(.odd)").hide();
     $("#petRecordTable tr:first-child").show();
@@ -693,7 +692,7 @@ function userCallConnect(a,b,c,d,e)
     });
 //$("#report").jExpand();
 });
-   $(document).ready(function() {
+ $(document).ready(function() {
     $("#petsPageTAble tr:odd").addClass("odd");
     $("#petsPageTAble tr:not(.odd)").hide();
     $("#petsPageTAble tr:first-child").show();
@@ -706,7 +705,7 @@ function userCallConnect(a,b,c,d,e)
 });
 </script>
 <script>
-   $(document).ready(function() {
+ $(document).ready(function() {
 
     $(".vetsView").hide();
     $(".petRecords").hide();
@@ -718,7 +717,7 @@ function userCallConnect(a,b,c,d,e)
     $(".petsChatView ").hide();
     $(".appoinmentView ").hide();
 });
-   $(document).ready(function() {
+ $(document).ready(function() {
     $("#vetButton").click(function() {
         $(".vetsView").show();
         $(".petRecords").hide();
@@ -1216,17 +1215,17 @@ function updatePet()
 //ADD PET INFORMATION 
 function addPet()
 {
-   var new_form = new FormData($('#addPet')[0]);
-   $.ajax({
-       url: "/user/addPet/<%= clinicName %>",
-       type: 'POST',
-       data: new_form,
-       async: true,
-       statusCode: {
-           200: function (response) {
-               alert('success');
-               location.reload();
-           },500: function (response) {
+ var new_form = new FormData($('#addPet')[0]);
+ $.ajax({
+     url: "/user/addPet/<%= clinicName %>",
+     type: 'POST',
+     data: new_form,
+     async: true,
+     statusCode: {
+         200: function (response) {
+             alert('success');
+             location.reload();
+         },500: function (response) {
             alert('failure');
             AfterSavedAll();
         }},
@@ -1254,12 +1253,12 @@ function bookAppointment()
         var restType="PUT";
     }
     $.ajax({
-       type:restType ,
-       url:  urlValue,
-       data: $('#bookAppointment').serialize(),
-       statusCode: {
-           200: function (response) {
-               alert('success');
+     type:restType ,
+     url:  urlValue,
+     data: $('#bookAppointment').serialize(),
+     statusCode: {
+         200: function (response) {
+             alert('success');
                //window.location.href = "https://vetx.herokuapp.com/user/dashboard";
                //window.location.href="http://localhost:3330/user/dashboard";
                window.location.href = "https://www.vetxapp.com/user/dashboard";
@@ -1287,7 +1286,7 @@ function bookAppointment()
 function deletePet(petId)
 {
 
- $("#deletePet").attr("onClick","removePet('"+petId+"')");
+   $("#deletePet").attr("onClick","removePet('"+petId+"')");
 
 }
 
@@ -1295,7 +1294,7 @@ function deletePet(petId)
 function deleteAppointment(appointmentId)
 {
 
- $("#deletePet").attr("onClick","removeAppointment('"+appointmentId+"')");
+   $("#deletePet").attr("onClick","removeAppointment('"+appointmentId+"')");
 }
 
 //PET REMOVE
@@ -1402,10 +1401,10 @@ function appointment()
 function editAppointment(appointmentId,date,time)
 {
 
- $('#editAppointmentId').val(appointmentId);
- $('#date').val(date);
- $('#timepicker1').val(time);
- $('#formAction').val(2);
+   $('#editAppointmentId').val(appointmentId);
+   $('#date').val(date);
+   $('#timepicker1').val(time);
+   $('#formAction').val(2);
 
 }
 
@@ -1549,8 +1548,8 @@ $(document).ready(function() {
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-     userUpdate();
- }
+       userUpdate();
+   }
 });
 });
 
@@ -1568,17 +1567,17 @@ $(document).ready(function() {
           data: new_form,
           statusCode: {
               200: function (response) {
-                 alert('success');
-                 location.reload();
-             },500: function (response) {
-               alert('failure');
+               alert('success');
+               location.reload();
+           },500: function (response) {
+             alert('failure');
 
-           }},
-           cache: false,
-           contentType: false,
-           mimeType: "multipart/form-data",
-           processData: false
-       });
+         }},
+         cache: false,
+         contentType: false,
+         mimeType: "multipart/form-data",
+         processData: false
+     });
     } 
 
     function readURL(input) {
@@ -1611,14 +1610,14 @@ $(document).ready(function() {
 
     if($.urlParam('a')==1)
     {
-     $('#paymentModel').modal();
-     $('#historyButton').trigger("click");
- }
- if($.urlParam('a')==0)
- {
-     $('#failureModel').modal();
-     $('#historyButton').trigger("click");
- }
+       $('#paymentModel').modal();
+       $('#historyButton').trigger("click");
+   }
+   if($.urlParam('a')==0)
+   {
+       $('#failureModel').modal();
+       $('#historyButton').trigger("click");
+   }
 
 });
 
