@@ -43,7 +43,7 @@
         <span class="icon-bar"></span>
       </button>
       <a href="/clinic/dashboard" class="navbar-brand" style="margin-right: 90px;"><span class="font18 colorwhite bold-text"> <%
-        var str =  user.clinicName;
+        var str =  user.username;
         str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
         return letter.toUpperCase();
       });
@@ -78,29 +78,36 @@
           <div class="media conversation bgwhite">
             <div class="media-body">
               <div class="place-div">
-                <img src="<%= user.clinicImage %>" class="place-dash">
-                <span class="arrow-cls-profile" id="helpPoinnter10" style="display: none;"> <img src="public/img/arrow.png"> </span>
-              </div>
-              <h4 class="media-heading bold-text colororange">Dashboard</h4>
-            </div>
-          </div>
-          <div class="media conversation titlenavbar bgwhite">
-            <a id="vetButton" class="actives classorangenavbar colorblack font16 "><i class="fa fa-stethoscope iconnavbar colorgray "></i> Vets &nbsp <span class="label colorwhite bggreen"><%= user.myDoctors.length;%></span>
-              <span id="helpPoinnter1" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span>
-            </a>
-          </div>
-          <div class="media conversation titlenavbar bgwhite">
-            <a id="userButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-users iconnavbar colorgray"></i> Users  &nbsp <span class="colorlitegray">(<%= user.users.length;%>)</span><span id="helpPoinnter2" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
-          </div>
-          <div class="media conversation titlenavbar bgwhite">
-            <a id="petsButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-paw iconnavbar colorgray"></i> Pets &nbsp <span class="colorlitegray">(<%= user.pet.length;%>)</span><span id="helpPoinnter3" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
-          </div>
-          <div class="media conversation titlenavbar bgwhite">
-            <a id="historyButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-history iconnavbar colorgray"></i> History &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter4" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
-          </div>
-          <div class="media conversation titlenavbar bgwhite">
-            <a id="billingButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Billing &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter5" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
-          </div>
+               <%
+               if(user.clinicImage !="")
+               {
+               %>
+               <img src="<%= user.clinicImage %>" class="place-dash">
+               <%} else { %>
+               <img src="public/img/placeholder-dash.png" class="place-dash">
+               <% } %>
+               <span class="arrow-cls-profile" id="helpPoinnter10" style="display: none;"> <img src="public/img/arrow.png"> </span>
+             </div>
+             <h4 class="media-heading bold-text colororange">Dashboard</h4>
+           </div>
+         </div>
+         <div class="media conversation titlenavbar bgwhite">
+          <a id="vetButton" class="actives classorangenavbar colorblack font16 "><i class="fa fa-stethoscope iconnavbar colorgray "></i> Vets &nbsp <span class="label colorwhite bggreen"><%= user.myDoctors.length;%></span>
+            <span id="helpPoinnter1" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span>
+          </a>
+        </div>
+        <div class="media conversation titlenavbar bgwhite">
+          <a id="userButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-users iconnavbar colorgray"></i> Users  &nbsp <span class="colorlitegray">(<%= user.users.length;%>)</span><span id="helpPoinnter2" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+        </div>
+        <div class="media conversation titlenavbar bgwhite">
+          <a id="petsButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-paw iconnavbar colorgray"></i> Pets &nbsp <span class="colorlitegray">(<%= user.pet.length;%>)</span><span id="helpPoinnter3" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+        </div>
+        <div class="media conversation titlenavbar bgwhite">
+          <a id="historyButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-history iconnavbar colorgray"></i> History &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter4" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+        </div>
+        <div class="media conversation titlenavbar bgwhite">
+          <a id="billingButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-file-archive-o iconnavbar colorgray "></i> Billing &nbsp <span class="colorlitegray">(<%= callHistory.length;%>)</span><span id="helpPoinnter5" style="display: none;"> <img src="public/img/arrow.png" class="arrow-cls"> </span></a>
+        </div>
 <!--  <div class="media conversation titlenavbar bgwhite">
 <a id="petButton" class=" classorangenavbar colorblack font16 "><i class="fa fa-tag iconnavbar colorgray"></i> Pet Records &nbsp <span class="colorlitegray">(54)</span></a>
 </div> -->

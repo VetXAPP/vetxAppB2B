@@ -70,35 +70,36 @@
 </html>
 
 <script type="text/javascript">
- // var socket = io.connect('http://localhost:3330');
-         //var socket = io.connect('http://35.164.220.7:3330');
-         //var socket = io.connect('https://vetx.herokuapp.com');
-         var socket = io.connect('https://vetxb2c.herokuapp.com'); 
 
-         $.urlParam = function(name){
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-            return results[1] || 0;
-        }
+    var socket = io.connect('http://localhost:3330');
+//var socket = io.connect('http://35.164.220.7:3330');
+//var socket = io.connect('https://vetx.herokuapp.com');
+//var socket = io.connect('https://vetxb2c.herokuapp.com'); 
 
-        var petId=$.urlParam('p');
-        var clinicId=$.urlParam('q');
-        var callUserId=$.urlParam('r');
-        var doctorId=$.urlParam('s');
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+}
 
-        var callInfo={"petId":petId,"clinicId":clinicId,"callUserId":callUserId,"doctorId":doctorId};
+var petId=$.urlParam('p');
+var clinicId=$.urlParam('q');
+var callUserId=$.urlParam('r');
+var doctorId=$.urlParam('s');
 
-
-        socket.on("userCallEndStatusInfo_"+callUserId, function(info) {
-
-            alert("Call ended. Thanks for your call!");
-
-            socket.emit('callEndStatus',callInfo, function(data){
-
-            });
-            window.close();
-
-        });
+var callInfo={"petId":petId,"clinicId":clinicId,"callUserId":callUserId,"doctorId":doctorId};
 
 
-    </script>
-    <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
+socket.on("userCallEndStatusInfo_"+callUserId, function(info) {
+
+    alert("Call ended. Thanks for your call!");
+
+    socket.emit('callEndStatus',callInfo, function(data){
+
+    });
+    window.close();
+
+});
+
+
+</script>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

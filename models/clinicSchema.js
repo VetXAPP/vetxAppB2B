@@ -8,6 +8,9 @@ var clinicSchema = new Schema({
         type: String,
         unique: true
     },
+    // SpaceClinicName: {
+    //     type: String
+    // },
     mobileNumber: String,
     email: {
         type: String,
@@ -87,7 +90,7 @@ var clinicSchema = new Schema({
         enum : ['available','busy']
     },
     paymentStatus:{type:Boolean,default:false},
-    clinicImage:{type:String}
+    clinicImage:{type:String,default:""}
 });
 
 clinicSchema.methods.generateHash = function(password) {

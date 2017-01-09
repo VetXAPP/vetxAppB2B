@@ -130,7 +130,7 @@
                                         <td class="tablefontgraysmall">
 
 
-                                         <div class="col-md-6">
+                                           <div class="col-md-6">
                                             <ul class="cost-ul-orderinfo">
                                                 <li>After-hour and weekend phone support</li>
                                                 <li>24/7 Video-on Demand</li>
@@ -189,50 +189,50 @@
                             <h2 class="heading-1 billinginfo">Contact Information</h2>
                             <br>
                             <div class="form-group">
-                                <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="" />
+                                <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="a" />
                                 <input type="hidden" id="price" name="price" value="5000" >
                             </div>
                             <div class="form-group">
-                                <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="" />
+                                <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="a" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="username" name="username" placeholder="Clinic Name" class="buy-input"  value="" />
+                                <input type="text" id="username" name="username" placeholder="Clinic Name" class="buy-input"  value="aa" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" class="buy-input"  value="" />
+                                <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" class="buy-input"  value="1-222-222-2222" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="email" name="email" placeholder="Email Address" class="buy-input" value="" />
+                                <input type="text" id="email" name="email" placeholder="Email Address" class="buy-input" value="a@a.com" />
                             </div>
                             <div class="form-group">
-                                <input type="password" id="password" name="password" placeholder="Password" class="buy-input" value="" />
+                                <input type="password" id="password" name="password" placeholder="Password" class="buy-input" value="123456" />
                             </div>
                             <div class="form-group">
                                 <input type="Password" id="confirm_password" 
-                                name="confirm_password" placeholder="Confirm password" class="buy-input" value="" />
+                                name="confirm_password" placeholder="Confirm password" class="buy-input" value="123456" />
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h2 class="heading-1 billinginfo">Billing Information</h2>
                             <br>
                             <div class="form-group">
-                                <input type="text" id="country" name="country" placeholder="Country" class="buy-input" value="" />
+                                <input type="text" id="country" name="country" placeholder="Country" class="buy-input" value="a" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="address" name="address" placeholder="Address" class="buy-input" value="" />
+                                <input type="text" id="address" name="address" placeholder="Address" class="buy-input" value="a" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="state" name="state" placeholder="State" class="buy-input" value="" />
+                                <input type="text" id="state" name="state" placeholder="State" class="buy-input" value="a" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="city" name="city" placeholder="City" class="buy-input"  value=""/>
+                                <input type="text" id="city" name="city" placeholder="City" class="buy-input"  value="a"/>
                             </div>
                             <div class="form-group">
                                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="buy-input" 
-                                value="" />
+                                value="1-222-222-2222" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" class="buy-input"  value=""/>
+                                <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" class="buy-input"  value="20001"/>
                             </div>
                         </div>
                     </div>
@@ -300,13 +300,13 @@
                         <br>
                         <br>
                         <p class="paragraph-grey">
-                           <span id="user_name">Name and Surname</span><br>
-                           <span id="clinic_name">Clinical Name</span><br>
-                           <span id="email_val">name.surname@gmail.com</span><br>
-                           <span id="mobile_val">+(123) 456 789 45</span><br>
-                       </p>
-                   </div>
-                   <div class="col-md-6 col-sm-12 col-xs-12">
+                         <span id="user_name">Name and Surname</span><br>
+                         <span id="clinic_name">Clinical Name</span><br>
+                         <span id="email_val">name.surname@gmail.com</span><br>
+                         <span id="mobile_val">+(123) 456 789 45</span><br>
+                     </p>
+                 </div>
+                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <span><h2 class="buyfontheaderlarge">Billing Address</h2></span>
                     <br>
                     <br>
@@ -512,7 +512,7 @@
 <script src="public/js/simpleform.min.js"></scripCt>
     <script src="public/js/main.js"></script>
     <script type="text/javascript">
-     $(".testform").simpleform({
+       $(".testform").simpleform({
         speed: 500,
         transition: 'fade',
         progressBar: true,
@@ -520,7 +520,7 @@
         validate: true
     });
 
-     $("#testform2").simpleform({
+       $("#testform2").simpleform({
         speed: 500,
         transition: 'slide',
         progressBar: true,
@@ -528,7 +528,7 @@
         validate: true
     });
 
-     $("#testform3").simpleform({
+       $("#testform3").simpleform({
         speed: 500,
         transition: 'none',
         progressBar: true,
@@ -537,187 +537,187 @@
     });
 
 
-     $("#testform2").on('sf-finish', function(e, from, to) {
+       $("#testform2").on('sf-finish', function(e, from, to) {
         alert('Sending form to process or not?');
     e.preventDefault(); // this you have to call if you need to interrupt submit form
 })
 
-     function validateForm(formID, Obj) {
+       function validateForm(formID, Obj) {
 
-      jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
-        phone_number = phone_number.replace(/\s+/g, ""); 
-        return this.optional(element) || phone_number.length > 9 &&
-        phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
-    }, "Please specify a valid phone number");
+          jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+            phone_number = phone_number.replace(/\s+/g, ""); 
+            return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+        }, "Please specify a valid phone number");
 
-      jQuery.validator.addMethod("zipcode_val", function(value, element) {
-          return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
-      }, "Please provide a valid zipcode.");
+          jQuery.validator.addMethod("zipcode_val", function(value, element) {
+              return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
+          }, "Please provide a valid zipcode.");
 
-      switch (formID) {
-        case 'testform':
-        Obj.validate({
-            rules: {
+          switch (formID) {
+            case 'testform':
+            Obj.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    name: {
+                        required: true
+                    },
+                    street: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter an email address *",
+                        email: "Not a valid email address"
+                    },
+                    name: {
+                        required: "Please enter your name *"
+                    },
+                    street: {
+                        required: "Please enter street name"
+                    }
+                }
+
+            });
+            return Obj.valid();
+            break;
+
+            case 'testform2':
+            Obj.validate({
+                rules: {
+                    firstName: {
+                        required: true
+                    },
+                    lastName: {
+                        required: true
+                    },
+                    username: {
+                        required: true,
+                        remote:{
+                          url: "/clinic/checkUsername",
+                          type: "post",
+                          data: {
+                             username :function(){ return $('#username').val();},
+                         },
+                         async:true ,
+                         dataFilter: function(data) {
+                            var json = JSON.parse(data);
+                            if(json.status == true) {
+                                return true;
+                            }
+
+                            return "\"" + json.error + "\"";
+
+                        },
+                    },
+                },
+                mobileNumber: {
+                    required: true,
+                    phoneUS: true
+                },
                 email: {
                     required: true,
                     email: true,
-                },
-                name: {
-                    required: true
-                },
-                street: {
-                    required: true
-                }
-            },
-            messages: {
-                email: {
-                    required: "Please enter an email address *",
-                    email: "Not a valid email address"
-                },
-                name: {
-                    required: "Please enter your name *"
-                },
-                street: {
-                    required: "Please enter street name"
-                }
-            }
-
-        });
-        return Obj.valid();
-        break;
-
-        case 'testform2':
-        Obj.validate({
-            rules: {
-                firstName: {
-                    required: true
-                },
-                lastName: {
-                    required: true
-                },
-                username: {
-                    required: true,
                     remote:{
-                      url: "/clinic/checkUsername",
+                      url: "/clinic/checkEmail",
                       type: "post",
                       data: {
-                       username :function(){ return $('#username').val();},
-                   },
-                   async:true ,
-                   dataFilter: function(data) {
-                    var json = JSON.parse(data);
-                    if(json.status == true) {
-                        return true;
-                    }
+                         email :function(){ return $('#email').val();},
+                     },
+                     async:true ,
+                     dataFilter: function(data) {
+                        var json = JSON.parse(data);
+                        if(json.status == true) {
+                            return true;
+                        }
 
-                    return "\"" + json.error + "\"";
+                        return "\"" + json.error + "\"";
 
+                    },
                 },
             },
-        },
-        mobileNumber: {
-            required: true,
-            phoneUS: true
-        },
-        email: {
-            required: true,
-            email: true,
-            remote:{
-              url: "/clinic/checkEmail",
-              type: "post",
-              data: {
-               email :function(){ return $('#email').val();},
-           },
-           async:true ,
-           dataFilter: function(data) {
-            var json = JSON.parse(data);
-            if(json.status == true) {
-                return true;
+            password: {
+                required: true,
+                minlength : 5
+            },
+            confirm_password: {
+                required: true,
+                equalTo: "#password"
+            },
+            country: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            phoneNumber: {
+                required: true,
+                phoneUS: true
+
+            },
+            zipCode: {
+                required: true,
+                zipcode_val:true
             }
 
-            return "\"" + json.error + "\"";
-
         },
-    },
-},
-password: {
-    required: true,
-    minlength : 5
-},
-confirm_password: {
-    required: true,
-    equalTo: "#password"
-},
-country: {
-    required: true
-},
-address: {
-    required: true
-},
-state: {
-    required: true
-},
-city: {
-    required: true
-},
-phoneNumber: {
-    required: true,
-    phoneUS: true
-
-},
-zipCode: {
-    required: true,
-    zipcode_val:true
-}
-
-},
-messages: {
-  firstName: {
-    required: "Please enter firstname *"
-},
-lastName: {
-    required: "Please enter lastname *"
-},
-username: {
-    required: "Please enter clinicname *"
-},
-mobileNumber: {
-    required: "Please enter mobile number *"
-},
-email: {
-    required: "Please enter an email address *",
-    email: "Not a valid email address *"
-},
-password: {
-    required: "Please enter your password *"
-},
-confirm_password: {
-    required: "Please enter confirm password *"
-}, 
-country: {
-    required: "Please enter country name *"
-},
-address: {
-    required: "Please enter address *"
-},
-state: {
-    required: "Please enter state *"
-},
-city: {
-    required: "Please enter city *"
-},
-phoneNumber: {
-    required: "Please enter phonenumber *"  
-},
-zipCode: {
-    required: "Please enter zipcode *"
-}
-}
-});
-        return Obj.valid();
-        break;
+        messages: {
+          firstName: {
+            required: "Please enter firstname *"
+        },
+        lastName: {
+            required: "Please enter lastname *"
+        },
+        username: {
+            required: "Please enter clinicname *"
+        },
+        mobileNumber: {
+            required: "Please enter mobile number *"
+        },
+        email: {
+            required: "Please enter an email address *",
+            email: "Not a valid email address *"
+        },
+        password: {
+            required: "Please enter your password *"
+        },
+        confirm_password: {
+            required: "Please enter confirm password *"
+        }, 
+        country: {
+            required: "Please enter country name *"
+        },
+        address: {
+            required: "Please enter address *"
+        },
+        state: {
+            required: "Please enter state *"
+        },
+        city: {
+            required: "Please enter city *"
+        },
+        phoneNumber: {
+            required: "Please enter phonenumber *"  
+        },
+        zipCode: {
+            required: "Please enter zipcode *"
+        }
     }
-}
+});
+            return Obj.valid();
+            break;
+        }
+    }
 
 
 

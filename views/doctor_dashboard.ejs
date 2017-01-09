@@ -260,10 +260,10 @@
         $('#history').DataTable();
     });
 
-    //var socket = io.connect('http://localhost:3330');
+    var socket = io.connect('http://localhost:3330');
                 //var socket = io.connect('http://35.164.220.7:3330');
                // var socket = io.connect('https://vetx.herokuapp.com');
-               var socket = io.connect('https://vetxb2c.herokuapp.com');      
+               //var socket = io.connect('https://vetxb2c.herokuapp.com');      
 
 
     //CALL ACTION MODEULES 
@@ -307,6 +307,8 @@
                 popupWindow = window.open(
                     "/doctor/doctorVideoCall?p="+petId+"&q="+clinicId+"&r="+callUserId+"&s="+doctorId+"",'popUpWindow','height=500,width=700,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
             });
+
+            
 
         });
 
