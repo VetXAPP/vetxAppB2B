@@ -165,10 +165,10 @@ localAuth.use('user-signup', new userStrategy({
                  subject: 'Welcome to vetX clinic',
                  text: " ",
                  template:'temp',
-                // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://vetx.herokuapp.com/'+clinicName+ '</p>'
+                // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://www.vetxapp.com/'+clinicName+ '</p>'
 
                 context:{variable1:email,
-                  variable2:'https://vetx.herokuapp.com/'+clinicName,variable3:password,variable4:req.body.firstName}
+                  variable2:'https://www.vetxapp.com/'+clinicName,variable3:password,variable4:req.body.firstName}
                 };
                 newUser.save(function(err) {
                   if (err) throw err;
@@ -258,9 +258,9 @@ localAuth.use('local-signup', new clinicStrategy({
                              subject: 'Thank you for joining VetX!',
                              text: " ",
                              template:'temp2',
-                              // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://vetx.herokuapp.com/'+clinicName+ '</p>'
+                              // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://www.vetxapp.com/'+clinicName+ '</p>'
                               context:{variable1:req.body.email,
-                                variable2:'https://vetx.herokuapp.com/'+clinicName,
+                                variable2:'https://www.vetxapp.com/'+clinicName,
                                 variable3:password,variable4:clinicName
 
                               }
