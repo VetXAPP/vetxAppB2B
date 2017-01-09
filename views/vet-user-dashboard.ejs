@@ -638,8 +638,6 @@
 function userCallConnect(a,b,c,d,e)
 {
 
-    // MyWindow=window.open('/user/userVideoCall?p=<%= petInfo[i]._id %>&q=<%= clinicName %>&r=<%= userInfo._id %>&l=<%= image %>&m=<%= userInfo.firstName %>','MyWindow','height=500,width=700,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'); return false;
-
     newwindow = window.open( '/user/userVideoCall?p='+a+'&q='+b+'&r='+c+'&l='+d+'&m='+e+'','','height=500,width=700,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
     var win_timer = setInterval(function() {   
       if(newwindow.closed) {

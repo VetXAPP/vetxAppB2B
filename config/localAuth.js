@@ -223,7 +223,6 @@ localAuth.use('local-signup', new clinicStrategy({
                             //            var clinicLink = email.toLowerCase().replace(' ', '').replace(/[^\w\s]/gi, '').trim();
                             clinicName = username.replace(/ +/g, "");
                             var newClinic = new Clinic();
-                            //newClinic.SpaceClinicName=req.body.username;
                             newClinic.username = username;
                             newClinic.email = req.body.email;
                             newClinic.password = newClinic.generateHash(password);
