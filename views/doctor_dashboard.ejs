@@ -196,54 +196,54 @@
 
 <!--******************popup for call **************************-->
 <div id="report" class="modal fade-scale" role="dialog">
-   <div class="modal-dialog">
-       <!-- Modal content-->
-       <div class="modal-content">
-           <div class="modal-header">
-               <h4 class="modal-title">View Report</h4>
-           </div>
-           <div class="modal-body">
-               <h1>Summary</h1>
-               <p ><span id="reportSummary" ></span>
-                   <span class="fees">Consulting Fee $ <span id="reportAmt"></span></span></p>
-               </div>
-               <div class="modal-footer">
-                   <button class="btn colorwhite bgorange buttonpad-orange padingbuttonView Report collapsed" data-dismiss="modal">OK</button>
-               </div>
-           </div>
-       </div>
-   </div>
-   <!--*****************popup for call end **********************-->
+ <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+         <div class="modal-header">
+             <h4 class="modal-title">View Report</h4>
+         </div>
+         <div class="modal-body">
+             <h1>Summary</h1>
+             <p ><span id="reportSummary" ></span>
+                 <span class="fees">Consulting Fee $ <span id="reportAmt"></span></span></p>
+             </div>
+             <div class="modal-footer">
+                 <button class="btn colorwhite bgorange buttonpad-orange padingbuttonView Report collapsed" data-dismiss="modal">OK</button>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!--*****************popup for call end **********************-->
 
-   <!--******************popup for call **************************-->
-   <div id="call" class="modal fade-scale" role="dialog" data-backdrop="static" >
-       <div class="modal-dialog">
-           <!-- Modal content-->
-           <div class="modal-content">
-               <div class="modal-header">
-                   <h4 class="modal-title">Incoming Call</h4>
-               </div>
-               <div class="modal-body">
-                   <div class="calling-img">
-                       <img src="img/profile_user.jpg" class="img-responsive" id="IncomingUserImage">
-                   </div>
-                   <h1><span id="callUserName"></span>  is calling...</h1>
-               </div>
+ <!--******************popup for call **************************-->
+ <div id="call" class="modal fade-scale" role="dialog" data-backdrop="static" >
+     <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h4 class="modal-title">Incoming Call</h4>
+             </div>
+             <div class="modal-body">
+                 <div class="calling-img">
+                     <img src="img/profile_user.jpg" class="img-responsive" id="IncomingUserImage">
+                 </div>
+                 <h1><span id="callUserName"></span>  is calling...</h1>
+             </div>
 
-               <div class="modal-footer">
-                   <button id="callAccept" class="btn btn-default accept" >Accept
-                   </button>
-                   <!--  <button id="callAccept" class="btn btn-default accept" >Accept</button> -->
-                   <button type="button" 
-                   class="btn btn-default reject" 
-                   data-dismiss="modal" id="callReject">Reject</button>
-               </div>
-           </div>
-       </div>
-   </div>
-   <!--*****************popup for call end **********************-->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-   <script>
+             <div class="modal-footer">
+                 <button id="callAccept" class="btn btn-default accept" >Accept
+                 </button>
+                 <!--  <button id="callAccept" class="btn btn-default accept" >Accept</button> -->
+                 <button type="button" 
+                 class="btn btn-default reject" 
+                 data-dismiss="modal" id="callReject">Reject</button>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!--*****************popup for call end **********************-->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
 </script>
 <script src="js/vendor/bootstrap.min.js"></script>
@@ -260,10 +260,13 @@
         $('#history').DataTable();
     });
 
-    var socket = io.connect('http://localhost:3330');
+   // var socket = io.connect('http://localhost:3330');
                 //var socket = io.connect('http://35.164.220.7:3330');
                // var socket = io.connect('https://vetx.herokuapp.com');
-               //var socket = io.connect('https://vetxb2c.herokuapp.com');      
+               //var socket = io.connect('https://vetxb2c.herokuapp.com'); 
+               var socket = io.connect(' https://www.vetxapp.com');     
+
+               
 
 
     //CALL ACTION MODEULES 
@@ -308,7 +311,7 @@
                     "/doctor/doctorVideoCall?p="+petId+"&q="+clinicId+"&r="+callUserId+"&s="+doctorId+"",'popUpWindow','height=500,width=700,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
             });
 
-            
+
 
         });
 
@@ -327,8 +330,8 @@
         //CALL END STATUS 
 
         socket.on("callEndStatusInfo_<%= doctorInfo._id %>", function(info) {
-         $('#endButton').modal();
-     });
+           $('#endButton').modal();
+       });
 
      //QUICK CALL END STATUS 
 
@@ -455,8 +458,8 @@
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-       updateCallEnd();
-   }
+     updateCallEnd();
+ }
 });
   });
 
@@ -472,13 +475,13 @@
         data: $('#callEnd').serialize(),
         statusCode: {
           200: function (response) {
-           alert('success');
-           location.reload();
-       },500: function (response) {
-         alert('failure');
-     }},
-     mimeType: "multipart/form-data"
- });
+             alert('success');
+             location.reload();
+         },500: function (response) {
+           alert('failure');
+       }},
+       mimeType: "multipart/form-data"
+   });
 
 
   }
@@ -619,8 +622,8 @@
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-       userUpdate();
-   }
+     userUpdate();
+ }
 });
 });
 
@@ -638,17 +641,17 @@
           data: new_form,
           statusCode: {
               200: function (response) {
-               alert('success');
-               location.reload();
-           },500: function (response) {
-             alert('failure');
+                 alert('success');
+                 location.reload();
+             },500: function (response) {
+               alert('failure');
 
-         }},
-         cache: false,
-         contentType: false,
-         mimeType: "multipart/form-data",
-         processData: false
-     });
+           }},
+           cache: false,
+           contentType: false,
+           mimeType: "multipart/form-data",
+           processData: false
+       });
     } 
 
 
