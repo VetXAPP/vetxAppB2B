@@ -258,7 +258,7 @@ clinicRouter.put('/doctor', isLoggedIn,upload.single('profileImage'), function(r
     {
         doc.profileImage = "";
     }
-    var transporter = nodemailer.createTransport('smtps://vetx.contact@gmail.com:password1234!@smtp.gmail.com');
+    var transporter = nodemailer.createTransport('smtps://vetx.contact@gmail.com:Vetx123!@#@smtp.gmail.com');
     var hbs= require('nodemailer-express-handlebars');
     var options = {
        viewEngine: {
