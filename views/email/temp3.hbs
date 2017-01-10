@@ -33,23 +33,29 @@
         ul.social li img {
             width: 40px;
         }
-        .overlay-text {
-            position: absolute !important;
-            color: #fff;
-            font-size: 30px;
-            width: 450px;
-            top: 35% !important;    
-        }
-        .inner{
+        
+        .inner {
             position: relative;
             font-family: 'Lato', sans-serif;
+            text-align: center;
+            width: 450px;
+            margin: 0 auto;
+            background-image: url('https://www.vetxapp.com/public/mail/images/doc_bg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 350px;
+            color: #fff;
+            font-size: 35px;
+        }
+        
+        .inner-con {
+            line-height: 70px;
+            margin-top: 50px;
+            display: inline-block;
             border-top: 5px solid #f5841f;
             border-bottom: 5px solid #f5841f;
-            line-height: 50px;
-            text-align: center;
-            width: 400px;
-            margin: 0 auto;
         }
+        
         .store li {
             list-style-type: none;
             display: inline-block;
@@ -61,11 +67,12 @@
             margin-left: 15px;
             padding-bottom: 8px;
         }
+        
         .ul-cls-panel li {
             font-size: 15px;
             margin-left: 15px;
             padding-bottom: 8px;
-            list-style-type:decimal;
+            list-style-type: decimal;
         }
         
         .store li img {
@@ -91,14 +98,21 @@
                         <td width="450" valign="top" align="left" bgcolor="#ffffff" style="font-family: 'Raleway', sans-serif; background: #fff;">
                             <table cellpadding="0" cellspacing="0" border="0" style="color: #717171; font: normal 11px Georgia, serif; margin: 0; padding: 0;" width="415" class="content">
                                 <tr>
-                                    <td><img 
-                                        src="https://www.vetxapp.com/public/mail/images/doc_bg.png" width="450px"></td> 
+                                   <!--  <td><img 
+                                   src="https://www.vetxapp.com/public/mail/images/doc_bg.png" width="450px"></td>  -->
                                      <!--    <div class="overlay-text">
                                           <div class="inner">
                                             Congrats ! {{variable4}} <br>
                                             has added you to vertex
                                         </div>             
                                     </div> -->
+
+                                    <div class="inner">
+                                        <div class="inner-con">
+                                            Congrats! {{variable4}}
+                                            <br> has added you to vetx
+                                        </div>
+                                    </div>
                                 </tr>
                                 <tr>
                                     <td style="padding: 25px 0 30px; font-family: 'Raleway', sans-serif; " valign="top" align="left">
