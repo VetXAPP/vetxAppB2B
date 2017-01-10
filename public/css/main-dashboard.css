@@ -4,7 +4,16 @@
 
    @import url("fonts.css");
    @import url("ionicons.min.css");
-   .loadingBlock {
+
+
+   .setting-icon
+   {
+
+    font-size:30px !important;
+
+}
+.caret{margin-top: -13px;}
+.loadingBlock {
     width: 100%;
     min-height: 300vh;
     text-align: center;
@@ -2625,4 +2634,6 @@ textarea {
 .image-upload > input {
     display: none;
 }
+
+
 
