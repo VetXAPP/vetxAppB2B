@@ -148,7 +148,7 @@ localAuth.use('user-signup', new userStrategy({
               }
               newUser.save(function(err) {
                 if (err) throw err;
-                var transporter = nodemailer.createTransport('smtps://vetx.contact%40gmail.com:Vetx1234@smtp.gmail.com');
+                var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
                 var hbs= require('nodemailer-express-handlebars');
                 var options = {
                  viewEngine: {
@@ -239,8 +239,8 @@ localAuth.use('local-signup', new clinicStrategy({
                             newClinic.zipCode = req.body.zipCode;
                             newClinic.planInfo = req.body.plan_info;
                             //email
-
-                            var transporter = nodemailer.createTransport('smtps://vetx.contact%40gmail.com:Vetx1234!@smtp.gmail.com');
+                            
+                            var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
                             var hbs= require('nodemailer-express-handlebars');
                             var options = {
                               viewEngine: {
