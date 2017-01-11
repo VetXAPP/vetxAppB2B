@@ -27,25 +27,7 @@
  var VideoGrant = AccessToken.VideoGrant;
  var randomUsername = require('./randos');
  var http = require('http').Server(app);
- // set up a route to redirect http to https
- // app.get('*',function(req,res){  
- // 	res.redirect('https://www.vetxapp.com'+req.url)
- // })
  var io = require('socket.io')(http);
-
-//https redirect 
-
-app.use (function (req, res, next) {
-	if (req.secure) {
-                // request was via https, so do no special handling
-                next();
-            } else {
-                // request was via http, so redirect to https
-                res.redirect('https://' + req.headers.host + req.url);
-            }
-        });
-
-
 //***    THIS IS FOR SANDBOX BRIAN TREE PAYMENT GATEWAY   ===>>>
 var braintree = require("braintree");
 var gateway = braintree.connect({
