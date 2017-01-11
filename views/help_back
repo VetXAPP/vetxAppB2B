@@ -1,0 +1,190 @@
+  <div class="message-wrap col-lg-10 helpview minheightdash">
+    <div class="row row-space">
+      <div class="div-space center marg-btm animatedParent" id="div1" style="display: block;">
+        <div class="div-space-div animated fadeInUp go">
+          <h1 class="head-text left col-md-offset-3">Welcome to VetX!</h1>
+          <div class="col-md-3">
+            <img src="public/img/empty-dog.png" class="img-responsive center-block">
+          </div>
+          <div class="col-md-9 left">
+            <label class="left help-p padding-top15">Thank you for joining – we are thrilled to have you join the VetX community!
+              <br>
+              <br>We want to walk you through a few key points to make sure you get the most out of your experience.
+              <br>
+              <br>Please click through this quick demo to learn how to have the best experience</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('2','0')">Ready to go</button>
+            </div>
+          </div>
+        </div>
+        <div class="div-space center marg-btm animatedParent" id="div2" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">How VetX Works</h1>
+            <label class=" center help-p">3 part system:</label>
+            <img src="public/img/pic1.png" class="img-responsive center-block help-img">
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('1','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('3','0')">Admin Panel</button>
+          </div>
+        </div>
+        <div class="div-space center marg-btm animatedParent" id="div3" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">Admin Panel</h1>
+            <label class=" center help-p help-p-width">The Admin Panel is the heart of the VetX experience and where you as an admin take control of your virtual clinic.</label>
+            <img src="public/img/pic2.png" class="img-responsive center-block help-img2">
+            <button class="bgorange colorwhite btn-help mar-top1"onclick="helpView('2','0')" >Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','10')">Got it. Tell me more.</button>
+          </div>
+        </div>
+
+        <div class="div-space center marg-btm animatedParent" id="div4" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Add your photo</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top45">Your first step is easy. Just add in your personal photo, the photo of your clinic, or anything you’d like to see.</label>
+              <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('3','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('5','0')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="div-space marg-btm animatedParent" id="div5" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Connect your phone</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top15">We need to make sure that your phone lines are integrated into our platform.</label>
+              <ul class="help-ui">
+                <label class="help-p">There are two parts to this:</label>
+                <li>Set up your answering machine </li>
+                <li>Specify the hours you would like to forward calls to us</li>
+              </ul>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','10')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','0')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div6" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up answering machine</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top15">Our platform will generate a unique number that your calls will be re-directed to during after-hours/weekends.</label>
+              <br>
+              <label class="left help-p">Simply click on “My Phone No.” to see your unique number, go into your existing answering machine and decide how you would like your clients to re-direct (e.g. “Press 1 to speak to a triage specialist now”</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('5','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">What if I don’t know how to do this?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div7" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up answering machine</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top20">If you need any help setting up your answering machine, please revert to our FAQ section or contact us directly anytime, 24/7 to immediately speak with one of our on-boarding specialists!</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('8','1')">Got it. What’s next?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div8" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Add your veterinarians</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p">Now make sure that your veterinarians have the opportunity to answer incoming calls in the event that they would like to answer calls themselves.</label>
+              <br>
+              <label class=" left help-p">This is only relevant if you would like to take video calls during normal business hours! Otherwise no need to worry, one of our specialists will be there for your clinic during after-hours.</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('9','5')">How do I set my hours?</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div9" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Set up billing</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="padding-top30 img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top15">The billing feature allows your clinic to charge your patients directly for consultations. Just specify if you’d like to charge and how much per consultation!</label>
+              <br>
+              <label class=" left help-p">Your clients will be notified of the fee and billed after their consultation.</label>
+              <br>
+              <label class=" left help-p">If you do not enable this feature, the consultations will be entirely free!</label>
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('8','1')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('10','8')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="div-space center marg-btm animatedParent" id="div10" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Customize your website</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block">
+            </div>
+            <div class="col-md-9 left">
+              <label class=" left help-p padding-top20">Our platform generates a unique URL for your clinic. This is the portal whereby your clients can access video-on-demand. </label>
+              <br>
+              <label class=" left help-p">From here you can customize the website for your logo, your pictures and your text. What you decide to post is entirely up to you!</label>
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('9','5')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('11','6')">Got it. Tell me more.</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="div-space center marg-btm animatedParent" id="div11" style="display: none;">
+          <div class="div-space-div animated fadeInUp go">
+            <h1 class="head-text left col-md-offset-3">Tell your patients!</h1>
+            <div class="col-md-3">
+              <img src="public/img/empty-dog.png" class="img-responsive center-block padding-top15">
+            </div>
+            <div class="col-md-9 left">
+              <label class="left help-p padding-top15">Providing around-the-clock support for your patients is a BIG deal and they will love you for it!</label>
+              <br>
+              <label class="left help-p">Make sure to upload your contacts here to send them a message telling them that you are available around the clock! If you’d prefer not to email and instead tell them in person, no worries! We will send you a care package with marketing materials to pass out to them!</label>
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('10','8')">Back</button>&nbsp &nbsp&nbsp &nbsp
+              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('12','0')">OK! Lets get started.</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-space center marg-btm animatedParent" id="div12" style="display: none;">
+          <div class="div-space-div width100 animated fadeInUp go">
+            <h1 class="head-text1 center">One last thing!</h1>
+            <label class="center help-p help-p-width">Only YOU have access to the admin panel! Your patients and veterinarians will login through the User Panel!</label>
+            <img src="public/img/pic3.png" class="img-responsive center-block help-img2">
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('11','0')">Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="finalView()">OK! Lets get started!</button>
+          </div>
+        </div>
+      </div>
+    </div>
