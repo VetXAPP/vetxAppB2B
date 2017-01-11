@@ -27,6 +27,10 @@
  var VideoGrant = AccessToken.VideoGrant;
  var randomUsername = require('./randos');
  var http = require('http').Server(app);
+ // set up a route to redirect http to https
+ http.get('*',function(req,res){  
+ 	res.redirect('https://www.vetxapp.com'+req.url)
+ })
  var io = require('socket.io')(http);
 
 //***    THIS IS FOR SANDBOX BRIAN TREE PAYMENT GATEWAY   ===>>>

@@ -7,71 +7,71 @@
 <!--<![endif]-->
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>VetX</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="public/Favicon.ico" type="image/x-icon" rel="shortcut icon">
-<link rel="stylesheet" href="public/css/bootstrap.min.css">
-<link rel="stylesheet" href="public/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="public/css/animations.css">
-<link rel="stylesheet" href="public/css/simpleform.css">
-<link rel="stylesheet" href="public/css/main.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>VetX</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="public/Favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="public/css/animations.css">
+  <link rel="stylesheet" href="public/css/simpleform.css">
+  <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <!--[if lt IE 9]>
   <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
   <![endif]-->
-  </head>
+</head>
 
-  <body data-spy="scroll" data-target=".navbar" data-offset="10">
+<body data-spy="scroll" data-target=".navbar" data-offset="10">
   <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <nav id="custom-nav" class="">
 
-<a href="/" class="navbar-brand" style="padding-top: 30px; padding-bottom: 18px;  padding-left: 100px;"><img class="logo-image" src="public/img/Logo1.png"></a>
+  <a href="/" class="navbar-brand" style="padding-top: 30px; padding-bottom: 18px;  padding-left: 100px;"><img class="logo-image" src="public/img/Logo1.png"></a>
 
 </nav>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-<div class="container">
-<div class="row order-1-image firstsectionbuy">
-<div class="col-md-12 col-sm-12 col-xs-12 ">
-<div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 ">
-<div class=" col-md-12 col-sm-12 col-xs-12 ">
-<span>
-<h1 class="heading-1" style="margin-top: 132px; font-size: 44px; font-family: 'Open Sans', sans-serif; color: white; ">You're all set!</h1>
-</span>
-</div>
+  <div class="container">
+    <div class="row order-1-image firstsectionbuy">
+      <div class="col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 ">
+          <div class=" col-md-12 col-sm-12 col-xs-12 ">
+            <span>
+              <h1 class="heading-1" style="margin-top: 132px; font-size: 44px; font-family: 'Open Sans', sans-serif; color: white; ">You're all set!</h1>
+            </span>
+          </div>
 
-</div>
-</div>
-</div>
-<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 buyoption-noti" >
-<p class="sucess-head"><strong>Payment Success!</strong></p>
-<p class="sucess-p">Thanks for signing up with VetX! Please check your email for the login credentials to the administrative portal!</p>
-</div>
-<div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 center" style="margin-bottom: 35px;" >
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 buyoption-noti" >
+      <p class="sucess-head"><strong>Payment Success!</strong></p>
+      <p class="sucess-p">Thanks for signing up with VetX! Please check your email for the login credentials to the administrative portal!</p>
+    </div>
+    <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 center" style="margin-bottom: 35px;" >
 
-<input type="hidden" name="email" value="<%= email %>">
-<input type="hidden" name="password" value="<%= password %>">
+      <input type="hidden" name="email" value="<%= email %>">
+      <input type="hidden" name="password" value="<%= password %>">
 
 
-<a  onclick="doctor_login()" class="whiteHomeButton headerbuttonFontsize header-but signin">
-Okay
-</a>
-</div>
+      <a  onclick="doctor_login()" class="whiteHomeButton headerbuttonFontsize header-but signin">
+        Okay
+      </a>
+    </div>
 
-</div>
+  </div>
 </div>
 
 <% include footer %>
 <script type="text/javascript">
 
-function doctor_login()
-{
-  var email=$("input[name=email]").val();
+  function doctor_login()
+  {
+    var email=$("input[name=email]").val();
     var password=$("input[name=password]").val();
     var data = {};
     data.email = email;
@@ -102,4 +102,4 @@ function doctor_login()
 
   }
 
-  </script>
+</script>
