@@ -26,7 +26,9 @@
  var AccessToken = require('twilio').AccessToken;
  var VideoGrant = AccessToken.VideoGrant;
  var randomUsername = require('./randos');
- var http = require('http').Server(app);
+ //var http = require('http').Server(app);
+ var http = express.createServer();
+
  // set up a route to redirect http to https
  http.get('*',function(req,res){  
  	res.redirect('https://www.vetxapp.com'+req.url)
