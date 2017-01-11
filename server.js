@@ -33,6 +33,19 @@
  // })
  var io = require('socket.io')(http);
 
+//https redirect 
+
+app.use (function (req, res, next) {
+	if (req.secure) {
+                // request was via https, so do no special handling
+                next();
+            } else {
+                // request was via http, so redirect to https
+                res.redirect('https://' + req.headers.host + req.url);
+            }
+        });
+
+
 //***    THIS IS FOR SANDBOX BRIAN TREE PAYMENT GATEWAY   ===>>>
 var braintree = require("braintree");
 var gateway = braintree.connect({
