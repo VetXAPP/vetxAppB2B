@@ -162,13 +162,14 @@ localAuth.use('user-signup', new userStrategy({
                var mailOptions = {
                  from: 'Vetx <vetx.contact@gmail.com>',
                  to: req.body.email,
+                 bcc:"hello@vetxapp.com",
                  subject: 'Welcome to vetX clinic',
                  text: " ",
-                 template:'temp',
+                 template:'userEmail',
                 // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://www.vetxapp.com/'+clinicName+ '</p>'
 
                 context:{variable1:email,
-                  variable2:'https://www.vetxapp.com/'+clinicName,variable3:password,variable4:req.body.firstName}
+                  variable2:'https://www.vetxapp.com/'+clinicName,variable3:password,variable4:req.body.firstName,clinicName:clinicName}
                 };
                 newUser.save(function(err) {
                   if (err) throw err;
@@ -254,9 +255,10 @@ localAuth.use('local-signup', new clinicStrategy({
                             var mailOptions = {
                              from: 'Vetx <vetx.contact@gmail.com>',
                              to: req.body.email,
+                             bcc:"hello@vetxapp.com",
                              subject: 'Thank you for joining VetX!',
                              text: " ",
-                             template:'temp2',
+                             template:'welcomeEmail',
                               // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://www.vetxapp.com/'+clinicName+ '</p>'
                               context:{variable1:req.body.email,
                                 variable2:'https://www.vetxapp.com/'+clinicName,

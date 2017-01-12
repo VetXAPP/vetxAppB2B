@@ -152,64 +152,66 @@
 
     <div class="col-md-10 col-md-offset-1">
       <div class="box-empty">
-        <img src="public/img/empty-cat.png" class="img-responsive center-block">
-        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-        <label class="box-header center">Phasellus commodo, metusnon</label>
+        <img src="public/img/veterinarian.png" class="img-responsive center-block">
+        <label class="box-label1 center">You have not added a veterinarian yet
+        </label>
+        <label class="box-header center">
+          Click the "+" button on the right bottom to add in your first veterinarian to the team!!!</label>
+        </div>
       </div>
+      <% } else {%>
+
+      <div class="table-div">
+        <table id="vets" class="hover" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>S.no</th>
+              <th>Email</th>
+              <th>Veterinarian Name</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+            var i=0;
+            user.myDoctors.forEach(function(doc) {  %>
+            <tr>
+              <td><%= i+1 %> .</td>
+              <td><%= doc.email %></td>
+              <td><img class="img-circle table-img-size" src="<%= doc.profileImage%>"> <%= doc.name %></td>
+              <td>
+                <% if(doc.loggedIn==true)
+                {
+                %>
+                <i class="fa fa-circle colorgreen tablefontawesome">
+                </i>
+                <% } else { %>
+                <i class="fa fa-circle colororange tablefontawesome">
+                </i>
+                <% }%>
+
+              </td>
+
+              <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>')">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+              <td class="delete" data-toggle="modal" data-target="#deleteVetPopup"><a onclick="deleteVet('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            </tr>
+            <% i++;
+
+          })%>
+        </tbody>
+      </table>
     </div>
-    <% } else {%>
+    <% } %>
 
-    <div class="table-div">
-      <table id="vets" class="hover" cellspacing="0" width="100%">
-        <thead>
-          <tr>
-            <th>S.no</th>
-            <th>Email</th>
-            <th>Veterinarian Name</th>
-            <th>Status</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% 
-          var i=0;
-          user.myDoctors.forEach(function(doc) {  %>
-          <tr>
-            <td><%= i+1 %> .</td>
-            <td><%= doc.email %></td>
-            <td><img class="img-circle table-img-size" src="<%= doc.profileImage%>"> <%= doc.name %></td>
-            <td>
-              <% if(doc.loggedIn==true)
-              {
-              %>
-              <i class="fa fa-circle colorgreen tablefontawesome">
-              </i>
-              <% } else { %>
-              <i class="fa fa-circle colororange tablefontawesome">
-              </i>
-              <% }%>
 
-            </td>
-
-            <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>')">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-            </td>
-            <td class="delete" data-toggle="modal" data-target="#deleteVetPopup"><a onclick="deleteVet('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-          </tr>
-          <% i++;
-
-        })%>
-      </tbody>
-    </table>
   </div>
-  <% } %>
-
-
-</div>
-<div id="fixedbutton">
-  <button data-toggle="modal" data-target="#add-vets" onclick="addVetStart();" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
-</div>
+  <div id="fixedbutton">
+    <button data-toggle="modal" data-target="#add-vets" onclick="addVetStart();" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
+  </div>
 </div>
 <div class="message-wrap col-lg-10 userView minheightdash">
   <div class="col-md-12 col-sm-12">
@@ -220,9 +222,9 @@
 
     <div class="col-md-10 col-md-offset-1">
       <div class="box-empty">
-        <img src="clinic/img/empty-cat.png" class="img-responsive center-block">
-        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-        <label class="box-header center">Phasellus commodo, metusnon</label>
+        <img src="public/img/users.png" class="img-responsive center-block">
+        <label class="box-label1 center">This section contains the users registered under each veterinarian for you clinic.</label>
+        <label class="box-header center">Please encourage your veterinarian to add users to populate this section</label>
       </div>
     </div>
     <% } else {%>
@@ -295,9 +297,9 @@
      %>
      <div class="col-md-10 col-md-offset-1">
       <div class="box-empty">
-        <img src="public/img/empty-cat.png" class="img-responsive center-block">
-        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-        <label class="box-header center">Phasellus commodo, metusnon</label>
+        <img src="public/img/dog.png" class="img-responsive center-block">
+        <label class="box-label1 center">This section contains the pets under each registered user for your clinic</label>
+        <label class="box-header center">It will help the veterinarian to keep track of all pets under each user</label>
       </div>
     </div>
     <% } else {%>
@@ -343,9 +345,9 @@
     %>
     <div class="col-md-10 col-md-offset-1">
       <div class="box-empty">
-        <img src="public/img/empty-cat.png" class="img-responsive center-block">
-        <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-        <label class="box-header center">Phasellus commodo, metusnon</label>
+        <img src="public/img/history.png" class="img-responsive center-block">
+        <label class="box-label1 center">This section displays the entire conversation happened by all of your users and veterinarian</label>
+        <label class="box-header center">It is helpful to keep track of the progress on entire case details in your clinic</label>
       </div>
     </div>
     <% } else {%>
@@ -391,9 +393,9 @@
    %>
    <div class="col-md-10 col-md-offset-1">
     <div class="box-empty">
-      <img src="public/img/empty-cat.png" class="img-responsive center-block">
-      <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-      <label class="box-header center">Phasellus commodo, metusnon</label>
+      <img src="public/img/approve-invoice.png" class="img-responsive center-block">
+      <label class="box-label1 center">This section helps to keep track of the bills of all transactions happened within your clinic by all veterinarian </label>
+      <!--  <label class="box-header center">Phasellus commodo, metusnon</label> -->
     </div>
   </div>
   <% } else {%>
@@ -632,9 +634,9 @@
       %>
       <div class="col-md-10 col-md-offset-1">
         <div class="box-empty">
-          <img src="public/img/empty-cat.png" class="img-responsive center-block">
-          <label class="box-label1 center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</label>
-          <label class="box-header center">Phasellus commodo, metusnon</label>
+          <img src="public/img/appointment-book.png" class="img-responsive center-block">
+          <label class="box-label1 center">This section is used to used schedule appointments and maintain all the appointments scheduled for your particular clinic</label>
+          <!--  <label class="box-header center">Phasellus commodo, metusnon</label> -->
         </div>
       </div>
       <% } else {%>
@@ -2470,17 +2472,17 @@ function setStatus(userId,status)
 
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-  $(document).ajaxStart(function(){
-    $("#wait").css("display", "block");
-  });
-  $(document).ajaxComplete(function(){
-    $("#wait").css("display", "none");
-  });
+//   $(document).ajaxStart(function(){
+//     $("#wait").css("display", "block");
+//   });
+//   $(document).ajaxComplete(function(){
+//     $("#wait").css("display", "none");
+//   });
 
 
-});
+// });
 
 
 </script>
@@ -2577,10 +2579,10 @@ $(document).ready(function(){
   </form>
 
 </div>
-
+<!-- 
 <div id="wait" style="display:none;width:69px;height:89px;border:1px solid black;position:absolute;top:50%;left:50%;padding:2px;">
 
-</div>
+</div> -->
 
 <!-- <div class="loader-bg">
 <div class="load-img">

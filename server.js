@@ -150,7 +150,7 @@ socket.on('connect_call', function(info, callback)
 {
 
 	Doctor.find({
-		clinicName: info.clinicId,callStatus:'available',masterStatus:false
+		clinicName: info.clinicId,callStatus:'available',masterStatus:false,loggedIn:true
 	}).exec(function(err, doctor) {
 		if (err)
 		{
