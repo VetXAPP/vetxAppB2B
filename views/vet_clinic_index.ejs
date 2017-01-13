@@ -560,8 +560,8 @@
                             </div>
                             <div class="form-group">
                               <label for="usr">Email ID</label>
-                              <input class="form-control-modal" type="text" name="email">
-                              <input type="hidden" name="clinicName" value="<%= clinic_id %>"  >
+                              <input class="form-control-modal" type="text" name="email" style="text-transform: lowercase;">
+                              <input type="hidden" name="clinicName" value="<%= clinic_id %>">
                             </div>
                             <div class="form-group">
                               <label for="pwd">Password</label>
@@ -604,7 +604,7 @@
                             <div class="sign-padd">
                               <div class="form-group">
                                 <label for="usr">Email ID</label>
-                                <input class="form-control-modal" type="text" name="email" id="userEmail">
+                                <input class="form-control-modal" type="text" name="email" id="userEmail" onkeypress="this.value = this.value.toLowerCase();">
                               </div>
                               <div class="form-group">
                                 <label for="pwd">Password:</label>

@@ -138,6 +138,7 @@ localAuth.use('user-signup', new userStrategy({
                 newUser.phoneNumber = req.body.phoneNumber;
                 newUser.clinicName = req.body.clinicName;
               } else{
+
                 newUser.email = email;
                 newUser.password = newUser.generateHash(password);
                 newUser.firstName = req.body.firstName;
@@ -225,7 +226,7 @@ localAuth.use('local-signup', new clinicStrategy({
                             clinicName = username.replace(/ +/g, "");
                             var newClinic = new Clinic();
                             newClinic.username = username;
-                            newClinic.email = req.body.email;
+                            newClinic.email = req.body.email.toLowerCase();
                             newClinic.password = newClinic.generateHash(password);
                             newClinic.firstName = req.body.firstName;
                             newClinic.lastName = req.body.lastName;

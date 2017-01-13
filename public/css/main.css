@@ -2521,3 +2521,23 @@ p.sub-txt {
 }
 
 
+
+/** pricing ***/
+.pricing-individual{border: 2px solid #ed7d31; position: relative; margin-top:30px;}
+.most-popular-pricing{position: absolute; top:-21px; left: 5%; width: 90%;}
+.most-popular-pricing p{text-align: center; color: #fff; background: #ed7d31; text-align: center; padding: 10px 50px; width: 100%; margin: 0 auto; text-transform: uppercase; font-size: 18px;}
+.pricing-head-month{color: #222}
+.heading-1.pricing-head{color: #999; margin-bottom: 0px !important; margin-top:50px;}
+.per-clinic {text-align: center; color: #999;}
+.pricing-list-ul li{font-size: 13px; line-height: 30px; text-align: left;}
+ul.pricing-list-ul {
+    padding: 0 0 0px 35px;
+}
+.try-it-now{position: relative; bottom: 0px; top:20px;}
+.try-it-now .next-fieldset.simple-form-button.center-block{float: none; width: 90%; margin: 0 auto; background: #ed7d31 !important; color: #fff; border: none; box-shadow: none; border-radius:0px; font-size: 18px; text-transform: uppercase;}
+.pricing-content-box h2.heading-1.billinginfo{font-size: 30px; text-align: left;}
+.pricing-content-box ul.pricing-list-ul{padding: 0px !important;}
+.pricing-content-box{margin: 0 0 30px 0;}
+.pricing-conten h2.heading-1.billinginfo{text-align: left; color: #ed7d31 !important; font-size: 20px;}
+.all-our-plans{text-align: left; color: #ed7d31; padding: 80px 0 0 10px;}
+.pricing-content-box i.fa{color: #ccc; font-size: 80px; vertical-align: middle; border-radius: 100%;

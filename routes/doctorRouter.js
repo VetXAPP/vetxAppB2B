@@ -110,9 +110,6 @@ doctorRouter.put('/doctorProfileUpdate/:userId', isLoggedIn, upload.single('vetU
       message: "internal server error"
     });
       if (userInfo) {
-
-        console.log(req.file);
-
         var doc = new Doctor();
         if (req.body.name) userInfo.name = req.body.name;
         if(req.file) userInfo.profileImage = req.file.path;

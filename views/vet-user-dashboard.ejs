@@ -1008,22 +1008,6 @@ function userCallConnect(a,b,c,d,e)
 <script>
 
 
-    function readURLS(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#editPetImageSrc').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#editPetImage").change(function() { 
-        readURLS(this);
-    });
-
 
 
 
@@ -1574,22 +1558,7 @@ $(document).ready(function() {
      });
     } 
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('#vetUserImageSrc').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#vetUserImage").change(function() { 
-
-        readURL(this);
-    });
 
 
 
@@ -1616,7 +1585,7 @@ $(document).ready(function() {
 });
 
 
-function readURL(input) {
+function readURL1(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -1629,8 +1598,48 @@ function readURL(input) {
 }
 
 $("#imgInp").change(function() { 
+    readURL1(this);
+});
+
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#vetUserImageSrc').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#vetUserImage").change(function() { 
+
+
     readURL(this);
 });
+
+
+
+function readURLS1(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#editPetImageSrc').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#editPetImage").change(function() { 
+    readURLS1(this);
+});
+
+
 
 </script>
 
