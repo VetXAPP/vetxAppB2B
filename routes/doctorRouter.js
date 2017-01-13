@@ -4,6 +4,8 @@ Doctor = require('../models/doctorSchema.js'),
 Call = require('../models/callSchema.js'),
 localAuth = require('../config/localAuth.js'),
 multer = require('multer'),
+path = require('path'),
+uuid = require('node-uuid'),
 storage = multer.diskStorage({
   destination: 'uploads',
   filename: function(req, file, cb) {

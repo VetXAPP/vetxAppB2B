@@ -146,6 +146,7 @@ localAuth.use('user-signup', new userStrategy({
                 newUser.userName = req.body.userName;
                 newUser.phoneNumber = req.body.phoneNumber;
                 newUser.clinicName = req.body.clinicName;
+                newUser.profilePic = "uploads/vu.png.jpg";
               }
               newUser.save(function(err) {
                 if (err) throw err;

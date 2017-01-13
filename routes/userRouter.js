@@ -167,7 +167,9 @@ userRouter.post('/addPet/:clinicName', isLoggedIn, upload.single('image'), funct
        petBreed: req.body.petBreed,
        petSex: req.body.petSex,
        dateOfBirth: req.body.dateOfBirth,
-       user:req.user._id
+       user:req.user._id,
+       petPhoto: "uploads/vv.png"
+
    };
 }
 new Pet(formData).save(function(err, pet) {
@@ -344,7 +346,7 @@ userRouter.put('/userProfileUpdate/:userId', isLoggedIn, upload.single('vetUserI
         });
             if (userInfo) {
 
-                
+
                 var newUser = new User();
                 if (req.body.firstName) userInfo.firstName = req.body.firstName;
                 if (req.body.lastName) userInfo.lastName = req.body.lastName;
