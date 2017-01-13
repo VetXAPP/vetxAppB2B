@@ -256,7 +256,7 @@ clinicRouter.put('/doctor', isLoggedIn,upload.single('profileImage'), function(r
         doc.profileImage = req.file.path;
     }else
     {
-        doc.profileImage = "uploads/vd.png";;
+        doc.profileImage = "uploads/vd.png";
     }
     var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
     var hbs= require('nodemailer-express-handlebars');
