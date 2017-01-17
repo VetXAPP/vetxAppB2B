@@ -500,7 +500,7 @@ app.use('/:vetLab',myLogger, clinicUserRouter);
 
 
 app.get('/*', function(req, res, next) {
-	if (req.headers.host.match(/^www/) == null ) res.redirect('http://www.' + req.headers.host + req.url, 301);
+	if (req.headers.host.match(/^www/) == null ) res.redirect('https://www.' + req.headers.host + req.url, 301);
 	else next();
 });
 
