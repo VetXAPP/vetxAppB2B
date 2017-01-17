@@ -493,7 +493,22 @@ app.get('/:doctor/uploads/:file', function (req, res){
 	res.writeHead(200, {'Content-Type': 'image/jpg' });
 	res.end(img, 'binary');
 });
+
 app.use('/:vetLab',myLogger, clinicUserRouter);
+
+/* WWW AND HTTPS REDIRECTION ==> */
+
+
+app.get('/*', function(req, res, next) {
+	if (req.headers.host.match(/^www/) == null ) res.redirect('http://www.' + req.headers.host + req.url, 301);
+	else next();
+});
+
+
+/* WWW AND HTTPS REDIRESCTION <== */          
+
+
+
 
 var port = process.env.PORT || 3330;
 server.listen(port, function() {

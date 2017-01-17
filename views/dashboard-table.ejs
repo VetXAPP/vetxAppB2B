@@ -605,9 +605,12 @@
 
           <% 
           var i=0;
-          user.contactList.forEach(function(doc) {  %>
+          user.contactList.forEach(function(doc) {  
+          if(doc.active==true)
+          {
+          %>
           <tr>
-            <td><%= i+1 %></td>
+            <td><%= i+1 %> .</td>
             <td><%= doc.firstName %> <%= doc.lastName %></td>
             <td><%= doc.email %> </td>
             <td><%= doc.phoneNumber %> </td>
@@ -617,422 +620,423 @@
                 <a onclick="deleteContact('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
               </tr>
               <% i++;
-            })%>
+            }
+          })%>
 
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="message-wrap col-lg-10 appointment minheightdash">
-    <div class="col-md-12 col-sm-12">
-      <h1 class="head-text">Appointment</h1>
+</div>
+<div class="message-wrap col-lg-10 appointment minheightdash">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="head-text">Appointment</h1>
 
 
-      <% if(appointment.length ==0)
-      {
-      %>
-      <div class="col-md-10 col-md-offset-1">
-        <div class="box-empty">
-          <img src="public/img/appointment-book.png" class="img-responsive center-block">
-          <label class="box-label1 center">This section is used to used schedule appointments and maintain all the appointments scheduled for your particular clinic</label>
-          <!--  <label class="box-header center">Phasellus commodo, metusnon</label> -->
+    <% if(appointment.length ==0)
+    {
+    %>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box-empty">
+        <img src="public/img/appointment-book.png" class="img-responsive center-block">
+        <label class="box-label1 center">This section is used to used schedule appointments and maintain all the appointments scheduled for your particular clinic</label>
+        <!--  <label class="box-header center">Phasellus commodo, metusnon</label> -->
+      </div>
+    </div>
+    <% } else {%>
+    <div class="table-div">
+      <table id="appointment" class="hover" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Username</th>
+            <th>Pet Name</th>
+            <th>Date/Time</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var l=0;l<appointment.length;l++) { %>
+          <tr>
+            <td><%= l+1 %>.</td>
+            <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.user.profilePic %>"><%= appointment[l].pet.user.firstName %></td>
+            <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
+            <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
+
+          </tr>
+          <% } %>
+
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+
+  </div>
+</div>
+
+<!-- **********************Cms div start*************************** -->
+
+<div class="message-wrap col-lg-10 cms-content minheightdash">
+  <h1 class="head-text">CMS Content</h1>
+  <div class="row row-space">
+
+    <h1 class="head-text-sub">Banner Section</h1>
+    <div class="col-md-6 cust-padding">
+      <!--logo image -->
+
+      <form name="createCMS" enctype="multipart/form-data" id="createCMS">
+        <div class="form-group">
+          <h5 class="cms-head">Logo Image</h5>
+          <input type="file" name="logoImage" id="logoImage" class="file" >
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="disLogoImage" src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
         </div>
       </div>
-      <% } else {%>
-      <div class="table-div">
-        <table id="appointment" class="hover" cellspacing="0" width="100%">
-          <thead>
-            <tr>
-              <th>S.no</th>
-              <th>Username</th>
-              <th>Pet Name</th>
-              <th>Date/Time</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <% for(var l=0;l<appointment.length;l++) { %>
-            <tr>
-              <td><%= l+1 %>.</td>
-              <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.user.profilePic %>"><%= appointment[l].pet.user.firstName %></td>
-              <td><img class="img-circle table-img-size" src="<%= appointment[l].pet.petPhoto %>"><%= appointment[l].pet.petName %></td>
-              <td><%= appointment[l].date %> / <%= appointment[l].time %></td>
-
-            </tr>
-            <% } %>
-
-          </tbody>
-        </table>
-      </div>
-      <% } %>
-
-    </div>
-  </div>
-
-  <!-- **********************Cms div start*************************** -->
-
-  <div class="message-wrap col-lg-10 cms-content minheightdash">
-    <h1 class="head-text">CMS Content</h1>
-    <div class="row row-space">
-
-      <h1 class="head-text-sub">Banner Section</h1>
       <div class="col-md-6 cust-padding">
-        <!--logo image -->
+        <!--banner image -->
+        <div class="form-group">
+          <h5 class="cms-head">Banner Image</h5>
+          <input type="file" name="bannerImage" id="bannerImage" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img-banner">
+            <img id="disBannerImage" src="" class="img-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-space">
+      <div class="col-md-6 cust-padding">
+        <!--banner header -->
+        <div class="form-group">
+          <h5 class="cms-head">Banner Main Text</h5>
+          <textarea class="form-control" name="bannerMainText" value="" id="bannerMainText" rows="2" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <!--banner sub text -->
+        <div class="form-group">
+          <h5 class="cms-head">Banner Sub text</h5>
+          <textarea class="form-control" value="" name="bannerSubText" id="bannerSubText" rows="2" id="comment"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row row-space">
+      <h1 class="head-text-sub">Middle section 1</h1>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 01 - Title</h5>
+          <textarea class="form-control" name="boxTitle01" id="boxTitle01" rows="2" id="comment"></textarea>
+        </div>
+        <!--box 1 icon -->
+        <div class="form-group">
+          <h5 class="cms-head">Box 01 - Icon</h5>
+          <input type="file" name="boxIcon1" id="bOneIcon" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="disboxIcon1" src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 01 - Content</h5>
+          <textarea class="form-control" name="boxContent01" id="boxContent01" rows="2" id="comment"></textarea>
+        </div>
+      </div>
+      <!-- **********************CMS div end *************************** -->
+    </div>
+    <div class="row row-space">
+      <h1 class="head-text-sub">Middle section 2</h1>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 02 - Title</h5>
+          <textarea class="form-control" name="boxTitle02" id="boxTitle02" rows="2" id="comment"></textarea>
+        </div>
+        <!--box 1 icon -->
+        <div class="form-group">
+          <h5 class="cms-head">Box 02 - Icon</h5>
+          <input type="file" name="boxIcon2" id="bTwoIcon" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="disboxIcon2"src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 02 - Content</h5>
+          <textarea class="form-control" name="boxContent02" id="boxContent02" rows="2" id="comment"></textarea>
+        </div>
+      </div>
+      <!-- **********************CMS div end *************************** -->
+    </div>
+    <div class="row row-space">
+      <h1 class="head-text-sub">Middle section 3</h1>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 03 - Title</h5>
+          <textarea class="form-control" name="boxTitle03" id="boxTitle03" rows="2" id="comment"></textarea>
+        </div>
+        <!--box 1 icon -->
+        <div class="form-group">
+          <h5 class="cms-head">Box 03 - Icon</h5>
+          <input type="file" name="boxIcon3" id="boxIcon3" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="disboxIcon3"src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Box 03 - Content</h5>
+          <textarea class="form-control" name="boxContent03" id="boxContent03" rows="2" id="comment"></textarea>
+        </div>
+      </div>
+      <!-- **********************CMS div end *************************** -->
+    </div>
+    <div class="row row-space">
+      <h1 class="head-text-sub">Testimonial - Box 01</h1>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Name</h5>
+          <textarea class="form-control" name="testimosnialsName01" rows="2" id="testimosnialsName01"></textarea>
+        </div>
+        <div class="form-group">
+          <h5 class="cms-head">Logo Image</h5>
+          <input type="file" name="tLogo1" id="tLogo1" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="distLogo1"src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Title</h5>
+          <textarea class="form-control" name="testimosnialsTitle01" id="testimosnialsTitle01" rows="2" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Text</h5>
+          <textarea class="form-control" name="testimosnialsText01" id="testimosnialsText01" rows="9" id="comment"></textarea>
+        </div>
+      </div>
+      <!-- **********************CMS div end *************************** -->
+    </div>
+    <div class="row row-space">
+      <h1 class="head-text-sub">Testimonial - Box 02</h1>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Name</h5>
+          <textarea class="form-control" name="testimosnialsName02" id="testimosnialsName02"rows="2" name="tOneName" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+          <h5 class="cms-head">Logo Image</h5>
+          <input type="file" name="tLogo2" class="file">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
+            <span class="input-group-btn">
+              <button class="browse btn browse-button" type="button">Upload</button>
+            </span>
+          </div>
+          <div class="cms-img">
+            <img id="distLogo2" src="" class="img-responsive">
+            <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 cust-padding">
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Title</h5>
+          <textarea class="form-control" name="testimosnialsTitle02" id="testimosnialsTitle02"rows="2" id="comment"></textarea>
+        </div>
+        <div class="form-group">
+          <h5 class="cms-head">Testimonial-Text</h5>
+          <textarea class="form-control" name="testimosnialsText02" id="testimosnialsText02" rows="9" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="clearfix"></div>
 
-        <form name="createCMS" enctype="multipart/form-data" id="createCMS">
-          <div class="form-group">
-            <h5 class="cms-head">Logo Image</h5>
-            <input type="file" name="logoImage" id="logoImage" class="file" >
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="disLogoImage" src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <!--banner image -->
-          <div class="form-group">
-            <h5 class="cms-head">Banner Image</h5>
-            <input type="file" name="bannerImage" id="bannerImage" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img-banner">
-              <img id="disBannerImage" src="" class="img-responsive">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row row-space">
-        <div class="col-md-6 cust-padding">
-          <!--banner header -->
-          <div class="form-group">
-            <h5 class="cms-head">Banner Main Text</h5>
-            <textarea class="form-control" name="bannerMainText" value="" id="bannerMainText" rows="2" id="comment"></textarea>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <!--banner sub text -->
-          <div class="form-group">
-            <h5 class="cms-head">Banner Sub text</h5>
-            <textarea class="form-control" value="" name="bannerSubText" id="bannerSubText" rows="2" id="comment"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row row-space">
-        <h1 class="head-text-sub">Middle section 1</h1>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 01 - Title</h5>
-            <textarea class="form-control" name="boxTitle01" id="boxTitle01" rows="2" id="comment"></textarea>
-          </div>
-          <!--box 1 icon -->
-          <div class="form-group">
-            <h5 class="cms-head">Box 01 - Icon</h5>
-            <input type="file" name="boxIcon1" id="bOneIcon" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="disboxIcon1" src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 01 - Content</h5>
-            <textarea class="form-control" name="boxContent01" id="boxContent01" rows="2" id="comment"></textarea>
-          </div>
-        </div>
-        <!-- **********************CMS div end *************************** -->
-      </div>
-      <div class="row row-space">
-        <h1 class="head-text-sub">Middle section 2</h1>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 02 - Title</h5>
-            <textarea class="form-control" name="boxTitle02" id="boxTitle02" rows="2" id="comment"></textarea>
-          </div>
-          <!--box 1 icon -->
-          <div class="form-group">
-            <h5 class="cms-head">Box 02 - Icon</h5>
-            <input type="file" name="boxIcon2" id="bTwoIcon" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="disboxIcon2"src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 02 - Content</h5>
-            <textarea class="form-control" name="boxContent02" id="boxContent02" rows="2" id="comment"></textarea>
-          </div>
-        </div>
-        <!-- **********************CMS div end *************************** -->
-      </div>
-      <div class="row row-space">
-        <h1 class="head-text-sub">Middle section 3</h1>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 03 - Title</h5>
-            <textarea class="form-control" name="boxTitle03" id="boxTitle03" rows="2" id="comment"></textarea>
-          </div>
-          <!--box 1 icon -->
-          <div class="form-group">
-            <h5 class="cms-head">Box 03 - Icon</h5>
-            <input type="file" name="boxIcon3" id="boxIcon3" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="disboxIcon3"src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Box 03 - Content</h5>
-            <textarea class="form-control" name="boxContent03" id="boxContent03" rows="2" id="comment"></textarea>
-          </div>
-        </div>
-        <!-- **********************CMS div end *************************** -->
-      </div>
-      <div class="row row-space">
-        <h1 class="head-text-sub">Testimonial - Box 01</h1>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Name</h5>
-            <textarea class="form-control" name="testimosnialsName01" rows="2" id="testimosnialsName01"></textarea>
-          </div>
-          <div class="form-group">
-            <h5 class="cms-head">Logo Image</h5>
-            <input type="file" name="tLogo1" id="tLogo1" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="distLogo1"src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Title</h5>
-            <textarea class="form-control" name="testimosnialsTitle01" id="testimosnialsTitle01" rows="2" id="comment"></textarea>
-          </div>
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Text</h5>
-            <textarea class="form-control" name="testimosnialsText01" id="testimosnialsText01" rows="9" id="comment"></textarea>
-          </div>
-        </div>
-        <!-- **********************CMS div end *************************** -->
-      </div>
-      <div class="row row-space">
-        <h1 class="head-text-sub">Testimonial - Box 02</h1>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Name</h5>
-            <textarea class="form-control" name="testimosnialsName02" id="testimosnialsName02"rows="2" name="tOneName" id="comment"></textarea>
-          </div>
-          <div class="form-group">
-            <h5 class="cms-head">Logo Image</h5>
-            <input type="file" name="tLogo2" class="file">
-            <div class="input-group col-xs-12">
-              <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
-              <input type="text" class="form-control input-lg" disabled="" placeholder="Upload File">
-              <span class="input-group-btn">
-                <button class="browse btn browse-button" type="button">Upload</button>
-              </span>
-            </div>
-            <div class="cms-img">
-              <img id="distLogo2" src="" class="img-responsive">
-              <!-- <img src="public/img/placeholder.png" class="img-responsive"> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 cust-padding">
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Title</h5>
-            <textarea class="form-control" name="testimosnialsTitle02" id="testimosnialsTitle02"rows="2" id="comment"></textarea>
-          </div>
-          <div class="form-group">
-            <h5 class="cms-head">Testimonial-Text</h5>
-            <textarea class="form-control" name="testimosnialsText02" id="testimosnialsText02" rows="9" id="comment"></textarea>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-
-        <!-- **********************CMS div end *************************** -->
-      </div>
-
-    </form>
-
-    <div class="col-md-12 cust-padding center last-div">
-      <button type="submit" id="cmsUpdate" class="whiteHomeButton">Update</button>
+      <!-- **********************CMS div end *************************** -->
     </div>
 
+  </form>
+
+  <div class="col-md-12 cust-padding center last-div">
+    <button type="submit" id="cmsUpdate" class="whiteHomeButton">Update</button>
   </div>
 
-
-  <!-- **********************help div start*************************** -->
-  <div class="message-wrap col-lg-10 helpview minheightdash">
-    <div class="row row-space">
-      <div class="div-space center marg-btm animatedParent" id="div1" style="display: block;">
-        <div class="div-space-div animated fadeInUp go">
-          <h1 class="head-text left col-md-offset-3">Welcome to VetX!</h1>
-          <div class="col-md-3">
-            <img src="public/img/empty-dog.png" class="img-responsive center-block">
-          </div>
-          <div class="col-md-9 left">
-            <label class="left help-p padding-top15">Thank you for joining – we are thrilled to have you join the VetX community!
-              <br>
-              <br>We want to walk you through a few key points to make sure you get the most out of your experience.
-              <br>
-              <br>Please click through this quick demo to learn how to have the best experience</label>
-              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('2','6')">Ready to go</button>
-            </div>
-          </div>
-        </div>
-        <div class="div-space center marg-btm animatedParent" id="div2" style="display: none;">
+</div>
 
 
-          <div class="div-space-div animated fadeInUp go">
-            <h1 class="head-text left col-md-offset-3">Add your photo</h1>
-            <div class="col-md-3">
-              <img src="public/img/empty-dog.png" class="img-responsive center-block">
-            </div>
-            <div class="col-md-9 left">
-              <label class=" left help-p padding-top45">Your first step is easy. Just add in your personal photo, the photo of your clinic, or anything you’d like to see.</label>
-              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('1','1')">Back</button>&nbsp &nbsp&nbsp &nbsp
-              <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('3','2')">Admin Panel</button>
-            </div>
-          </div>
-
-        </div>
-        <div class="div-space center marg-btm animatedParent" id="div3" style="display: none;">
-
-
-
-          <div class="div-space-div animated fadeInUp go">
-            <h1 class="head-text left col-md-offset-3">Add your veterinarians</h1>
-            <div class="col-md-3">
-              <img src="public/img/empty-dog.png" class="img-responsive center-block">
-            </div>
-            <div class="col-md-9 left">
-              <label class=" left help-p">Now make sure that your veterinarians have the opportunity to answer incoming calls in the event that they would like to answer calls themselves.</label>
-              <br>
-              <label class=" left help-p">This is only relevant if you would like to take video calls during normal business hours! Otherwise no need to worry, one of our specialists will be there for your clinic during after-hours.</label>
-              <button class="bgorange colorwhite btn-help mar-top1"onclick="helpView('2','6')" >Back</button>&nbsp &nbsp&nbsp &nbsp
-              <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','3')">Got it. Tell me more.</button>
-            </div>
-          </div>
-
-
-
-        </div>
-
-        <div class="div-space center marg-btm animatedParent" id="div4" style="display: none;">
-
-
-
-         <div class="div-space-div animated fadeInUp go">
-          <h1 class="head-text left col-md-offset-3">Set up billing</h1>
-          <div class="col-md-3">
-            <img src="public/img/empty-dog.png" class="padding-top30 img-responsive center-block">
-          </div>
-          <div class="col-md-9 left">
-            <label class=" left help-p padding-top15">The billing feature allows your clinic to charge your patients directly for consultations. Just specify if you’d like to charge and how much per consultation!</label>
-            <br>
-            <label class=" left help-p">Your clients will be notified of the fee and billed after their consultation.</label>
-            <br>
-            <label class=" left help-p">If you do not enable this feature, the consultations will be entirely free!</label>
-            <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('3','2')">Back</button>&nbsp &nbsp&nbsp &nbsp
-            <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('5','4')">Got it. Tell me more.</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="div-space center marg-btm animatedParent" id="div5" style="display: none;">
-        <div class="div-space-div animated fadeInUp go">
-          <h1 class="head-text left col-md-offset-3">Customize your website</h1>
-          <div class="col-md-3">
-            <img src="public/img/empty-dog.png" class="img-responsive center-block">
-          </div>
-          <div class="col-md-9 left">
-            <label class=" left help-p padding-top20">Our platform generates a unique URL for your clinic. This is the portal whereby your clients can access video-on-demand. </label>
-            <br>
-            <label class=" left help-p">From here you can customize the website for your logo, your pictures and your text. What you decide to post is entirely up to you!</label>
-            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','3')">Back</button>&nbsp &nbsp&nbsp &nbsp
-            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','5')">Got it. Tell me more.</button>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="div-space marg-btm animatedParent" id="div6" style="display: none;">
-       <div class="div-space-div animated fadeInUp go">
-        <h1 class="head-text left col-md-offset-3">Tell your patients!</h1>
+<!-- **********************help div start*************************** -->
+<div class="message-wrap col-lg-10 helpview minheightdash">
+  <div class="row row-space">
+    <div class="div-space center marg-btm animatedParent" id="div1" style="display: block;">
+      <div class="div-space-div animated fadeInUp go">
+        <h1 class="head-text left col-md-offset-3">Welcome to VetX!</h1>
         <div class="col-md-3">
-          <img src="public/img/empty-dog.png" class="img-responsive center-block padding-top15">
+          <img src="public/img/empty-dog.png" class="img-responsive center-block">
         </div>
         <div class="col-md-9 left">
-          <label class="left help-p padding-top15">Providing around-the-clock support for your patients is a BIG deal and they will love you for it!</label>
+          <label class="left help-p padding-top15">Thank you for joining – we are thrilled to have you join the VetX community!
+            <br>
+            <br>We want to walk you through a few key points to make sure you get the most out of your experience.
+            <br>
+            <br>Please click through this quick demo to learn how to have the best experience</label>
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('2','6')">Ready to go</button>
+          </div>
+        </div>
+      </div>
+      <div class="div-space center marg-btm animatedParent" id="div2" style="display: none;">
+
+
+        <div class="div-space-div animated fadeInUp go">
+          <h1 class="head-text left col-md-offset-3">Add your photo</h1>
+          <div class="col-md-3">
+            <img src="public/img/empty-dog.png" class="img-responsive center-block">
+          </div>
+          <div class="col-md-9 left">
+            <label class=" left help-p padding-top45">Your first step is easy. Just add in your personal photo, the photo of your clinic, or anything you’d like to see.</label>
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('1','1')">Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top" onclick="helpView('3','2')">Admin Panel</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="div-space center marg-btm animatedParent" id="div3" style="display: none;">
+
+
+
+        <div class="div-space-div animated fadeInUp go">
+          <h1 class="head-text left col-md-offset-3">Add your veterinarians</h1>
+          <div class="col-md-3">
+            <img src="public/img/empty-dog.png" class="img-responsive center-block">
+          </div>
+          <div class="col-md-9 left">
+            <label class=" left help-p">Now make sure that your veterinarians have the opportunity to answer incoming calls in the event that they would like to answer calls themselves.</label>
+            <br>
+            <label class=" left help-p">This is only relevant if you would like to take video calls during normal business hours! Otherwise no need to worry, one of our specialists will be there for your clinic during after-hours.</label>
+            <button class="bgorange colorwhite btn-help mar-top1"onclick="helpView('2','6')" >Back</button>&nbsp &nbsp&nbsp &nbsp
+            <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','3')">Got it. Tell me more.</button>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="div-space center marg-btm animatedParent" id="div4" style="display: none;">
+
+
+
+       <div class="div-space-div animated fadeInUp go">
+        <h1 class="head-text left col-md-offset-3">Set up billing</h1>
+        <div class="col-md-3">
+          <img src="public/img/empty-dog.png" class="padding-top30 img-responsive center-block">
+        </div>
+        <div class="col-md-9 left">
+          <label class=" left help-p padding-top15">The billing feature allows your clinic to charge your patients directly for consultations. Just specify if you’d like to charge and how much per consultation!</label>
           <br>
-          <label class="left help-p">Make sure to upload your contacts here to send them a message telling them that you are available around the clock! If you’d prefer not to email and instead tell them in person, no worries! We will send you a care package with marketing materials to pass out to them!</label>
-          <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','4')">Back</button>&nbsp &nbsp&nbsp &nbsp
-          <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">Got it. Tell me more.</button>
+          <label class=" left help-p">Your clients will be notified of the fee and billed after their consultation.</label>
+          <br>
+          <label class=" left help-p">If you do not enable this feature, the consultations will be entirely free!</label>
+          <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('3','2')">Back</button>&nbsp &nbsp&nbsp &nbsp
+          <button class="bgorange colorwhite btn-help mar-top2" onclick="helpView('5','4')">Got it. Tell me more.</button>
         </div>
       </div>
 
     </div>
 
-
-    <div class="div-space center marg-btm animatedParent" id="div7" style="display: none;">
-     <div class="div-space-div width100 animated fadeInUp go">
-      <h1 class="head-text1 center">One last thing!</h1>
-      <label class="center help-p help-p-width">Only YOU have access to the admin panel! Your patients and veterinarians will login through the User Panel!</label>
-      <img src="public/img/pic3.png" class="img-responsive center-block help-img2">
-      <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','5')">Back</button>&nbsp &nbsp&nbsp &nbsp
-      <button class="bgorange colorwhite btn-help mar-top1" onclick="finalView()">OK! Lets get started!</button>
+    <div class="div-space center marg-btm animatedParent" id="div5" style="display: none;">
+      <div class="div-space-div animated fadeInUp go">
+        <h1 class="head-text left col-md-offset-3">Customize your website</h1>
+        <div class="col-md-3">
+          <img src="public/img/empty-dog.png" class="img-responsive center-block">
+        </div>
+        <div class="col-md-9 left">
+          <label class=" left help-p padding-top20">Our platform generates a unique URL for your clinic. This is the portal whereby your clients can access video-on-demand. </label>
+          <br>
+          <label class=" left help-p">From here you can customize the website for your logo, your pictures and your text. What you decide to post is entirely up to you!</label>
+          <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','3')">Back</button>&nbsp &nbsp&nbsp &nbsp
+          <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','5')">Got it. Tell me more.</button>
+        </div>
+      </div>
     </div>
+
+
+
+    <div class="div-space marg-btm animatedParent" id="div6" style="display: none;">
+     <div class="div-space-div animated fadeInUp go">
+      <h1 class="head-text left col-md-offset-3">Tell your patients!</h1>
+      <div class="col-md-3">
+        <img src="public/img/empty-dog.png" class="img-responsive center-block padding-top15">
+      </div>
+      <div class="col-md-9 left">
+        <label class="left help-p padding-top15">Providing around-the-clock support for your patients is a BIG deal and they will love you for it!</label>
+        <br>
+        <label class="left help-p">Make sure to upload your contacts here to send them a message telling them that you are available around the clock! If you’d prefer not to email and instead tell them in person, no worries! We will send you a care package with marketing materials to pass out to them!</label>
+        <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('4','4')">Back</button>&nbsp &nbsp&nbsp &nbsp
+        <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('7','0')">Got it. Tell me more.</button>
+      </div>
+    </div>
+
   </div>
+
+
+  <div class="div-space center marg-btm animatedParent" id="div7" style="display: none;">
+   <div class="div-space-div width100 animated fadeInUp go">
+    <h1 class="head-text1 center">One last thing!</h1>
+    <label class="center help-p help-p-width">Only YOU have access to the admin panel! Your patients and veterinarians will login through the User Panel!</label>
+    <img src="public/img/pic3.png" class="img-responsive center-block help-img2">
+    <button class="bgorange colorwhite btn-help mar-top1" onclick="helpView('6','5')">Back</button>&nbsp &nbsp&nbsp &nbsp
+    <button class="bgorange colorwhite btn-help mar-top1" onclick="finalView()">OK! Lets get started!</button>
+  </div>
+</div>
 
 
 
@@ -2084,7 +2088,7 @@ function editUserInfo()
 function editContact(contactUserId,contactFirstName,contactLastName,
   contactEmail,contactPhoneNumber)
 {
-  alert(contactUserId);
+ 
   $("#contactUserId").val(contactUserId);
   $("#contactFirstName").val(contactFirstName);
   $("#contactLastName").val(contactLastName);
