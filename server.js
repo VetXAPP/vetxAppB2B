@@ -499,9 +499,17 @@ app.use('/:vetLab',myLogger, clinicUserRouter);
 /* WWW AND HTTPS REDIRECTION ==> */
 
 
-app.get('/*', function(req, res, next) {
-	if (req.headers.host.match(/^www/) == null ) res.redirect('https://www.' + req.headers.host + req.url, 301);
-	else next();
+// app.get('/*', function(req, res, next) {
+// 	if (req.headers.host.match(/^www/) == null ) res.redirect('https://www.' + req.headers.host + req.url, 301);
+// 	else next();
+// });
+
+app.use (function (req, res, next) {
+	if (req.secure) {
+		next();
+	} else {
+		res.redirect('https://' + req.headers.host + req.url);
+	}
 });
 
 
