@@ -28,6 +28,7 @@ var clinicSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Doctor'
     }],
+    doctorsCount:String,
     pet: [{
         type: Schema.Types.ObjectId,
         ref: "Pet"

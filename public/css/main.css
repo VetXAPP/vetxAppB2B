@@ -2542,10 +2542,16 @@ ul.pricing-list-ul {
 .all-our-plans{text-align: left; color: #ed7d31; padding: 80px 0 0 10px;}
 .pricing-content-box i.fa{color: #ccc; font-size: 80px; vertical-align: middle; border-radius: 100%;}
 
-
+.pricingPlan{text-decoration: none !important}
 
 /** VetX Css Added on 16-01-17 **/
 .foot-custom{width: 100%; margin: 15px 0;}
 .fo-img img{margin-top: -3px;}
 .foot-custom p{color: #999;}
+
+/*Payment auto login   */
+.auto_login
+{
+    cursor: pointer !important;
+}
 

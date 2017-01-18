@@ -194,7 +194,7 @@
 
               </td>
 
-              <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>')">
+              <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>','<%= doc.profileImage %>')">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
               </td>
               <td class="delete" data-toggle="modal" data-target="#deleteVetPopup"><a onclick="deleteVet('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
@@ -632,7 +632,6 @@
   <div class="col-md-12 col-sm-12">
     <h1 class="head-text">Appointment</h1>
 
-
     <% if(appointment.length ==0)
     {
     %>
@@ -1065,6 +1064,12 @@
 <label for="usr">DoctorId:</label>
 <input type="text" class="form-control" id="docId" name="docId">
 </div> -->
+<div class="image-upload col-md-offset-4">
+  <label for="profileImage">
+    <img id="blah" src="clinic/img/signup_image.png" alt="your image" height="100">
+  </label>
+  <input id="profileImage" type="file" name="profileImage">
+</div>
 
 <div class="form-group">
   <label for="usr">Veterinarian Name:</label>
@@ -1086,16 +1091,7 @@
 <label for="usr">Phone number:</label>
 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
 </div>  
-<div class="form-group">
-  <label class="upload-div">Upload Image</label>
-  <div class="upload-div" style="position:relative;">
-    <a class='upload-button' href='javascript:;'>
-      Choose File...
-      <input type="file" class="upload" name="profileImage" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
-    </a> &nbsp;
-    <span class='label label-info' id="upload-file-info"></span>
-  </div>
-</div>
+
 
 <div class="modal-footer">
   <button  class="whiteHomeButton" type="submit">Submit</button>
@@ -1300,312 +1296,311 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Pets Records</h4>
-      </div>
-      <div class="modal-body">
-        <div class="login" style="display: block;">
-          <form>
-            <div class="form-group">
-              <label for="usr">Pet Name:</label>
-              <input type="text" class="form-control" id="usr">
-            </div>
-            <div class="form-group">
-              <label class="upload-div">Upload Image</label>
-              <div class="upload-div" style="position:relative;">
-                <a class='upload-button' href='javascript:;'>
-                  Choose File...
-                  <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
-                </a> &nbsp;
-                <span class='label label-info' id="upload-file-info"></span>
+        <h4 class="modal-title">Edit Pets Records</h4>    </div>
+        <div class="modal-body">
+          <div class="login" style="display: block;">
+            <form>
+              <div class="form-group">
+                <label for="usr">Pet Name:</label>
+                <input type="text" class="form-control" id="usr">
               </div>
-            </div>
-          </form>
+              <div class="form-group">
+                <label class="upload-div">Upload Image</label>
+                <div class="upload-div" style="position:relative;">
+                  <a class='upload-button' href='javascript:;'>
+                    Choose File...
+                    <input type="file" class="upload" name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                  </a> &nbsp;
+                  <span class='label label-info' id="upload-file-info"></span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="whiteHomeButton">Submit</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="whiteHomeButton">Submit</button>
-      </div>
     </div>
   </div>
-</div>
-<!--************ edit-pets-records popup end  ******************* -->
-<!--************ contact edit popup ******************* -->
-<div class="modal fade my-popup" id="edit" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit User</h4>
-      </div>
-      <div class="modal-body">
-        <div class="login" style="display: block;">
-          <form id="userEdit" method="post" name="userEdit" enctype="multipart/form-data" >
-            <div class="form-group">
-              <label for="usr">FirstName:</label>
-              <input type="text" class="form-control" id="userFirstName" name="userFirstName">
-              <input type="hidden" name="editUserId" value="" id="editUserId"> 
-            </div>
-            <div class="form-group">
-              <label for="pwd">LastName:</label>
-              <input type="text" class="form-control" id="userLastName" name="userLastName">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="userPassword" name="userPassword">
-            </div>
-
-            <div class="modal-footer">
-              <button type="submit" class="whiteHomeButton">Submit</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!--************ contact popup end  ******************* -->
-
-<!--************ contact edit popup ******************* -->
-<div class="modal fade my-popup" id="contactEdit" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit User</h4>
-      </div>
-      <div class="modal-body">
-        <div class="login" style="display: block;">
-          <form id="contactEditForm" method="post" name="contactEditForm" enctype="multipart/form-data" >
-            <div class="form-group">
-              <label for="usr">FirstName:</label>
-              <input type="text" class="form-control" id="contactFirstName" name="contactFirstName">
-              <input type="hidden" name="contactUserId" value="" id="contactUserId"> 
-            </div>
-            <div class="form-group">
-              <label for="pwd">LastName:</label>
-              <input type="text" class="form-control" id="contactLastName" name="contactLastName">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Email:</label>
-              <input type="text" class="form-control" id="contactEmail" name="contactEmail">
-            </div>
-            <div class="form-group">
-              <label for="pwd">PhoneNumber:</label>
-              <input type="text" class="form-control" id="contactPhoneNumber" name="contactPhoneNumber">
-            </div>
-
-            <div class="modal-footer">
-              <button type="submit" class="whiteHomeButton">Submit</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-<!--************ contact popup end  ******************* -->
-
-<!--************ delete popup ******************* -->
-<div class="modal fade" id="delete" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm to Delete</h4>
-      </div>
-      <div class="modal-body">
-        <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
-        <button type="button" class="whiteHomeButton" id="deleteUser" style="padding: 10px 35px;">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="deleteVetPopup" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm to Delete</h4>
-      </div>
-      <div class="modal-body">
-        <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
-        <button type="button" class="whiteHomeButton" id="deleteVet" style="padding: 10px 35px;">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--************ delete popup end  ******************* -->
-
-<!--************ delete popup ******************* -->
-<div class="modal fade" id="contactDelete" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm to Delete</h4>
-      </div>
-      <div class="modal-body">
-        <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
-        <button type="button" class="whiteHomeButton" id="deleteContact" style="padding: 10px 35px;">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--************ delete popup end  ******************* -->
-
-<!-- Edit Profile Modal -->
-
-<!-- Modal -->
-<div id="edit-profile" class="modal fade" role="dialog" data-backdrop="static">
-
-  <form id="clinicProfileUpdate"   method="POST" name="clinicProfileUpdate" enctype="multipart/form-data">
-
-    <div class="modal-dialog edit-profile-modal">
-
-
+  <!--************ edit-pets-records popup end  ******************* -->
+  <!--************ contact edit popup ******************* -->
+  <div class="modal fade my-popup" id="edit" role="dialog">
+    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit Profile</h4>
+          <h4 class="modal-title">Edit User</h4>
         </div>
         <div class="modal-body">
+          <div class="login" style="display: block;">
+            <form id="userEdit" method="post" name="userEdit" enctype="multipart/form-data" >
+              <div class="form-group">
+                <label for="usr">FirstName:</label>
+                <input type="text" class="form-control" id="userFirstName" name="userFirstName">
+                <input type="hidden" name="editUserId" value="" id="editUserId"> 
+              </div>
+              <div class="form-group">
+                <label for="pwd">LastName:</label>
+                <input type="text" class="form-control" id="userLastName" name="userLastName">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="userPassword" name="userPassword">
+              </div>
 
-          <div class="image-upload col-md-offset-5">
-            <label for="clinicImage">
+              <div class="modal-footer">
+                <button type="submit" class="whiteHomeButton">Submit</button>
+              </div>
 
-              <%
-              if(user.clinicImage !="")
-              {
+            </form>
+          </div>
+        </div>
 
-              %>
-              <img id="clinicImageSrc" src="<%= user.clinicImage %>" alt="your image" height="100">
-              <% } else { %>
+      </div>
+    </div>
+  </div>
+  <!--************ contact popup end  ******************* -->
 
-              <img id="clinicImageSrc" src="public/img/placeholder-dash.png" alt="your image" height="100">
+  <!--************ contact edit popup ******************* -->
+  <div class="modal fade my-popup" id="contactEdit" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit User</h4>
+        </div>
+        <div class="modal-body">
+          <div class="login" style="display: block;">
+            <form id="contactEditForm" method="post" name="contactEditForm" enctype="multipart/form-data" >
+              <div class="form-group">
+                <label for="usr">FirstName:</label>
+                <input type="text" class="form-control" id="contactFirstName" name="contactFirstName">
+                <input type="hidden" name="contactUserId" value="" id="contactUserId"> 
+              </div>
+              <div class="form-group">
+                <label for="pwd">LastName:</label>
+                <input type="text" class="form-control" id="contactLastName" name="contactLastName">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Email:</label>
+                <input type="text" class="form-control" id="contactEmail" name="contactEmail">
+              </div>
+              <div class="form-group">
+                <label for="pwd">PhoneNumber:</label>
+                <input type="text" class="form-control" id="contactPhoneNumber" name="contactPhoneNumber">
+              </div>
 
-              <%} %>
+              <div class="modal-footer">
+                <button type="submit" class="whiteHomeButton">Submit</button>
+              </div>
 
-            </label>
-            <input id="clinicImage" type="file" name="clinicImage">
-          </div><br><br>
+            </form>
+          </div>
+        </div>
 
-          <div class="col-md-6">
-            <p>Contact Information</p>
-            <div class="form-group">
-              <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="<%= user.firstName %>" />
-              <input type="hidden" id="clinicId" name="clinicId" class="buy-input" value="<%= user._id %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="<%= user.lastName %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="username" name="username" placeholder="Clinic Name" class="buy-input"  value="<%= user.clinicName %>" readonly />
-            </div>
-            <div class="form-group">
-              <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" class="buy-input"  value="<%= user.mobileNumber %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="email" name="email" placeholder="Email Address" class="buy-input" value="<%= user.email %>" readonly />
-            </div>
-            <div class="form-group">
-              <input type="password" id="password" name="password" placeholder="Password" class="buy-input" value="" />
-            </div>
-            <div class="form-group">
-              <input type="Password" id="confirm_password" 
-              name="confirm_password" placeholder="Confirm password" class="buy-input" value="" />
-            </div>
-          </div>    
+      </div>
+    </div>
+  </div>
+  <!--************ contact popup end  ******************* -->
 
-          <div class="col-md-6">
-            <p>Billing Information</p>
+  <!--************ delete popup ******************* -->
+  <div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm to Delete</h4>
+        </div>
+        <div class="modal-body">
+          <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+          <button type="button" class="whiteHomeButton" id="deleteUser" style="padding: 10px 35px;">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteVetPopup" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm to Delete</h4>
+        </div>
+        <div class="modal-body">
+          <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+          <button type="button" class="whiteHomeButton" id="deleteVet" style="padding: 10px 35px;">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************ delete popup end  ******************* -->
 
-            <div class="form-group">
-              <input type="text" id="country" name="country" placeholder="Country" class="buy-input" value="<%= user.country %>" />
+  <!--************ delete popup ******************* -->
+  <div class="modal fade" id="contactDelete" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm to Delete</h4>
+        </div>
+        <div class="modal-body">
+          <h2 class="Confirm-head center">Confirm to delete this user ?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="whiteHomeButton" data-dismiss="modal">Cancel</button>&nbsp &nbsp
+          <button type="button" class="whiteHomeButton" id="deleteContact" style="padding: 10px 35px;">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************ delete popup end  ******************* -->
+
+  <!-- Edit Profile Modal -->
+
+  <!-- Modal -->
+  <div id="edit-profile" class="modal fade" role="dialog" data-backdrop="static">
+
+    <form id="clinicProfileUpdate"   method="POST" name="clinicProfileUpdate" enctype="multipart/form-data">
+
+      <div class="modal-dialog edit-profile-modal">
+
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Profile</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="image-upload col-md-offset-5">
+              <label for="clinicImage">
+
+                <%
+                if(user.clinicImage !="")
+                {
+
+                %>
+                <img id="clinicImageSrc" src="<%= user.clinicImage %>" alt="your image" height="100">
+                <% } else { %>
+
+                <img id="clinicImageSrc" src="public/img/placeholder-dash.png" alt="your image" height="100">
+
+                <%} %>
+
+              </label>
+              <input id="clinicImage" type="file" name="clinicImage">
+            </div><br><br>
+
+            <div class="col-md-6">
+              <p>Contact Information</p>
+              <div class="form-group">
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="<%= user.firstName %>" />
+                <input type="hidden" id="clinicId" name="clinicId" class="buy-input" value="<%= user._id %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="<%= user.lastName %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Clinic Name" class="buy-input"  value="<%= user.clinicName %>" readonly />
+              </div>
+              <div class="form-group">
+                <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Mobile Number" class="buy-input"  value="<%= user.mobileNumber %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="email" name="email" placeholder="Email Address" class="buy-input" value="<%= user.email %>" readonly />
+              </div>
+              <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" class="buy-input" value="" />
+              </div>
+              <div class="form-group">
+                <input type="Password" id="confirm_password" 
+                name="confirm_password" placeholder="Confirm password" class="buy-input" value="" />
+              </div>
+            </div>    
+
+            <div class="col-md-6">
+              <p>Billing Information</p>
+
+              <div class="form-group">
+                <input type="text" id="country" name="country" placeholder="Country" class="buy-input" value="<%= user.country %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="address" name="address" placeholder="Address" class="buy-input" value="<%= user.address %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="state" name="state" placeholder="State" class="buy-input" value="<%= user.state %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="city" name="city" placeholder="City" class="buy-input"  
+                value="<%= user.city %>"/>
+              </div>
+              <div class="form-group">
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="buy-input" 
+                value="<%= user.phoneNumber %>" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" class="buy-input"  value="<%= user.zipCode %>"/>
+              </div>
             </div>
-            <div class="form-group">
-              <input type="text" id="address" name="address" placeholder="Address" class="buy-input" value="<%= user.address %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="state" name="state" placeholder="State" class="buy-input" value="<%= user.state %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="city" name="city" placeholder="City" class="buy-input"  
-              value="<%= user.city %>"/>
-            </div>
-            <div class="form-group">
-              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="buy-input" 
-              value="<%= user.phoneNumber %>" />
-            </div>
-            <div class="form-group">
-              <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" class="buy-input"  value="<%= user.zipCode %>"/>
-            </div>
+
+
           </div>
 
 
+          <div class="clearfix"></div>   
+
+          <div class="modal-footer">
+            <button type="submit" class="whiteHomeButton" >Submit</button>
+          </div>               
         </div>
 
-
-        <div class="clearfix"></div>   
-
-        <div class="modal-footer">
-          <button type="submit" class="whiteHomeButton" >Submit</button>
-        </div>               
       </div>
+    </form>
 
-    </div>
-  </form>
+  </div>
 
-</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+  </script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/css3-animate-it.js"></script>
+  <script src="public/js/main.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <!--<script>-->
+  <!--$('#endButton').modal('hide');-->
+  <!--$('body').removeClass('modal-open');-->
+  <!--$('.modal-backdrop').remove();-->
+  <!---->
+  <!--</script>-->
+  <!--upload -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>
-  window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
-</script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/vendor/css3-animate-it.js"></script>
-<script src="public/js/main.js"></script>
-<script src="js/materialize.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<!--<script>-->
-<!--$('#endButton').modal('hide');-->
-<!--$('body').removeClass('modal-open');-->
-<!--$('.modal-backdrop').remove();-->
-<!---->
-<!--</script>-->
-<!--upload -->
+  <script type="text/javascript">
 
-<script type="text/javascript">
-
- $(document).on('click', '.browse', function() {
-  var file = $(this).parent().parent().parent().find('.file');
-  file.trigger('click');
-});
- $(document).on('change', '.file', function() {
-  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-});
+   $(document).on('click', '.browse', function() {
+    var file = $(this).parent().parent().parent().find('.file');
+    file.trigger('click');
+  });
+   $(document).on('change', '.file', function() {
+    $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+  });
 
 
-</script>
-<script type="text/javascript">
+ </script>
+ <script type="text/javascript">
 
     // function readURL(input) {
     //     if (input.files && input.files[0]) {
@@ -2088,7 +2083,7 @@ function editUserInfo()
 function editContact(contactUserId,contactFirstName,contactLastName,
   contactEmail,contactPhoneNumber)
 {
- 
+
   $("#contactUserId").val(contactUserId);
   $("#contactFirstName").val(contactFirstName);
   $("#contactLastName").val(contactLastName);
@@ -2212,12 +2207,18 @@ var new_form = new FormData($('#addVet')[0]);
        },500: function (response) {
          alert('failure');
 
-       }},
-       cache: false,
-       contentType: false,
-       mimeType: "multipart/form-data",
-       processData: false
-     });
+       },
+       202: function (response) {
+         alert('Reached your limit!');
+
+       }
+
+     },
+     cache: false,
+     contentType: false,
+     mimeType: "multipart/form-data",
+     processData: false
+   });
 
   }
 //ADD VET
@@ -2229,19 +2230,22 @@ function addVetStart()
 
 //EDIT VET 
 
-function editVet(vetId,docId,title,email,docPassword,phoneNumber,name,path)
+function editVet(vetId,docId,title,email,docPassword,phoneNumber,name,path,profileImage)
 {  
+
 
   $("#actionStatus").val(0);
   $("#vetId").val(vetId);
   $("#docId").val(docId);
   $("#title").val(title);
   $("#email").val(email);
-  $("#docPassword").val(docPassword);
-  $("#phoneNumber").val(phoneNumber);
-  $("#name").val(name);
-  $('#docId').attr('readonly', true);
-  $('#email').attr('readonly', true);
+ //$("#docPassword").val(docPassword);
+ 
+ $("#blah").attr("src", profileImage);
+ $("#phoneNumber").val(phoneNumber);
+ $("#name").val(name);
+ $('#docId').attr('readonly', true);
+ $('#email').attr('readonly', true);
 
 
 }
@@ -2789,6 +2793,26 @@ function editClinicInfo()
 
     readURL(this);
   });
+
+
+
+
+  function readURL1(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#profileImage").change(function() { 
+    readURL1(this);
+  });
+
 
 </script>
 </html>

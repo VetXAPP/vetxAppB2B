@@ -241,8 +241,7 @@ localAuth.use('local-signup', new clinicStrategy({
                             newClinic.phoneNumber = req.body.phoneNumber;
                             newClinic.zipCode = req.body.zipCode;
                             newClinic.planInfo = req.body.plan_info;
-                            //email
-                            
+                            newClinic.doctorsCount = req.body.doctorsCount;
                             var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
                             var hbs= require('nodemailer-express-handlebars');
                             var options = {

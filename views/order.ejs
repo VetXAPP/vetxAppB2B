@@ -82,16 +82,10 @@
 
         <div class="jumbotron">
             <div class="container">
-
-                <div class="row"   >
-
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12  tab-concept">
-
-
                         <div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 ">
                             <div class=" col-md-12 col-sm-12 col-xs-12 ">
-
-
                             </div>
                             <div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12 ">
                                 <img src="public/img/banner_1.png" class="img-responsive" id="signUpBar">
@@ -110,7 +104,6 @@
                 </div>
                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 form-div">
                     <form id="testform2"  action="/clinic/register" method="POST">
-
                   <!--       <fieldset class="personal-data" id="trailPlan" style="display:none"> 
                             <div> <h1>This is 14 day trail  </h1> </div>
                         </fieldset> -->
@@ -129,12 +122,11 @@
                                     <tr>
                                         <td class="tablefontgraysmall">
 
-
-                                         <div class="col-md-6">
+                                           <div class="col-md-6">
                                             <ul class="cost-ul-orderinfo">
-                                                <li>After-hour and weekend phone support</li>
-                                                <li>24/7 Video-on Demand</li>
-                                                <li>Customizable interface</li>
+                                                <li>After hour triago support</li>
+                                                <li>Video on Demand</li>
+                                                <li>Customisable Interface</li>
                                                 <li>Appointment Scheduling</li>
                                             </ul>
                                         </div>
@@ -143,7 +135,7 @@
 
                                                 <li>Report Generation</li>
                                                 <li>Analytics</li>
-                                                <li>On Boarding Support </li>
+
                                             </ul>
                                         </div>
                                     <!-- <ul>
@@ -160,7 +152,7 @@
 
                                         <% if(i==1) {  %>
 
-                                        <p class="tablefontboldorangesmall">You save 35%</p>
+                                        <!--    <p class="tablefontboldorangesmall">You save 35%</p> -->
 
                                         <% } %>
 
@@ -170,7 +162,7 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" 
-                                                id="plan_info_<%= enterPriceinfo[i].tenure %>" name="plan_info"  value="<%= enterPriceinfo[i]._id  %>" onclick="setPrice(<%= enterPriceinfo[i].price %>)">
+                                                id="plan_info_<%= i+1 %>" name="plan_info"  value="<%= enterPriceinfo[i]._id  %>" onclick="setPrice('<%= enterPriceinfo[i].price %>','<%= enterPriceinfo[i].price %>')">
                                             </label>
                                         </div>
                                     </td>
@@ -190,7 +182,8 @@
                             <br>
                             <div class="form-group">
                                 <input type="text" id="firstName" name="firstName" placeholder="First Name" class="buy-input" value="" />
-                                <input type="hidden" id="price" name="price" value="5000" >
+                                <input type="hidden" id="price" name="price" value="498" >
+                                <input type="hidden" id="doctorsCount" name="doctorsCount" value="2" >
                             </div>
                             <div class="form-group">
                                 <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="buy-input"  value="" />
@@ -260,18 +253,16 @@
 
                                             <div class="col-md-6">
                                                 <ul class="cost-ul-orderinfo">
-                                                    <li>After-hour and weekend phone support</li>
-                                                    <li>24/7 Video-on Demand</li>
-                                                    <li>Customizable interface</li>
+                                                    <li>After hour triago support</li>
+                                                    <li>Video on Demand</li>
+                                                    <li>Customisable Interface</li>
                                                     <li>Appointment Scheduling</li>
                                                 </ul>
                                             </div>
                                             <div class="col-md-6">
                                                 <ul class="cost-ul-1-orderinfo">
-
                                                     <li>Report Generation</li>
                                                     <li>Analytics</li>
-                                                    <li>On Boarding Support </li>
                                                 </ul>
                                             </div>
                                             <!-- <ul>
@@ -300,13 +291,13 @@
                         <br>
                         <br>
                         <p class="paragraph-grey">
-                           <span id="user_name">Name and Surname</span><br>
-                           <span id="clinic_name">Clinical Name</span><br>
-                           <span id="email_val">name.surname@gmail.com</span><br>
-                           <span id="mobile_val">+(123) 456 789 45</span><br>
-                       </p>
-                   </div>
-                   <div class="col-md-6 col-sm-12 col-xs-12">
+                         <span id="user_name">Name and Surname</span><br>
+                         <span id="clinic_name">Clinical Name</span><br>
+                         <span id="email_val">name.surname@gmail.com</span><br>
+                         <span id="mobile_val">+(123) 456 789 45</span><br>
+                     </p>
+                 </div>
+                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <span><h2 class="buyfontheaderlarge">Billing Address</h2></span>
                     <br>
                     <br>
@@ -354,7 +345,7 @@
     <div class="modal-body">
 
         <div class="privacy_policy_container">
-            
+
             <p>75 Arlington St. Suite 500</p>
             <p>Boston, MA 02116</p>
             <p>1-855-483-8669</p>
@@ -625,7 +616,7 @@
 <script src="public/js/simpleform.min.js"></scripCt>
     <script src="public/js/main.js"></script>
     <script type="text/javascript">
-     $(".testform").simpleform({
+       $(".testform").simpleform({
         speed: 500,
         transition: 'fade',
         progressBar: true,
@@ -633,7 +624,7 @@
         validate: true
     });
 
-     $("#testform2").simpleform({
+       $("#testform2").simpleform({
         speed: 500,
         transition: 'slide',
         progressBar: true,
@@ -641,7 +632,7 @@
         validate: true
     });
 
-     $("#testform3").simpleform({
+       $("#testform3").simpleform({
         speed: 500,
         transition: 'none',
         progressBar: true,
@@ -650,187 +641,187 @@
     });
 
 
-     $("#testform2").on('sf-finish', function(e, from, to) {
+       $("#testform2").on('sf-finish', function(e, from, to) {
         alert('Sending form to process or not?');
     e.preventDefault(); // this you have to call if you need to interrupt submit form
 })
 
-     function validateForm(formID, Obj) {
+       function validateForm(formID, Obj) {
 
-      jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
-        phone_number = phone_number.replace(/\s+/g, ""); 
-        return this.optional(element) || phone_number.length > 9 &&
-        phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
-    }, "Please specify a valid phone number");
+          jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+            phone_number = phone_number.replace(/\s+/g, ""); 
+            return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+        }, "Please specify a valid phone number");
 
-      jQuery.validator.addMethod("zipcode_val", function(value, element) {
-          return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
-      }, "Please provide a valid zipcode.");
+          jQuery.validator.addMethod("zipcode_val", function(value, element) {
+              return this.optional(element) || /^\d{5}(?:-\d{4})?$/.test(value);
+          }, "Please provide a valid zipcode.");
 
-      switch (formID) {
-        case 'testform':
-        Obj.validate({
-            rules: {
+          switch (formID) {
+            case 'testform':
+            Obj.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    name: {
+                        required: true
+                    },
+                    street: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter an email address *",
+                        email: "Not a valid email address"
+                    },
+                    name: {
+                        required: "Please enter your name *"
+                    },
+                    street: {
+                        required: "Please enter street name"
+                    }
+                }
+
+            });
+            return Obj.valid();
+            break;
+
+            case 'testform2':
+            Obj.validate({
+                rules: {
+                    firstName: {
+                        required: true
+                    },
+                    lastName: {
+                        required: true
+                    },
+                    username: {
+                        required: true,
+                        remote:{
+                          url: "/clinic/checkUsername",
+                          type: "post",
+                          data: {
+                             username :function(){ return $('#username').val();},
+                         },
+                         async:true ,
+                         dataFilter: function(data) {
+                            var json = JSON.parse(data);
+                            if(json.status == true) {
+                                return true;
+                            }
+
+                            return "\"" + json.error + "\"";
+
+                        },
+                    },
+                },
+                mobileNumber: {
+                    required: true,
+                    phoneUS: true
+                },
                 email: {
                     required: true,
                     email: true,
-                },
-                name: {
-                    required: true
-                },
-                street: {
-                    required: true
-                }
-            },
-            messages: {
-                email: {
-                    required: "Please enter an email address *",
-                    email: "Not a valid email address"
-                },
-                name: {
-                    required: "Please enter your name *"
-                },
-                street: {
-                    required: "Please enter street name"
-                }
-            }
-
-        });
-        return Obj.valid();
-        break;
-
-        case 'testform2':
-        Obj.validate({
-            rules: {
-                firstName: {
-                    required: true
-                },
-                lastName: {
-                    required: true
-                },
-                username: {
-                    required: true,
                     remote:{
-                      url: "/clinic/checkUsername",
+                      url: "/clinic/checkEmail",
                       type: "post",
                       data: {
-                       username :function(){ return $('#username').val();},
-                   },
-                   async:true ,
-                   dataFilter: function(data) {
-                    var json = JSON.parse(data);
-                    if(json.status == true) {
-                        return true;
-                    }
+                         email :function(){ return $('#email').val();},
+                     },
+                     async:true ,
+                     dataFilter: function(data) {
+                        var json = JSON.parse(data);
+                        if(json.status == true) {
+                            return true;
+                        }
 
-                    return "\"" + json.error + "\"";
+                        return "\"" + json.error + "\"";
 
+                    },
                 },
             },
-        },
-        mobileNumber: {
-            required: true,
-            phoneUS: true
-        },
-        email: {
-            required: true,
-            email: true,
-            remote:{
-              url: "/clinic/checkEmail",
-              type: "post",
-              data: {
-               email :function(){ return $('#email').val();},
-           },
-           async:true ,
-           dataFilter: function(data) {
-            var json = JSON.parse(data);
-            if(json.status == true) {
-                return true;
+            password: {
+                required: true,
+                minlength : 5
+            },
+            confirm_password: {
+                required: true,
+                equalTo: "#password"
+            },
+            country: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            state: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            phoneNumber: {
+                required: true,
+                phoneUS: true
+
+            },
+            zipCode: {
+                required: true,
+                zipcode_val:true
             }
 
-            return "\"" + json.error + "\"";
-
         },
-    },
-},
-password: {
-    required: true,
-    minlength : 5
-},
-confirm_password: {
-    required: true,
-    equalTo: "#password"
-},
-country: {
-    required: true
-},
-address: {
-    required: true
-},
-state: {
-    required: true
-},
-city: {
-    required: true
-},
-phoneNumber: {
-    required: true,
-    phoneUS: true
-
-},
-zipCode: {
-    required: true,
-    zipcode_val:true
-}
-
-},
-messages: {
-  firstName: {
-    required: "Please enter firstname *"
-},
-lastName: {
-    required: "Please enter lastname *"
-},
-username: {
-    required: "Please enter clinicname *"
-},
-mobileNumber: {
-    required: "Please enter mobile number *"
-},
-email: {
-    required: "Please enter an email address *",
-    email: "Not a valid email address *"
-},
-password: {
-    required: "Please enter your password *"
-},
-confirm_password: {
-    required: "Please enter confirm password *"
-}, 
-country: {
-    required: "Please enter country name *"
-},
-address: {
-    required: "Please enter address *"
-},
-state: {
-    required: "Please enter state *"
-},
-city: {
-    required: "Please enter city *"
-},
-phoneNumber: {
-    required: "Please enter phonenumber *"  
-},
-zipCode: {
-    required: "Please enter zipcode *"
-}
-}
-});
-        return Obj.valid();
-        break;
+        messages: {
+          firstName: {
+            required: "Please enter firstname *"
+        },
+        lastName: {
+            required: "Please enter lastname *"
+        },
+        username: {
+            required: "Please enter clinicname *"
+        },
+        mobileNumber: {
+            required: "Please enter mobile number *"
+        },
+        email: {
+            required: "Please enter an email address *",
+            email: "Not a valid email address *"
+        },
+        password: {
+            required: "Please enter your password *"
+        },
+        confirm_password: {
+            required: "Please enter confirm password *"
+        }, 
+        country: {
+            required: "Please enter country name *"
+        },
+        address: {
+            required: "Please enter address *"
+        },
+        state: {
+            required: "Please enter state *"
+        },
+        city: {
+            required: "Please enter city *"
+        },
+        phoneNumber: {
+            required: "Please enter phonenumber *"  
+        },
+        zipCode: {
+            required: "Please enter zipcode *"
+        }
     }
-}
+});
+            return Obj.valid();
+            break;
+        }
+    }
 
 
 
@@ -971,43 +962,51 @@ zipCode: {
 
 //SET SECTED ENTERPRICE PRICE 
 
-function setPrice(price)
+function setPrice(price,doctorsCount)
 {
+    var amt=parseInt(price)+parseInt(99);
 
-    $("#price").val(price);
+    $("#price").val(amt);
+    $("#doctorsCount").val(doctorsCount);
+
 }
-
-
 
 $.urlParam = function(name){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     return results[1] || 0;
 }
 
-
 var enterPriceMode=$.urlParam('q');
 
 if(enterPriceMode==1)
 {
-    $("#plan_info_Year").attr('checked', 'checked');
+    $("#plan_info_1").attr('checked', 'checked');
 
     // $("#paidPlan").show();
     // $("#trailPlan").hide();
 
 }
-else if(enterPriceMode==0)
+else if(enterPriceMode==2)
 {
-    $("#price").val("0");
-
+    $("#plan_info_2").attr('checked', 'checked');
+    //$("#price").val("0");
     // $("#paidPlan").hide();
     // $("#trailPlan").show();
 }
-else
+else if(enterPriceMode==3)
+{
+    $("#plan_info_3").attr('checked', 'checked');
+    //$("#price").val("0");
+    // $("#paidPlan").hide();
+    // $("#trailPlan").show();
+}
+else 
 {
     // $("#paidPlan").show();
     // $("#trailPlan").hide();
 
-    $("#plan_info_Month").attr('checked', 'checked');
+    $("#plan_info_1").attr('checked', 'checked');
+    $("#price").val("498");
 }
 
 

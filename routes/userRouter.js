@@ -36,43 +36,43 @@ upload = multer({
 // });
 
 userRouter.post('/signup/:clinicName',upload.single('image'), function(req, res, next) {
-   localAuth.authenticate('user-signup', function(err, user, info) {
-      if (err) { return next(err); }
-      else if (info) { return res.json({"status":401,message:info}); }
-      else{
-          req.login(user,function(err){
-            if(err) res.json({"status":500,message:"internal server error"});
-            res.json({"status":200,message:user});
-        });
-      }
-  })(req, res, next);
+ localAuth.authenticate('user-signup', function(err, user, info) {
+  if (err) { return next(err); }
+  else if (info) { return res.json({"status":401,message:info}); }
+  else{
+      req.login(user,function(err){
+        if(err) res.json({"status":500,message:"internal server error"});
+        res.json({"status":200,message:user});
+    });
+  }
+})(req, res, next);
 });
 
     //clinicRouter login
     userRouter.post('/login', function(req, res, next) {
 
-       localAuth.authenticate('user-login', function(err, user, info) {
-          if (err) { return next(err); }
-          else if (info) { return res.json({"status":401,message:info}); }
-          else{
-              req.login(user,function(err){
-                if(err) res.json({"status":500,message:"internal server error"});
-                User.findOneAndUpdate({_id:user.id},{$set:{loggedOut:false,loggedIn:true}},function(err,user){
-                    if(err) throw err;
-                });
-                res.json({"status":200,message:user});
-
+     localAuth.authenticate('user-login', function(err, user, info) {
+      if (err) { return next(err); }
+      else if (info) { return res.json({"status":401,message:info}); }
+      else{
+          req.login(user,function(err){
+            if(err) res.json({"status":500,message:"internal server error"});
+            User.findOneAndUpdate({_id:user.id},{$set:{loggedOut:false,loggedIn:true}},function(err,user){
+                if(err) throw err;
             });
-          }
-      })(req, res, next);
+            res.json({"status":200,message:user});
 
-  });
+        });
+      }
+  })(req, res, next);
+
+});
 
 
 
     userRouter.get('/dashboard',isLoggedIn,function(req, res, next) {
 
-       User.findOne({
+     User.findOne({
         "_id": req.user._id
     }).populate({
         path: 'pets',
@@ -150,29 +150,29 @@ userRouter.post('/signup/:clinicName',upload.single('image'), function(req, res,
 
 //creating new pet
 userRouter.post('/addPet/:clinicName', isLoggedIn, upload.single('image'), function(req, res) {
- if(req.file){
-   formData = {
-       petName: req.body.petName,
-       petType: req.body.petType,
-       petBreed: req.body.petBreed,
-       petSex: req.body.petSex,
-       dateOfBirth: req.body.dateOfBirth,
-       petPhoto: req.file.path,
-       user:req.user._id
-   };
-} else{
-   formData = {
-       petName: req.body.petName,
-       petType: req.body.petType,
-       petBreed: req.body.petBreed,
-       petSex: req.body.petSex,
-       dateOfBirth: req.body.dateOfBirth,
-       user:req.user._id,
-       petPhoto: "uploads/vv.png"
+   if(req.file){
+     formData = {
+         petName: req.body.petName,
+         petType: req.body.petType,
+         petBreed: req.body.petBreed,
+         petSex: req.body.petSex,
+         dateOfBirth: req.body.dateOfBirth,
+         petPhoto: req.file.path,
+         user:req.user._id
+     };
+ } else{
+     formData = {
+         petName: req.body.petName,
+         petType: req.body.petType,
+         petBreed: req.body.petBreed,
+         petSex: req.body.petSex,
+         dateOfBirth: req.body.dateOfBirth,
+         user:req.user._id,
+         petPhoto: "uploads/vv.png"
 
-   };
-}
-new Pet(formData).save(function(err, pet) {
+     };
+ }
+ new Pet(formData).save(function(err, pet) {
     if (err) res.status(500).json({
         message: "internal server error"
     });
@@ -213,15 +213,15 @@ new Pet(formData).save(function(err, pet) {
 
 userRouter.post('/bookAppointment/:clinicName', isLoggedIn, function(req, res) {
 
-   formData = {
-       date: req.body.date,
-       time: req.body.timepicker1,
-       pet:req.body.appPetId,
-       user:req.user._id
+ formData = {
+     date: req.body.date,
+     time: req.body.timepicker1,
+     pet:req.body.appPetId,
+     user:req.user._id
 
-   };
+ };
 
-   new Appointment(formData).save(function(err, appointment) {
+ new Appointment(formData).save(function(err, appointment) {
     if (err) res.status(500).json({
         message: "internal server error"
     });
@@ -247,64 +247,64 @@ userRouter.post('/bookAppointment/:clinicName', isLoggedIn, function(req, res) {
                         }, function(err, appointment) {
 
 
-                         console.log(appointment._id);
+                           console.log(appointment._id);
 
-                         if (err) res.status(500).json({
+                           if (err) res.status(500).json({
                             message: "internal server error"
                         });
 
-                          Appointment.findOne({
-                            '_id': myAppointment
-                        }).populate({
-                            path: 'pet'
-                        }).populate({
-                            path: 'user',
+                              Appointment.findOne({
+                                '_id': myAppointment
+                            }).populate({
+                                path: 'pet'
+                            }).populate({
+                                path: 'user',
 
-                        }).exec(function (err, appointmentInfo){
+                            }).exec(function (err, appointmentInfo){
 
-                         console.log(appointmentInfo);
+                               console.log(appointmentInfo);
 
-                         var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
-                         var hbs= require('nodemailer-express-handlebars');
-                         var options = {
-                           viewEngine: {
-                               extname: '.hbs',
-                               layoutsDir: './views/email/',
-                           },
-                           viewPath: './views/email/',
-                           extName: '.hbs'
-                       };
-                       transporter.use('compile', hbs(options));
-                       var mailOptions = {
-                        from: 'Vetx <vetx.contact@gmail.com>',
-                        to: appointment.email,
-                        bcc:"hello@vetxapp.com",
-                        subject: "New appointment!",
-                        text: " ",
-                        template:'appoinment',
-                        context:{petName:appointmentInfo.pet.petName,userEmail:appointmentInfo.user.email,time:req.body.timepicker1,
-                            firstName:appointmentInfo.user.firstName,clinicName:req.params.clinicName
-                        }
-                    };
+                               var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
+                               var hbs= require('nodemailer-express-handlebars');
+                               var options = {
+                                 viewEngine: {
+                                     extname: '.hbs',
+                                     layoutsDir: './views/email/',
+                                 },
+                                 viewPath: './views/email/',
+                                 extName: '.hbs'
+                             };
+                             transporter.use('compile', hbs(options));
+                             var mailOptions = {
+                                from: 'Vetx <vetx.contact@gmail.com>',
+                                to: appointment.email,
+                                bcc:"hello@vetxapp.com",
+                                subject: "New appointment!",
+                                text: " ",
+                                template:'appoinment',
+                                context:{petName:appointmentInfo.pet.petName,userEmail:appointmentInfo.user.email,time:req.body.timepicker1,
+                                    firstName:appointmentInfo.user.firstName,clinicName:req.params.clinicName
+                                }
+                            };
 
-                    transporter.sendMail(mailOptions, function(err){
+                            transporter.sendMail(mailOptions, function(err){
 
-                        if(err) throw err;
-                    });
+                                if(err) throw err;
+                            });
 
-                    res.status(200).json({
-                        message: "Appointment has been booked successfully"
-                    });
-
-
-
-                });
+                            res.status(200).json({
+                                message: "Appointment has been booked successfully"
+                            });
 
 
 
+                        });
 
 
-                    });
+
+
+
+                        });
                     }
                 });
         }
@@ -496,8 +496,8 @@ userRouter.put('/paymentStatus/:callId', isLoggedIn,function(req, res) {
       message: "internal server error"
   });
       if (doc) {
-       doc.paymentStatus = true;
-       doc.save(function(err) {
+         doc.paymentStatus = true;
+         doc.save(function(err) {
           if (err) res.status(500).json({
             message: "internal server error"
         });
@@ -505,16 +505,16 @@ userRouter.put('/paymentStatus/:callId', isLoggedIn,function(req, res) {
               message: "Call finished success fully!"
           });
         });
-   }
-});
+     }
+ });
 });
 
 userRouter.get('/logout', isLoggedIn, function(req, res) {
-   User.findOneAndUpdate({_id:req.user._id},{$set:{loggedOut:true,loggedIn:false}},function(err,user){
+ User.findOneAndUpdate({_id:req.user._id},{$set:{loggedOut:true,loggedIn:false}},function(err,user){
     if(err) throw err;
 });
-   res.redirect('/'+req.user.clinicName);
-   req.logout(); 
+ res.redirect('/'+req.user.clinicName);
+ req.logout(); 
 });
 
 //FOR VIDEO CALL START 
@@ -529,7 +529,7 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
     res.redirect("/");
-    //res.send('you are not authenticated');
+  // res.send('you are not authenticated');
 }
 
 module.exports = userRouter;

@@ -108,6 +108,8 @@ clinicRouter.post('/register', function(req, res, next) {
                       });
                   });
 
+                  console.log(req.body.price);
+
                   gateway.clientToken.generate({}, function (err, response) {
                     req.session.email = req.body.email;         
                     req.session.password=req.body.password;
@@ -283,37 +285,64 @@ clinicRouter.put('/doctor', isLoggedIn,upload.single('profileImage'), function(r
  }
 };
 
-doc.save(function(err, doc) {
-    if (err)
-        res.status(500).json({
-            message: 'internal server error'
-        });
-    if (doc) {
 
-        Clinic.findOneAndUpdate({
-            _id: req.user._id
-        }, {
-            $push: {
-                myDoctors: doc._id
+
+
+
+Doctor.count({clinicName:req.user.clinicName},function(err,count){
+
+    console.log(count);
+    console.log(req.user.doctorsCount);
+
+
+    /* Restrict doctor adding based on enterprice plan    */
+
+    if(count<req.user.doctorsCount)
+    {
+        doc.save(function(err, doc) {
+            if (err)
+                res.status(500).json({
+                    message: 'internal server error'
+                });
+            if (doc) {
+
+                Clinic.findOneAndUpdate({
+                    _id: req.user._id
+                }, {
+                    $push: {
+                        myDoctors: doc._id
+                    }
+                }, function(err, clinic) {
+                    if (err) res.status(500).json({
+                        message: "internal server error"
+                    });
+                });
             }
-        }, function(err, clinic) {
-            if (err) res.status(500).json({
-                message: "internal server error"
+
+            transporter.sendMail(mailOptions, function(err){
+
+                console.log(err);
+                if(err) throw err;
             });
+
+            res.status(200).json({
+                message: 'doctor added successfully'
+            });
+
         });
-    }
 
-    transporter.sendMail(mailOptions, function(err){
+    }else
+    {
 
-        console.log(err);
-        if(err) throw err;
+     res.status(202).json({
+        message: 'Reached your limit!'
     });
 
-    res.status(200).json({
-        message: 'doctor added successfully'
-    });
+ }
+
 
 });
+
 
 });
 
@@ -354,18 +383,13 @@ clinicRouter.get('/dashboard',isLoggedIn,function(req, res, next) {
                 model: 'User'
             }  
         }
-
     }).exec(function (err, user){
-
-        //res.json({user:user});
-
         Call.find({clinicName:req.user.clinicName}).populate({
             path: 'userId',
             select:'lastName firstName profilePic'
         }).populate({
             path: 'userId',
             select:'lastName firstName'
-
         }).populate({
             path: 'DoctorId',
             select:'name profileImage'   
@@ -376,18 +400,15 @@ clinicRouter.get('/dashboard',isLoggedIn,function(req, res, next) {
 
             if(err) res.status(500).json({message:'internal server error'});
 
-
             var clinicInfo={user:user,"callHistory":call,appointment:user.appointment};
-
+            
+            console.log(user.appointment);
             //res.json(user);
 
             Clinic.findOneAndUpdate({_id:user._id},{$set:{newUser:false}},function(err,Clinic){
                 if(err) throw err;
             });
-
             res.render('dashboard-table',clinicInfo);
-
-
         });
 
     });
