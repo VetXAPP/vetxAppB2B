@@ -626,10 +626,10 @@
                    });
                     //var socket = io.connect('http://localhost:3330');
    // var socket = io.connect('http://35.164.220.7:3330');
-  // var socket = io.connect('https://vetx.herokuapp.com');
+   var socket = io.connect('https://vetx.herokuapp.com');
   //var socket = io.connect('https://vetxb2c.herokuapp.com'); 
 
-  var socket = io.connect('https://www.vetxapp.com');
+  //var socket = io.connect('https://www.vetxapp.com');
 
 //NEW WINDOW OPEN
 
@@ -1242,11 +1242,11 @@ function bookAppointment()
      statusCode: {
          200: function (response) {
              alert('success');
-               //window.location.href = "https://vetx.herokuapp.com/user/dashboard";
+             window.location.href = "https://vetx.herokuapp.com/user/dashboard";
                //window.location.href="http://localhost:3330/user/dashboard";
-               window.location.href = "https://www.vetxapp.com/user/dashboard";
+              // window.location.href = "https://www.vetxapp.com/user/dashboard";
 
-           },500: function (response) {
+          },500: function (response) {
             alert('failure');
 
         }},
