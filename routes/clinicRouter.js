@@ -197,20 +197,20 @@ clinicRouter.post('/checkEmail', function(req, res) {
 //clinicRouter login
 clinicRouter.post('/login', function(req, res, next) {
 
- localAuth.authenticate('local-login', function(err, user, info) {
-  if (err) { return next(err); }
-  else if (info) { return res.json({"status":401,message:info}); }
-  else{
-      req.login(user,function(err){
-        if(err) res.json({"status":500,message:"internal server error"});
-        Clinic.findOneAndUpdate({_id:user.id},{$set:{loggedOut:false,loggedIn:true}},function(err,Clinic){
-            if(err) throw err;
-        });
-        res.json({"status":200,message:user});
+   localAuth.authenticate('local-login', function(err, user, info) {
+      if (err) { return next(err); }
+      else if (info) { return res.json({"status":401,message:info}); }
+      else{
+          req.login(user,function(err){
+            if(err) res.json({"status":500,message:"internal server error"});
+            Clinic.findOneAndUpdate({_id:user.id},{$set:{loggedOut:false,loggedIn:true}},function(err,Clinic){
+                if(err) throw err;
+            });
+            res.json({"status":200,message:user});
 
-    });
-  }
-})(req, res, next);
+        });
+      }
+  })(req, res, next);
 
 });
 
@@ -231,10 +231,10 @@ clinicRouter.post('/login', function(req, res, next) {
 
 clinicRouter.get('/logout', isLoggedIn, function(req, res) {
 
- Clinic.findOneAndUpdate({_id:req.user._id},{$set:{loggedOut:true,loggedIn:false}},function(err,Clinic){
+   Clinic.findOneAndUpdate({_id:req.user._id},{$set:{loggedOut:true,loggedIn:false}},function(err,Clinic){
     if(err) throw err;
 });
- req.logout();
+   req.logout();
     //res.render('index');
     res.redirect("/");
 
@@ -263,15 +263,15 @@ clinicRouter.put('/doctor', isLoggedIn,upload.single('profileImage'), function(r
     var transporter = nodemailer.createTransport('smtps://hello%40vetxapp.com:VetX2016!@smtp.gmail.com');
     var hbs= require('nodemailer-express-handlebars');
     var options = {
-     viewEngine: {
-         extname: '.hbs',
-         layoutsDir: './views/email/',
-     },
-     viewPath: './views/email/',
-     extName: '.hbs'
- };
- transporter.use('compile', hbs(options));
- var mailOptions = {
+       viewEngine: {
+           extname: '.hbs',
+           layoutsDir: './views/email/',
+       },
+       viewPath: './views/email/',
+       extName: '.hbs'
+   };
+   transporter.use('compile', hbs(options));
+   var mailOptions = {
     from: 'Vetx <vetx.contact@gmail.com>',
     to: req.body.email,
     bcc:"hello@vetxapp.com",
@@ -280,9 +280,9 @@ clinicRouter.put('/doctor', isLoggedIn,upload.single('profileImage'), function(r
     template:'vetEmail',
    // html: '<p> you have successfully registered with vetx' + 'email: ' + req.body.email + 'password:'+req.body.password+' ' + 'cliniclink: https://vetx.herokuapp.com/'+clinicName+ '</p>'
    context:{variable1:req.body.email,
-       variable2:'https://vetx.herokuapp.com/'+doc.clinicName+'/doctor',
-       variable3:req.body.docPassword,variable4:doc.clinicName,variable5:req.body.name
-   }
+     variable2:'https://vetx.herokuapp.com/'+doc.clinicName+'/doctor',
+     variable3:req.body.docPassword,variable4:doc.clinicName,variable5:req.body.name
+ }
 };
 
 
@@ -334,11 +334,11 @@ Doctor.count({clinicName:req.user.clinicName},function(err,count){
     }else
     {
 
-       res.status(202).json({
+     res.status(202).json({
         message: 'Reached your limit!'
     });
 
-   }
+ }
 
 
 });
@@ -478,7 +478,7 @@ clinicRouter.put('/editVet/:vetId', isLoggedIn,upload.single('profileImage'),fun
 
 clinicRouter.put('/clinicProfileUpdate/:clinicId', isLoggedIn,upload.single('clinicImage'),function(req, res) {
 
-   Clinic.findOne({
+ Clinic.findOne({
     _id: req.params.clinicId,
     active: true
 }, function(err, doc) {
@@ -486,7 +486,7 @@ clinicRouter.put('/clinicProfileUpdate/:clinicId', isLoggedIn,upload.single('cli
         message: "internal server error"
     });
 
-     if (doc) {
+       if (doc) {
 
         var newClinic = new Clinic();
         if (req.body.firstName) doc.firstName = req.body.firstName;
@@ -619,7 +619,7 @@ clinicRouter.put('/activate/:userId', isLoggedIn, function(req, res) {
 
 //EDIT USER INFORMATION 
 clinicRouter.put('/editUser/:userId', isLoggedIn, function(req, res) {
-   User.findOne({
+ User.findOne({
     _id: req.params.userId
 }, function(err, doc) {
     if (err) res.status(500).json({
