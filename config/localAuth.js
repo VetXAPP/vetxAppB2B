@@ -74,7 +74,7 @@ function(req, email, password, done) { // callback with email and password from 
     if (err)
       return done(err);
     if (!clinic)
-return done(null, false, {info:'You are not registered'}); // req.flash is the way to set flashdata using connect-flash
+return done(null, false, {info:'User not registered.Go for Sign Up'}); // req.flash is the way to set flashdata using connect-flash
 if (!clinic.validPassword(password))
 return done(null, false, {info:'Password mismatch'}); // create the loginMessage and save it to session as flashdata
 
@@ -93,12 +93,12 @@ passReqToCallback: true // allows us to pass back the entire request to the call
 },
 function(req, email, password, done) { // callback with email and password from our form
   Doctor.findOne({
-    'email': email,'clinicName':req.body.clinicName
+    'email': email,'clinicName':req.body.clinicName,'active':true
   }, function(err, doc) {
     if (err)
       return done(err);
     if (!doc)
-return done(null, false,{info:'you are not registered with vetX'}); // req.flash is the way to set flashdata using connect-flash
+return done(null, false,{info:'User not registered.Go for Sign Up'}); // req.flash is the way to set flashdata using connect-flash
 if (!doc.validPassword(password))
 return done(null, false, {info:'Oops! Wrong password.'}); // create the loginMessage and save it to session as flashdata
 Doctor.findOneAndUpdate({'email':email},{$set:{loggedIn:true,loggedOut:false,callStatus:"available"}},function(err,doctor){
@@ -439,12 +439,12 @@ localAuth.use('user-login', new userStrategy({
     },
     function(req, email, password, done) { // callback with email and password from our form
       User.findOne({
-        'email': email,'clinicName':req.body.clinicName
+        'email': email,'clinicName':req.body.clinicName,'active':true
       }, function(err, user) {
         if (err)
           return done(err);
         if (!user)
-  return done(null, false,{info:'you are not registered with vetX lab'}); // req.flash is the way to set flashdata using connect-flash
+  return done(null, false,{info:'User not registered.Go for Sign Up'}); // req.flash is the way to set flashdata using connect-flash
 if (!user.validPassword(password))
   return done(null, false,{info:'Oops wrong password'}); // create the loginMessage and save it to session as flashdata
 return done(null, user);

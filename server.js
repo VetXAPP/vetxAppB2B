@@ -150,7 +150,7 @@ socket.on('connect_call', function(info, callback)
 {
 
 	Doctor.find({
-		clinicName: info.clinicId,callStatus:'available',masterStatus:false,loggedIn:true
+		clinicName: info.clinicId,callStatus:'available',masterStatus:false,loggedIn:true,active:true
 	}).exec(function(err, doctor) {
 		if (err)
 		{
@@ -523,4 +523,7 @@ server.listen(port, function() {
 	console.log('Vetx server is running *:' + port);
 });
 
+// process.on('uncaughtException', function(err) {
+// 	console.log(err);
+// });
 

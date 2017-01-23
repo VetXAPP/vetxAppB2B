@@ -12,6 +12,12 @@
     font-size:30px !important;
 
 }
+
+label.error
+{
+    color: red !important;
+
+}
 .caret{margin-top: -13px;}
 .loadingBlock {
     width: 100%;

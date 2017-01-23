@@ -82,6 +82,8 @@
 
                     <% for(var i=0;i<docInfo.length;i++) { %>
 
+                    <%  if(docInfo[i].active == true)  {   %>
+
                     <div class="media conversation conversation-avail bgwhite">
                         <a class="pull-left" href="#">
                             <!-- <i class="fa fa-circle colorgreen chat-check online"></i> -->
@@ -114,7 +116,7 @@
                     <small>From <%= docInfo[i].name %></small>
                 </div>
             </div>
-            <% } %>
+            <% }  }%>
 
             <!-- busy -->
         <!--        <div class="media conversation conversation-avail bgwhite">

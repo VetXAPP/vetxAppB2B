@@ -194,7 +194,7 @@
 
               </td>
 
-              <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>')">
+              <td class="edit" data-toggle="modal" data-target="#add-vets"><a onclick="editVet('<%= doc._id %>','<%= doc.docId %>','<%= doc.title %>','<%= doc.email %>','<%= doc.password %>','<%= doc.phoneNumber %>','<%= doc.name %>','<%= doc.path %>','<%= doc.profileImage %>')">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
               </td>
               <td class="delete" data-toggle="modal" data-target="#deleteVetPopup"><a onclick="deleteVet('<%= doc._id %>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
@@ -1066,6 +1066,13 @@
 <input type="text" class="form-control" id="docId" name="docId">
 </div> -->
 
+<div class="image-upload col-md-offset-4">
+  <label for="profileImage">
+    <img id="blah" src="clinic/img/signup_image.png" alt="your image" height="100">
+  </label>
+  <input id="profileImage" type="file" name="profileImage">
+</div>
+
 <div class="form-group">
   <label for="usr">Veterinarian Name:</label>
   <input type="text" class="form-control" id="name" name="name">
@@ -1078,7 +1085,7 @@
   <input type="text" class="form-control" id="title" name="title">
 </div>  <div class="form-group">
 <label for="usr">Email:</label>
-<input type="text" class="form-control" id="email" name="email" style="text-transform: lowercase;">
+<input type="text" class="form-control" id="email" name="email" style="text-transform: lowercase;" autocomplete="off">
 </div>  <div class="form-group">
 <label for="usr">Password:</label>
 <input type="password" class="form-control" id="docPassword" name="docPassword">
@@ -1086,7 +1093,7 @@
 <label for="usr">Phone number:</label>
 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
 </div>  
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="upload-div">Upload Image</label>
   <div class="upload-div" style="position:relative;">
     <a class='upload-button' href='javascript:;'>
@@ -1095,7 +1102,7 @@
     </a> &nbsp;
     <span class='label label-info' id="upload-file-info"></span>
   </div>
-</div>
+</div> -->
 
 <div class="modal-footer">
   <button  class="whiteHomeButton" type="submit">Submit</button>
@@ -1941,24 +1948,45 @@ rules: {
       required: true,
 
     },
+    // email: {
+    //   required: true,
+    //   email: true
+
+    // },
     email: {
       required: true,
-      email: true
+      email: true,
+      remote:{
+        url: "/clinic/checkDoctorEmail",
+        type: "post",
+        data: {
+         email :function(){ return $('#email').val();},
+       },
+       async:true ,
+       dataFilter: function(data) {
+        var json = JSON.parse(data);
+        if(json.status == true) {
+          return true;
+        }
 
-    },
-    docPassword: {
-      required: true
+        return "\"" + json.error + "\"";
 
+      },
     },
-    phoneNumber: {
-      required: true,
-      phoneUS: true
-    },
-    name: {
-      required: true
-    },
+  },
+  docPassword: {
+    required: true
 
   },
+  phoneNumber: {
+    required: true,
+    phoneUS: true
+  },
+  name: {
+    required: true
+  },
+
+},
 // Specify validation error messages
 messages: {
 
@@ -1966,7 +1994,7 @@ messages: {
     //     required: "Please provide doctor id *",
     // },
     title: "Please provide title *",
-    email: "Please provide emailid *",
+    // email: "Please provide emailid *",
     password: "Please provide password *",
     name: "Please provide name *",
     docPassword:"Please provide password *",
@@ -2088,7 +2116,7 @@ function editUserInfo()
 function editContact(contactUserId,contactFirstName,contactLastName,
   contactEmail,contactPhoneNumber)
 {
- 
+
   $("#contactUserId").val(contactUserId);
   $("#contactFirstName").val(contactFirstName);
   $("#contactLastName").val(contactLastName);
@@ -2229,15 +2257,26 @@ function addVetStart()
 
 //EDIT VET 
 
-function editVet(vetId,docId,title,email,docPassword,phoneNumber,name,path)
+function editVet(vetId,docId,title,email,docPassword,phoneNumber,name,path,profileImage)
 {  
 
-  $("#actionStatus").val(0);
-  $("#vetId").val(vetId);
-  $("#docId").val(docId);
-  $("#title").val(title);
-  $("#email").val(email);
-  $("#docPassword").val(docPassword);
+
+ $('#docPassword').rules('add', {
+    required: false   // overwrite an existing rule
+  });
+
+ $('#email').rules('add', {
+  required: false ,
+    remote:false  // overwrite an existing rule
+  });
+
+ $("#actionStatus").val(0);
+ $("#vetId").val(vetId);
+ $("#docId").val(docId);
+ $("#title").val(title);
+ $("#email").val(email);
+  //$("#docPassword").val(docPassword);
+  $("#blah").attr("src", profileImage);
   $("#phoneNumber").val(phoneNumber);
   $("#name").val(name);
   $('#docId').attr('readonly', true);
@@ -2788,6 +2827,24 @@ function editClinicInfo()
   $("#clinicImage").change(function() { 
 
     readURL(this);
+  });
+
+
+
+  function readURL1(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#profileImage").change(function() { 
+    readURL1(this);
   });
 
 </script>

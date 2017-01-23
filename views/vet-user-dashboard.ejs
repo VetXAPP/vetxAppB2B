@@ -178,6 +178,8 @@
         <!-- available -->
         <% for(var i=0;i<docInfo.length;i++) { %>
 
+        <%  if(docInfo[i].active == true)  {   %>
+
         <div class="media conversation conversation-avail bgwhite">
             <a class="pull-left" href="#">
                 <!-- <i class="fa fa-circle colorgreen chat-check online"></i> -->
@@ -210,7 +212,10 @@
         <small>From <%= docInfo[i].name %></small>
     </div>
 </div>
-<% } %>
+
+
+
+<% }  } %>
 <div id="fixedbutton">
     <button data-toggle="modal" data-target="#addButton" class="btn bgorange bottomfixedaddbutton"><span class="fa fa-plus fa-2x colorwhite"></span></button>
 </div>
@@ -1422,13 +1427,22 @@ date_input.datepicker({
     container: container,
     todayHighlight: true,
     autoclose: true,
-    minDate: 0
+    minDate: 0,
+    startDate:new Date()
 })
 });
 
 $(document).ready(function() {
+
     $('#timepicker1').timepicki();
+
+
 });
+
+// $('#datetimepicker1').datetimepicker({  
+//     minDate: moment()
+// });
+
 
 </script>
 

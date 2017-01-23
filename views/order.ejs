@@ -322,7 +322,8 @@
               </div>
               <div class="clearfix"></div>
               <div class="checkbox">
-                <input type="checkbox" value="" class="checkbox-input" checked="checked">
+                <input type="checkbox" value="" class="checkbox-input" id="acceptStatus" 
+                name="acceptStatus">
                 <label class="lbl-txt">I agree to the <a href="#" data-toggle="modal" data-target="#term">Terms of Use</a> and <a href="#" data-toggle="modal" data-target="#policy">Privacy Policy</a>.</label>
             </div>
         </div>
@@ -355,7 +356,7 @@
     <div class="modal-body">
 
         <div class="privacy_policy_container">
-            
+
             <p>75 Arlington St. Suite 500</p>
             <p>Boston, MA 02116</p>
             <p>1-855-483-8669</p>
@@ -782,18 +783,21 @@ phoneNumber: {
 zipCode: {
     required: true,
     zipcode_val:true
+},
+acceptStatus: {
+    required: true
 }
 
 },
 messages: {
   firstName: {
-    required: "Please enter firstname *"
+    required: "Please enter first name *"
 },
 lastName: {
-    required: "Please enter lastname *"
+    required: "Please enter last name *"
 },
 username: {
-    required: "Please enter clinicname *"
+    required: "Please enter clinic name *"
 },
 mobileNumber: {
     required: "Please enter mobile number *"
@@ -825,7 +829,11 @@ phoneNumber: {
 },
 zipCode: {
     required: "Please enter zipcode *"
-}
+},
+acceptStatus: {
+    required: "Please enter zipcode *"
+},
+
 }
 });
         return Obj.valid();
@@ -833,13 +841,11 @@ zipCode: {
     }
 }
 
-
-
 </script>
 <script>
-    document.getElementById("uploadBtn").onchange = function() {
-        document.getElementById("uploadFile").value = this.value;
-    };
+    // document.getElementById("uploadBtn").onchange = function() {
+    //     document.getElementById("uploadFile").value = this.value;
+    // };
 </script>
 <script>
     $(document).ready(function() {
