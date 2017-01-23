@@ -386,11 +386,13 @@
 <div class="conversation-wrap appoinmentView minheightdash col-lg-3">
    <div class="media conversation bgwhite">
        <div class="media-body media-body">
-           <h6 class="media-heading bold-text">DOCTOR'S</h6>
+           <h6 class="media-heading bold-text">Veterinarian</h6>
        </div>
    </div>
    <!-- available -->
    <% for(var i=0;i<docInfo.length;i++) { %>
+
+   <%  if(docInfo[i].active == true)  {   %>
 
    <div class="media conversation conversation-avail bgwhite">
     <a class="pull-left" href="#">
@@ -424,7 +426,7 @@
 <small>From <%= docInfo[i].name %></small>
 </div>
 </div>
-<% } %>
+<% } }%>
 <!-- busy -->
 
 <div id="fixedbutton">
