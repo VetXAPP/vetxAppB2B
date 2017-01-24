@@ -462,6 +462,16 @@ app.get('/user/uploads/:file', function (req, res){
 	        res.end(img, 'binary');
 	 
 });
+
+
+app.get('/user/call-tones/:file', function (req, res){
+	        file = req.params.file;
+	        var img = fs.readFileSync("call-tones/" + file);
+	        res.writeHead(200, {'Content-Type': 'image/jpg' });
+	        res.end(img, 'binary');
+	 
+});
+
 app.get('/clinic/uploads/:file', function (req, res){
 	        file = req.params.file;
 	        var img = fs.readFileSync("uploads/" + file);
@@ -473,6 +483,13 @@ app.get('/clinic/uploads/:file', function (req, res){
 app.get('/doctor/uploads/:file', function (req, res){
 	        file = req.params.file;
 	        var img = fs.readFileSync("uploads/" + file);
+	        res.writeHead(200, {'Content-Type': 'image/jpg' });
+	        res.end(img, 'binary');
+});
+
+app.get('/doctor/call-tones/:file', function (req, res){
+	        file = req.params.file;
+	        var img = fs.readFileSync("call-tones/" + file);
 	        res.writeHead(200, {'Content-Type': 'image/jpg' });
 	        res.end(img, 'binary');
 });
