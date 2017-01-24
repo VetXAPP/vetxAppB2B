@@ -1585,3 +1585,8 @@
         .image-bg img {background-size: cover;
             height: 650px;
             width: 100%}
+            label.error
+            {
+                color: red !important;
+
+            }

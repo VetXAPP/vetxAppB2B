@@ -78,55 +78,15 @@
     var socket = io.connect('https://www.vetxapp.com');  
 
 
-    // window.onbeforeunload = function(e) {
-    //     return "Sure you want to leave?";
-    // };
-
-    $(window).on('beforeunload', function(){
-      return 'Are you sure you want to leave?';
-  });
-
-
- //    window.onunload = function() {
- //        myfun();
- //        alert('Bye.');
- //    }
-
- //    function myfun(){
-
- //     alert("poda dai");
-
- // }
+  //   $(window).unload(function() 
+  //   {
+  //     return "hai";
+  // });
 
 
 
-//  window.onbeforeunload = function () {
-
-//     // socket.emit('ebinson',"test", function(data){
-//     // });
-
-//     return true;
-
-
-
-// }
-
-
-
-// onbeforeunload = function(e){
-//     if(confirm('Are you nuts? Do you really want to leave me?')){
-//         return 'OK, Good Bye then';
-//     }
-//     else {
-//         e = e || event;
-//         if(e.preventDefault){e.preventDefault();}
-//         e.returnValue = false;
-//         return 'I said, "Are you nuts? Do you really want to leave me?"';
-//     }
-// }
-
-function closeWindow()
-{
+  function closeWindow()
+  {
 
     var petId=$.urlParam('p');
     var clinicId=$.urlParam('q');
@@ -273,6 +233,9 @@ $(document).ready(function() {
 });
 
  //***********FOR RINGING WHEN USER CALLING ***************//
+
+
+
 
 </script>
 

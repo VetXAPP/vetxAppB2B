@@ -2459,3 +2459,9 @@ textarea {
         .image-upload > input {
             display: none;
         }
+
+        label.error
+        {
+            color: red !important;
+
+        }
