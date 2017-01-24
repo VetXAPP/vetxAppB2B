@@ -78,6 +78,14 @@
     var socket = io.connect('https://www.vetxapp.com');  
 
 
+    // window.onbeforeunload = function(e) {
+    //     return "Sure you want to leave?";
+    // };
+
+    $(window).on('beforeunload', function(){
+      return 'Are you sure you want to leave?';
+  });
+
 
  //    window.onunload = function() {
  //        myfun();
@@ -230,7 +238,7 @@ $(document).ready(function() {
 
 
     var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', 'uploads/ring.mp3');
+    audioElement.setAttribute('src', 'call-tones/ring.mp3');
     
     audioElement.addEventListener('ended', function() {
         this.play();
