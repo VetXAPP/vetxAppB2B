@@ -138,23 +138,23 @@ var gateway = braintree.connect({
  // 	}
  // });
 
- function requireHTTPS(req, res, next) {
- 	if (!req.secure) {
-        //FYI this should work for local development as well
-        return res.redirect('https://' + req.get('host') + req.url);
-    }
-    next();
-}
+//  function requireHTTPS(req, res, next) {
+//  	if (!req.secure) {
+//         //FYI this should work for local development as well
+//         return res.redirect('https://' + req.get('host') + req.url);
+//     }
+//     next();
+// }
 
-app.use(requireHTTPS);
-app.get('/', clinicRouter);
+// app.use(requireHTTPS);
+// app.get('/', clinicRouter);
 
 
-// app.get('/',function(req,res){
+app.get('/',function(req,res){
 
-// 	res.render("index",{ message: req.flash('loginMessage') });
+	res.render("index",{ message: req.flash('loginMessage') });
 
-// });
+});
 
 app.get('/success',function(req,res){
 	res.render("success");
