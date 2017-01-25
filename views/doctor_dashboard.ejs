@@ -241,6 +241,8 @@
                      <img src="img/profile_user.jpg" class="img-responsive" id="IncomingUserImage">
                  </div>
                  <h1><span id="callUserName"></span>  is calling...</h1>
+                 <h1>Clinic name : <span id="callClinicName"></span></h1>
+
              </div>
 
              <div class="modal-footer">
@@ -273,11 +275,11 @@
         $('#history').DataTable();
     });
 
-   // var socket = io.connect('http://localhost:3330');
+    var socket = io.connect('http://localhost:3330');
                 //var socket = io.connect('http://35.164.220.7:3330');
                // var socket = io.connect('https://vetx.herokuapp.com');
                //var socket = io.connect('https://vetxb2c.herokuapp.com'); 
-               var socket = io.connect('https://www.vetxapp.com');     
+               //var socket = io.connect('https://www.vetxapp.com');     
 
                
 
@@ -294,6 +296,8 @@
         var doctorId=info.callActionInfo.doctorInfo[0]._id;
         $("#callUserName").text(userName);
         $("#IncomingUserImage").attr("src", userImage);
+        $("#callClinicName").text(clinicId);
+
 
         $("#play_<%= doctorInfo._id %>").trigger("click");
 

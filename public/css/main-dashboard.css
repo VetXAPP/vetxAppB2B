@@ -1899,7 +1899,63 @@ a.a-button {
 }
 
 
-/* upload */
+/* cms -  upload */
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    padding: 10.5px 40px;
+    border-radius: 0px 4px 4px 0px;
+    background-color: #f29235;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+}
+.image-preview-clear {
+    padding: 10.5px  16px;
+    background-color: #f29235;
+    color: #000;
+    font-size: 14px;
+
+}
+button.close {
+    color: #f29235;
+}
+.close:hover, .close:focus {
+    color: #000;
+}
+.image-preview-clear:hover,
+.image-preview-clear:active,
+.image-preview-clear:focus {
+    color: #fff;
+    background-color: #f29235;
+    outline: none;
+    background-position: 0 -40px;
+}
+.image-preview-input:hover,
+.image-preview-input:active,
+.image-preview-input:focus {
+    color: #fff;
+    background-color: #d58536;
+    outline: none;
+}
+
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+
+/* cms -  upload */
 
 .file {
     visibility: hidden;
@@ -2345,7 +2401,7 @@ label {
 }
 
 button.close {
-    color: #fff;
+    color: #000;
     opacity: 1;
     font-size: 30px;
 }

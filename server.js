@@ -42,6 +42,10 @@ Generate an Access Token for a chat application user - it generates a random
 username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
+/* */
+
+app.use( require('express-force-domain')('https://www.vetxapp.com') );
+
 app.get('/token', function(request, response) {
 	var identity = randomUsername();
 
@@ -531,8 +535,6 @@ app.use('/:vetLab',myLogger, clinicUserRouter);
 
 
 /* WWW AND HTTPS REDIRESCTION <== */          
-
-
 
 
 var port = process.env.PORT || 3330;
