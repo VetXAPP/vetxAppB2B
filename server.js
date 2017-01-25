@@ -44,7 +44,7 @@ parameter.
 */
 /* */
 
-app.use( require('express-force-domain')('https://www.vetxapp.com') );
+
 
 app.get('/token', function(request, response) {
 	var identity = randomUsername();
@@ -138,22 +138,33 @@ var gateway = braintree.connect({
  // 	}
  // });
 
+//  function requireHTTPS(req, res, next) {
+//  	if (!req.secure) {
+//         //FYI this should work for local development as well
+//         return res.redirect('https://' + req.get('host') + req.url);
+//     }
+//     next();
+// }
 
- app.get('/',function(req,res){
+// app.use(requireHTTPS);
+// app.get('/', clinicRouter);
 
- 	res.render("index",{ message: req.flash('loginMessage') });
 
- });
+app.get('/',function(req,res){
 
- app.get('/success',function(req,res){
- 	res.render("success");
- });
- app.get('/contactus', function(req, res) {
- 	res.render('contactpage');
- });
- app.get('/faq', function(req, res) {
- 	res.render('faq');
- });
+	res.render("index",{ message: req.flash('loginMessage') });
+
+});
+
+app.get('/success',function(req,res){
+	res.render("success");
+});
+app.get('/contactus', function(req, res) {
+	res.render('contactpage');
+});
+app.get('/faq', function(req, res) {
+	res.render('faq');
+});
 
 //**************   SOCKET CONNECTION END FOR VIDEO CALL  *************/////
 
